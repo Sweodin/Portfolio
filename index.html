@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <!----- Header and Navigation ----->
+
     <header>
         <nav>
             <div class="logo">Your Logo</div>
@@ -20,6 +23,8 @@
             </ul>
         </nav>
     </header>
+
+    <!----- Main Content ----->
 
     <main>
         <section class="welcome-section">
@@ -41,6 +46,8 @@
                 </div>
             </div>
         </section>
+
+        <!----- Skills Section ----->
 
         <section id="skills" class="skills-section">
             <div class="skills-container">
@@ -96,7 +103,7 @@
                     </div>
                     <div class="skill-item" data-proficiency="20%">
                         <i class="fab fa-git-alt"></i>
-                        <span>Git</span>
+                        <span class="skill-name">Git</span>
                         <div class="skill-proficiency">
                             <div class="proficiency-bar"></div>
                             <span class="proficiency-text">20%</span>
@@ -104,7 +111,7 @@
                     </div>
                     <div class="skill-item" data-proficiency="40%">
                         <i class="fab fa-sass"></i>
-                        <span>Sass</span>
+                        <span class="skill-name">Sass</span>
                         <div class="skill-proficiency">
                             <div class="proficiency-bar"></div>
                             <span class="proficiency-text">40%</span>
@@ -112,7 +119,7 @@
                     </div>
                     <div class="skill-item" data-proficiency="20%">
                         <i class="fab fa-wordpress"></i>
-                        <span>WordPress</span>
+                        <span class="skill-name">WordPress</span>
                         <div class="skill-proficiency">
                             <div class="proficiency-bar"></div>
                             <span class="proficiency-text">20%</span>
@@ -120,7 +127,7 @@
                     </div>
                     <div class="skill-item" data-proficiency="20%">
                         <i class="fab fa-figma"></i>
-                        <span>Figma</span>
+                        <span class="skill-name">Figma</span>
                         <div class="skill-proficiency">
                             <div class="proficiency-bar"></div>
                             <span class="proficiency-text">20%</span>
@@ -130,58 +137,20 @@
             </div>
         </section>
 
+        <!----- Projects Section ----->
         <section id="projects" class="projects-section">
             <h2>Projects</h2>
+            <button id="load-new-cards">Load New Projects</button>
             <div class="projects-container">
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/img/Anime-project.webp" alt="Anime image">
-                        </div>
-                        <div class="project-content">
-                            <h3>Unleash the World of Anime</h3>
-                            <p>This project is an anime-themed website that allows users to search for their favorite anime using a powerful search API.</p>
-                               <p> The site provides detailed information about each anime, including titles, genres, descriptions, and more.</p>
-                                <p>Designed with a clean and user-friendly interface, it offers an efficient way for anime enthusiasts to explore and discover new series or revisit old favorites</p>
-                            <a href="https://github.com/Sweodin/Anime-Api.git" class="github-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/img/Cellphone.jpg" alt="Cellphone">
-                        </div>
-                        <div class="project-content">
-                            <h3>Mobile Weather App</h3>
-                            <p>Responsive weather application built with React Native. Features real-time weather updates, location-based forecasts, and interactive weather maps.</p>
-                            <a href="#" class="github-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="img/Coding.jpg" alt="Coding image">
-                        </div>
-                        <div class="project-content">
-                            <h3>Code protfolio Generator</h3>
-                            <p>A dynamic portfolio generator built with JavaScript and Node.js. Automatically creates beautiful portfolios from GitHub repositories with custom themes.</p>
-                            <a href="#" class="github-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/img/Motherboard.jpg" alt="Motherboard image">
-                        </div>
-                        <div class="project-content">
-                            <h3>System Monitor Dashboard</h3>
-                            <p>Real-time system monitoring dashboard built with React and Node.js. Tracks CPU, memory, and network usage with interactive charts and alerts.</p>
-                            <a href="#" class="github-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
+              <div class="projects-grid" id="card-grid">
+                <!-- Cards will be generated here -->
+              </div>
+              
             </div>
-        </section>
+          </section>
+       
+
+        <!----- Blog Section ----->
 
         <section id="blog" class="blog-section">
             <h2>Blog</h2>
@@ -285,6 +254,8 @@
             </div>
         </section>
 
+        <!----- Contact Section ----->
+
         <section id="contact" class="contact-section">
             <h2>Contact Me</h2>
             <div class="contact-container">
@@ -307,6 +278,8 @@
         </section>
     </main>
 
+    <!----- Footer ----->
+
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -318,7 +291,7 @@
             <p>&copy; 2024 Peter Gustafsson. All rights reserved.</p>
         </div>
     </footer>
-
+    
     <script src="js/script.js"></script>
 </body>
 </html>
