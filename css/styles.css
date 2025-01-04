@@ -121,7 +121,7 @@ main {
     padding: 0;
     background: linear-gradient(45deg, var(--text-color) 30%, var(--accent-color) 70%);
     -webkit-background-clip: text;
-    background-clip: text;
+        
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
     animation: gradientText 5s ease infinite;
