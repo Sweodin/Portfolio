@@ -68,7 +68,7 @@ const allCardData = [
     githubLink: 'https://github.com/Sweodin/Virtual-Pet-Game.git',
   },
   {
-    title: 'Code protfolio Generator',
+    title: 'Code portfolio Generator',
     description:
       'A dynamic portfolio generator built with JavaScript and Node.js. Automatically creates beautiful portfolios from GitHub repositories with custom themes.',
     image: 'img/Coding.jpg',
