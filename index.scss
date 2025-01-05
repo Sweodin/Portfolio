@@ -1,0 +1,47 @@
+@import "./Scss/variables";
+@import "./Scss/mixins";
+@import "./Scss/fonts";
+@import "./Scss/header";
+@import "./Scss/about";
+@import "./Scss/skills";
+@import "./Scss/projects";
+@import "./Scss/blog";
+@import "./Scss/contact";
+@import "./Scss/footer";
+/* @import "./pages/intro"; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $body-font;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $primary-color;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+  font-weight: 600;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
