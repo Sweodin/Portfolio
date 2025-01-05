@@ -1,0 +1,111 @@
+@import "../Scss/variables";
+@import "../Scss/fonts";
+
+body {
+  background-color: $primary-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  /*-----  Glowing border effect -----*/
+  border: 2px solid $accent-color;
+  box-shadow: 0 0 10px $accent-color;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 15px $accent-color, 0 0 30px rgba(0, 255, 157, 0.8);
+  }
+}
+
+.neon-text {
+  font-family: $heading-font;
+  background: $gradient-2;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 96px;
+  text-shadow: 0 0 3px $accent-color, 0 0 8px $accent-color,
+    0 0 15px rgba(0, 255, 157, 0.8);
+  padding: 0 30px 30px 30px;
+  margin-top: 10px;
+
+  .letter {
+    display: inline-block;
+    opacity: 0; /* Initially hidden */
+    color: $accent-color;
+  }
+}
+
+.flicker-slow {
+  opacity: 0;
+  animation: flicker 2s linear forwards; /*----- Changed to forwards -----*/
+}
+
+.flicker-fast {
+  animation: flicker 1s linear forwards; /*----- Changed to forwards -----*/
+}
+
+@keyframes flicker {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  99.999% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 2px $accent-color, 0 0 5px $accent-color,
+      0 0 10px rgba(0, 255, 157, 0.9);
+  }
+}
+
+#enter-button {
+  font-family: $body-font;
+  font-style: normal;
+  margin-top: 10px;
+  padding: 30px 20px;
+  font-size: 50px;
+  background-color: transparent;
+  color: $text-color;
+  border: none;
+  cursor: pointer;
+  text-shadow: 0 0 3px $accent-color, 0 0 8px $accent-color;
+
+  .letter {
+    opacity: 0;
+    color: $accent-color;
+  }
+}
+
+.no-glow {
+  text-shadow: none;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /*----- Adjust the duration as needed -----*/
+}

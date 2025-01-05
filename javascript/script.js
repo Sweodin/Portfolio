@@ -1,113 +1,157 @@
- /*----- Smooth scrolling for navigation links -----*/
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+/*----- Smooth scrolling for navigation links -----*/
+/* console.log("Script started"); */
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
     });
+  });
 });
 
- /*----- Intersection Observer for fade-in animations -----*/
+/*----- Contact form handling -----*/
 
-const observerOptions = {
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
- /*----- Observe all sections -----*/
-
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-
- /*----- Contact form handling -----*/
-
-const contactForm = document.querySelector('.contact-form');
+const contactForm = document.querySelector(".contact-form");
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-         /*----- Add your form submission logic here -----*/
+    /*----- Add your form submission logic here -----*/
 
-        const formData = new FormData(this);
-        console.log('Form submitted:', Object.fromEntries(formData));
-         /*----- You can add an AJAX request here to handle the form submission -----*/
-    });
+    const formData = new FormData(this);
+    console.log("Form submitted:", Object.fromEntries(formData));
+    /*----- You can add an AJAX request here to handle the form submission -----*/
+  });
 }
 
 /*----- project Animation for my project cards -----*/
 
-const cardGrid = document.getElementById('card-grid');
-const loadNewCardsButton = document.getElementById('load-new-cards');
+/*----- Slide Out Old Cards -----*/
+
+const cardGrid = document.getElementById("card-grid");
+const loadNewCardsButton = document.getElementById("load-new-cards");
+const projectsSection = document.getElementById("projects");
+
+const observerOptions = {
+  threshold: 0.1,
+};
+
+const combinedObserver = new IntersectionObserver((entries) => {
+  /* console.log("Intersection observer triggered for: about"); */
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      if (entry.target.id === "projects") {
+        // Logic for loading project cards when the projects section is visible
+        loadInitialCards();
+
+        combinedObserver.unobserve(projectsSection); // Load cards only once
+      }
+      // Logic for adding the "visible" class to sections
+      entry.target.classList.add("visible");
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll("section").forEach((section) => {
+  combinedObserver.observe(section);
+});
 
 let currentCardIndex = 0;
+const cardsPerPage = 4;
 const allCardData = [
   {
-    title: 'Unleash the World of Anime',
+    title: "World of Anime",
     description:
-      'This project is an anime-themed website that allows users to search for their favorite anime using a powerful search API. The site provides detailed information about each anime, including titles, genres, descriptions, and more. Designed with a clean and user-friendly interface, it offers an efficient way for anime enthusiasts to explore and discover new series or revisit old favorites',
-    image: '/img/Anime-project.webp',
-    githubLink: 'https://github.com/Sweodin/Anime-Api.git',
+      "This project is an anime-themed website that allows users to browse and discover new series or revisit old favorites",
+    image: "/img/Anime-project.webp",
+    githubLink: "https://github.com/Sweodin/Anime-Api.git",
   },
   {
-    title: 'Virtual pet game',
+    title: "Virtual pet game",
     description:
-      'This project is a web-based virtual pet game where players can register, log in, and care for their pet. Key features include a dynamic status page, a store for purchasing items, and mini-games like a math quiz and a trivia game. The game uses local storage for user data, a background music API, and dynamic updates using React\'s useState and useEffect hooks.',
-    image: '/img/Virtual-pet-game.png',
-    githubLink: 'https://github.com/Sweodin/Virtual-Pet-Game.git',
+      "This project is a web-based virtual pet game where users can interact with and care for a virtual pet, with its status updating in real-time using React's useState and useEffect hooks.",
+    image: "/img/Virtual-pet-game.png",
+    githubLink: "https://github.com/Sweodin/Virtual-Pet-Game.git",
   },
   {
-    title: 'Code portfolio Generator',
+    title: "Code portfolio Generator",
     description:
-      'A dynamic portfolio generator built with JavaScript and Node.js. Automatically creates beautiful portfolios from GitHub repositories with custom themes.',
-    image: 'img/Coding.jpg',
-    githubLink: '#',
+      "A dynamic portfolio generator built with JavaScript that allows developers to create and customize their online portfolios from GitHub repositories with custom themes.",
+    image: "img/Coding.jpg",
+    githubLink: "#",
   },
   {
-    title: 'System Monitor Dashboard',
+    title: "System Monitor Dashboard",
     description:
-      'Real-time system monitoring dashboard built with React and Node.js. Tracks CPU, memory, and network usage with interactive charts and alerts.',
-    image: '/img/Motherboard.jpg',
-    githubLink: '#',
+      "Real-time system monitoring dashboard built with React, displaying key metrics like CPU usage, memory usage, and network usage with interactive charts and alerts.",
+    image: "/img/Motherboard.jpg",
+    githubLink: "#",
   },
   {
-    title: 'Project 5',
-    description: 'Description 5',
-    image: 'img/Coding.jpg',
-    githubLink: '#',
+    title: "E-commerce Product Page",
+    description:
+      "A responsive e-commerce product page showcasing product details, images, and purchasing options with a clean and user-friendly design.",
+    image: "img/Coding.jpg",
+    githubLink: "#",
   },
   {
-    title: 'Project 6',
-    description: 'Description 6',
-    image: '/img/Motherboard.jpg',
-    githubLink: '#',
+    title: "Task Management App",
+    description:
+      "A simple task management application allowing users to create, organize, and track their tasks with features like due dates and priority levels.",
+    image: "/img/Anime-project.webp",
+    githubLink: "#",
   },
-  // ... more card data
+  {
+    title: "Weather Application",
+    description:
+      "A web application that fetches and displays current weather information for a specified location using a weather API.",
+    image: "/img/Virtual-pet-game.png",
+    githubLink: "#",
+  },
+  {
+    title: "Recipe Finder App",
+    description:
+      "An application that allows users to search for recipes based on ingredients or dietary restrictions, utilizing a recipe database or API.",
+    image: "img/Coding.jpg",
+    githubLink: "#",
+  },
+  {
+    title: "Personal Blog Website",
+    description:
+      "A personal blog website built with a focus on clean design and readability, allowing the author to share their thoughts and ideas through articles and posts.",
+    image: "/img/Virtual-pet-game.png",
+    githubLink: "#",
+  },
+  {
+    title: "Interactive Data Visualization",
+    description:
+      "A project focused on visualizing data using libraries like D3.js or Chart.js to create interactive and informative charts and graphs.",
+    image: "/img/Anime-project.webp",
+    githubLink: "#",
+  },
 ];
 
+function generateNewCardData() {
+  const startIndex = currentCardIndex;
+  const endIndex = startIndex + cardsPerPage;
+  return allCardData.slice(startIndex, endIndex);
+}
+
 function createCard(cardData) {
-    const card = document.createElement('div');
-    card.classList.add('project-card');
-    card.innerHTML = `
+  const card = document.createElement("div");
+  card.classList.add("project-card");
+  card.innerHTML = `
           <div class="project-card-inner">
               <div class="project-card-front">
                   <div class="project-image">
                       <img src="${cardData.image}" alt="${cardData.title}">
                   </div>
                   <div class="project-content">
+                  <div class="flip-prompt"></div>
                       <h3>${cardData.title}</h3>
-                      <div class="flip-prompt">Click to read more <i class="fas fa-redo"></i></div>
+                      
                   </div>
               </div>
               <div class="project-card-back">
@@ -119,87 +163,104 @@ function createCard(cardData) {
               </div>
           </div>
       `;
-    return card;
-  }
-
-function updateGrid() {
-    console.log("updateGrid() called")
-  cardGrid.innerHTML = ''; // Clear existing cards
-  for (let i = 0; i < 4; i++) {
-    // Display 4 cards at a time
-    const cardData = allCardData[currentCardIndex];
-    if (cardData) {
-        console.log("Creating card:", cardData);
-      const card = createCard(cardData);
-      cardGrid.appendChild(card);
-      setTimeout(() => card.classList.add('active'), 10); // Add active class after a short delay
-      currentCardIndex = (currentCardIndex + 1) % allCardData.length; // Cycle through cards
-    }
-  }
+  return card;
 }
 
-loadNewCardsButton.addEventListener('click', updateGrid);
+function loadInitialCards() {
+  const initialCards = generateNewCardData();
+  initialCards.forEach((cardData, index) => {
+    const card = createCard(cardData);
+    card.classList.add(index % 2 === 0 ? "slide-in-right" : "slide-in-left");
+    cardGrid.appendChild(card);
+  });
+  currentCardIndex += cardsPerPage;
+}
 
-updateGrid(); // Initial load
+loadNewCardsButton.addEventListener("click", () => {
+  // 1. Slide Out Old Cards
+  const currentCards = Array.from(cardGrid.children);
+  currentCards.forEach((card, index) => {
+    card.classList.add(index % 2 === 0 ? "slide-out-left" : "slide-out-right");
+    setTimeout(() => {
+      card.remove();
+    }, 900);
+  });
 
+  // 2. Wait and then Add New Cards
+  setTimeout(() => {
+    const newCardData = generateNewCardData();
+    console.log("New Card Data:", newCardData);
+    console.log("cardGrid element:", cardGrid);
 
-
-  /*----- Blog card flip effect -----*/
-
-  document.querySelectorAll('.blog-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const cardInner = this.querySelector('.card-inner');
-        cardInner.classList.toggle('is-flipped');
+    newCardData.forEach((data, index) => {
+      console.log("Creating card with data:", data);
+      const newCard = createCard(data);
+      newCard.classList.add(
+        index % 2 === 0 ? "slide-in-right" : "slide-in-left"
+      );
+      cardGrid.appendChild(newCard);
     });
+
+    currentCardIndex += cardsPerPage; // Increment for the next load
+    console.log("Current card index updated to:", currentCardIndex);
+  }, 900);
 });
 
- /*----- Set up skill proficiency bars -----*/
+/*----- Blog card flip effect -----*/
 
-document.querySelectorAll('.skill-item').forEach(item => {
-    const proficiency = item.getAttribute('data-proficiency');
-    const bar = item.querySelector('.proficiency-bar');
-    if (bar) {
-        bar.style.setProperty('--proficiency', proficiency);
-    }
+document.querySelectorAll(".blog-card").forEach((card) => {
+  card.addEventListener("click", function () {
+    const cardInner = this.querySelector(".card-inner");
+    cardInner.classList.toggle("is-flipped");
+  });
+});
+
+/*----- Set up skill proficiency bars -----*/
+
+document.querySelectorAll(".skill-item").forEach((item) => {
+  const proficiency = item.getAttribute("data-proficiency");
+  const bar = item.querySelector(".proficiency-bar");
+  if (bar) {
+    bar.style.setProperty("--proficiency", proficiency);
+  }
 });
 
 function playVideo(videoUrl) {
+  /*----- Create modal container -----*/
 
-     /*----- Create modal container -----*/
+  const modal = document.createElement("div");
+  modal.className = "video-modal";
 
-    const modal = document.createElement('div');
-    modal.className = 'video-modal';
-    
-     /*----- Create video element -----*/
+  /*----- Create video element -----*/
 
-    const video = document.createElement('video');
-    video.src = videoUrl;
-    video.controls = true;
-    video.autoplay = true;
-    
-     /*----- Create close button -----*/
+  const video = document.createElement("video");
+  video.src = videoUrl;
+  video.controls = true;
+  video.autoplay = true;
 
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'close-modal';
-    closeBtn.innerHTML = '×';
-    closeBtn.onclick = function() {
-        document.body.removeChild(modal);
-    };
-    
-     /*----- Add elements to modal -----*/
+  /*----- Create close button -----*/
 
-    modal.appendChild(closeBtn);
-    modal.appendChild(video);
-    
-     /*----- Add modal to body -----*/
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "close-modal";
+  closeBtn.innerHTML = "×";
+  closeBtn.onclick = function () {
+    document.body.removeChild(modal);
+  };
 
-    document.body.appendChild(modal);
-    
-     /*----- Close modal when clicking outside video -----*/
-     
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            document.body.removeChild(modal);
-        }
-    });
+  /*----- Add elements to modal -----*/
+
+  modal.appendChild(closeBtn);
+  modal.appendChild(video);
+
+  /*----- Add modal to body -----*/
+
+  document.body.appendChild(modal);
+
+  /*----- Close modal when clicking outside video -----*/
+
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      document.body.removeChild(modal);
+    }
+  });
 }

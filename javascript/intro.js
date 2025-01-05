@@ -8,7 +8,7 @@ welcomeLetters.forEach((letter) => {
 
   setTimeout(() => {
     letter.classList.add(flickerClass);
-  }, delay * 800);
+  }, delay * 600);
 });
 
 enterLetters.forEach((letter) => {
@@ -18,7 +18,7 @@ enterLetters.forEach((letter) => {
 
   setTimeout(() => {
     letter.classList.add(flickerClass);
-  }, delay * 1500);
+  }, delay * 1200);
 });
 
 function goToLandingPage() {
@@ -37,5 +37,5 @@ function goToLandingPage() {
   setTimeout(() => {
     /*----- Replace 'your-landing-page.html' with the actual URL of your landing page -----*/
     window.location.href = "../index.html";
-  }, 1000); /*----- Match the duration of your fade-out transition in CSS -----*/
+  }, 900); /*----- Match the duration of your fade-out transition in CSS -----*/
 }
