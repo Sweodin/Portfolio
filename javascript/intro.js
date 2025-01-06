@@ -8,7 +8,7 @@ welcomeLetters.forEach((letter) => {
 
   setTimeout(() => {
     letter.classList.add(flickerClass);
-  }, delay * 600);
+  }, delay * 200);
 });
 
 enterLetters.forEach((letter) => {
@@ -18,7 +18,7 @@ enterLetters.forEach((letter) => {
 
   setTimeout(() => {
     letter.classList.add(flickerClass);
-  }, delay * 1200);
+  }, delay * 100);
 });
 
 function goToLandingPage() {

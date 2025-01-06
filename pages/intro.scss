@@ -51,11 +51,11 @@ body {
 
 .flicker-slow {
   opacity: 0;
-  animation: flicker 2s linear forwards; /*----- Changed to forwards -----*/
+  animation: flicker 1s linear forwards; /*----- Changed to forwards -----*/
 }
 
 .flicker-fast {
-  animation: flicker 1s linear forwards; /*----- Changed to forwards -----*/
+  animation: flicker 0.5s linear forwards; /*----- Changed to forwards -----*/
 }
 
 @keyframes flicker {

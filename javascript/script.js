@@ -1,5 +1,5 @@
 /*----- Smooth scrolling for navigation links -----*/
-/* console.log("Script started"); */
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -39,20 +39,24 @@ const observerOptions = {
 };
 
 const combinedObserver = new IntersectionObserver((entries) => {
-  /* console.log("Intersection observer triggered for: about"); */
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       if (entry.target.id === "projects") {
-        // Logic for loading project cards when the projects section is visible
-        loadInitialCards();
-
-        combinedObserver.unobserve(projectsSection); // Load cards only once
+        /*----- Logic for loading project cards when the projects section is visible -----*/
+        setTimeout(() => {
+          loadInitialCards();
+          combinedObserver.unobserve(
+            projectsSection
+          ); /*----- Load cards only once -----*/
+        }, 500);
+        /*----- Logic for adding the "visible" class to sections -----*/
+        entry.target.classList.add("visible");
       }
-      // Logic for adding the "visible" class to sections
-      entry.target.classList.add("visible");
     }
-  });
-}, observerOptions);
+  }, observerOptions);
+});
+
+/*----- Here i handle my project cards -----*/
 
 document.querySelectorAll("section").forEach((section) => {
   combinedObserver.observe(section);
@@ -134,17 +138,21 @@ const allCardData = [
 ];
 
 function generateNewCardData() {
+  /*----- Check if we've reached the end of the cards -----*/
+
+  if (currentCardIndex >= allCardData.length) {
+    currentCardIndex = 0; /*----- Reset to the beginning -----*/
+  }
   const startIndex = currentCardIndex;
   const endIndex = startIndex + cardsPerPage;
   return allCardData.slice(startIndex, endIndex);
 }
 
+/*----- Here i can handle styling for the cards -----*/
+
 function createCard(cardData) {
   const card = document.createElement("div");
   card.classList.add("project-card");
-  /* card.style.width = "200px";
-  card.style.height = "200px"; */
-  /* card.style.backgroundColor = "red"; */
   card.innerHTML = `
           <div class="project-card-inner">
               <div class="project-card-front">
@@ -180,7 +188,7 @@ function loadInitialCards() {
 }
 
 loadNewCardsButton.addEventListener("click", () => {
-  // 1. Slide Out Old Cards
+  /*----- Slide Out Old Cards -----*/
   const currentCards = Array.from(cardGrid.children);
   currentCards.forEach((card, index) => {
     card.classList.add(index % 2 === 0 ? "slide-out-left" : "slide-out-right");
@@ -189,7 +197,8 @@ loadNewCardsButton.addEventListener("click", () => {
     }, 900);
   });
 
-  // 2. Wait and then Add New Cards
+  /*----- Wait and then Add New Cards -----*/
+
   setTimeout(() => {
     const newCardData = generateNewCardData();
     newCardData.forEach((data, index) => {
@@ -201,18 +210,201 @@ loadNewCardsButton.addEventListener("click", () => {
       cardGrid.appendChild(newCard);
     });
 
-    currentCardIndex += cardsPerPage; // Increment for the next load
+    currentCardIndex +=
+      cardsPerPage; /*----- Increment for the next load -----*/
   }, 900);
 });
 
-/*----- Blog card flip effect -----*/
+/*----- Here i handle my blog cards -----*/
 
-document.querySelectorAll(".blog-card").forEach((card) => {
-  card.addEventListener("click", function () {
-    const cardInner = this.querySelector(".card-inner");
+const blogGrid = document.getElementById("blog-grid");
+const loadMoreBlogsButton = document.getElementById("load-more-blogs");
+
+/*----- Array to hold your blog post data -----*/
+const blogPostsData = [
+  {
+    title: "The new Keyboard",
+    image: "./img/Keyboard.jpg",
+    frontText:
+      "After a long time I have finally found the perfect keyboard for me.",
+    backText: `Finally upgraded my keyboard after the last one gave up—loving the new Asus ROG 75%! It’s been great for coding,
+              especially as I dive deeper into HTML, Sass, and React.
+              Things are going well on the coding front, and I’m excited
+              about the progress on our game project—soon moving into the
+              backend, which I’m really looking forward to. Lots of fun
+              challenges ahead!`,
+  },
+  {
+    title: "✨ Another Step Forward: Weekend Hustle ✨",
+    image: "./img/TLT.jpg",
+    frontText:
+      "The workweek is officially over, but the grind doesn’t stop here! Tomorrow,",
+    backText: `I’ll be diving deeper into React and Figma, sharpening my
+              skills to build more dynamic projects and elevate my
+              designs. Each step brings me closer to launching my
+              portfolio, and I couldn’t be more excited to showcase what
+              I’ve been working on! 🎯 It’s all about consistency,
+              learning, and staying committed to the journey. Here’s to
+              turning knowledge into results and making dreams a reality!
+              🚀 How are you using your weekend to grow? Let’s inspire
+              each other!`,
+  },
+  {
+    title: "Sunday vibes, Monday mindset!",
+    image: "./img/Monday.jpg",
+    frontText:
+      "A new week begins tomorrow, and it’s the perfect time to refocus and recharge.",
+    backText: `Let’s step into the week with purpose, positivity, and a
+              commitment to doing our best work.
+              Make this week yours—stay productive, stay determined, and
+              keep moving toward your goals. Small steps add up to big
+              wins, so let’s keep pushing forward!
+              Here’s to a productive and fulfilling week ahead. Let’s make
+              it count, people!`,
+  },
+  {
+    title: "Exciting Progress on My React Project!",
+    image: "./img/Anime-vid.png",
+    frontText:
+      "Currently working on a small React project at school, building an anime search site powered by an API.",
+    backText: `Here's a quick peek into my progress so far (see video)!
+              This project has been a great learning experience in: API
+              Integration React Development Combining creativity and
+              functionality.
+              Still a work in progress, but I’m proud of how far I’ve
+              come! Today feels like a good day, reflecting on this
+              journey.
+              Feel free to share your thoughts or tips—always open to
+              learning!
+              <a
+                href="#"
+                class="video-link"
+                onclick="playVideo('videos/Anime.mp4'); return false;"
+                >Watch Demo Video</a>`,
+  },
+  {
+    title: "Another Blog Post Example 1",
+    image: "./img/Coding.jpg",
+    frontText: "This is a short preview for another blog post.",
+    backText:
+      "This is the full content of another example blog post. You can add as much text as you need here.",
+  },
+  {
+    title: "Another Blog Post Example 2",
+    image: "./img/Motherboard.jpg",
+    frontText: "Just sharing some thoughts on a new topic.",
+    backText:
+      "Here are more details and insights about the topic I mentioned in the short preview.",
+  },
+  {
+    title: "Another Blog Post Example 3",
+    image: "./img/Virtual-pet-game.png",
+    frontText: "Quick update on something interesting.",
+    backText:
+      "More information and context about the interesting update. Hope you find it useful!",
+  },
+  {
+    title: "Another Blog Post Example 4",
+    image: "./img/Anime-project.webp",
+    frontText: "Thinking about future projects and ideas.",
+    backText:
+      "Some brainstorming and thoughts on what I might work on next. Stay tuned!",
+  },
+];
+
+let currentBlogIndex = 0;
+const blogsPerPage = 4;
+
+function generateNewBlogPosts() {
+  if (currentBlogIndex >= blogPostsData.length) {
+    currentBlogIndex = 0;
+  }
+  const startIndex = currentBlogIndex;
+  const endIndex = startIndex + blogsPerPage;
+  return blogPostsData.slice(startIndex, endIndex);
+}
+
+function createBlogPostCard(post) {
+  const card = document.createElement("div");
+  card.classList.add("blog-card");
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="blog-image">
+          <img src="${post.image}" alt="${post.title}" />
+        </div>
+        <div class="blog-content">
+          <h3>${post.title}</h3>
+          <p>${post.frontText}</p>
+          <span class="flip-prompt">Click to read more</span>
+        </div>
+      </div>
+      <div class="card-back">
+        <h3>${post.title}</h3>
+        <p>${post.backText}</p>
+        <span class="read-more">Click to flip back</span>
+      </div>
+    </div>
+  `;
+
+  /*----- Add event listener for flipping the card -----*/
+
+  const cardInner = card.querySelector(".card-inner");
+  const flipPrompt = card.querySelector(".flip-prompt");
+  const readMore = card.querySelector(".read-more");
+
+  flipPrompt.addEventListener("click", function () {
     cardInner.classList.toggle("is-flipped");
   });
+
+  readMore.addEventListener("click", function () {
+    cardInner.classList.toggle("is-flipped");
+  });
+
+  return card;
+}
+
+/*----- loding in more blog posts -----*/
+
+function loadInitialBlogPosts() {
+  blogGrid.innerHTML = ""; // Clear existing cards
+  const initialPosts = generateNewBlogPosts();
+  initialPosts.forEach((post) => {
+    const card = createBlogPostCard(post);
+    blogGrid.appendChild(card);
+  });
+  currentBlogIndex += blogsPerPage;
+}
+
+loadMoreBlogsButton.addEventListener("click", () => {
+  /*----- Slide Out Old Cards (optional, but looks nice) -----*/
+  const currentCards = Array.from(blogGrid.children);
+  currentCards.forEach((card, index) => {
+    card.classList.add(index % 2 === 0 ? "slide-out-left" : "slide-out-right");
+    setTimeout(() => {
+      card.remove();
+    }, 900);
+  });
+
+  /*----- Wait and then Add New Cards -----*/
+
+  setTimeout(() => {
+    const newBlogPosts = generateNewBlogPosts();
+    newBlogPosts.forEach((post) => {
+      const newCard = createBlogPostCard(post);
+      newCard.classList.add(
+        currentBlogIndex % 2 === 0 ? "slide-in-right" : "slide-in-left"
+      );
+      blogGrid.appendChild(newCard);
+    });
+
+    currentBlogIndex += blogsPerPage;
+  }, 900);
 });
+
+/*----- Initial loading of blog posts -----*/
+
+loadInitialBlogPosts();
 
 /*----- Set up skill proficiency bars -----*/
 
