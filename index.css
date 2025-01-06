@@ -523,7 +523,7 @@ section h2::after {
   display: block;
   padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
   background: #00ff9d;
-  color: white;
+  color: #242424;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -532,6 +532,7 @@ section h2::after {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top: 30px;
 }
 #load-new-cards:hover {
   transform: translateY(-2px);
@@ -556,12 +557,12 @@ section h2::after {
 /*----- Blog Section -----*/
 .blog-section {
   padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .blog-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 1rem;
 }
 
@@ -699,7 +700,7 @@ section h2::after {
   padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1.5rem, 3vw, 2rem);
   font-size: clamp(0.9rem, 1.6vw, 1rem);
   background-color: #00ff9d;
-  color: #ffffff;
+  color: #242424;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -748,7 +749,7 @@ section h2::after {
   display: inline-block;
   padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 1.8vw, 1.2rem);
   background-color: #00ff9d;
-  color: white;
+  color: #242424;
   text-decoration: none;
   border-radius: 5px;
   margin-top: 30px;
