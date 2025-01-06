@@ -36,6 +36,6 @@ function goToLandingPage() {
   /*----- Redirect to the landing page after the fade-out transition completes -----*/
   setTimeout(() => {
     /*----- Replace 'your-landing-page.html' with the actual URL of your landing page -----*/
-    window.location.href = "./index.html";
+    window.location.href = "./main.html";
   }, 900); /*----- Match the duration of your fade-out transition in CSS -----*/
 }

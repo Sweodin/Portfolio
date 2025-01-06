@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!----- Header and Navigation ----->
+
+    <header>
+      <nav>
+        <div class="logo">Your Logo</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!----- Main Content ----->
+
+    <main>
+      <section class="welcome-section">
+        <h1>Welcome to My Portfolio</h1>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-card">
+          <div class="profile-image">
+            <img src="/img/Peter.jpg" alt="Your Profile Picture" />
+          </div>
+          <div class="about-content">
+            <h2>About Me</h2>
+            <p>
+              Hello! I'm Peter Gustafsson, a passionate developer with a keen
+              eye for design and user experience.
+            </p>
+
+            <p>
+              I specialize in creating accessible and beautiful web applications
+              that make a difference.
+            </p>
+
+            <p>
+              With expertise in modern web technologies, I focus on delivering
+              clean, efficient, and maintainable solutions that exceed client
+              expectations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!----- Skills Section ----->
+
+      <section id="skills" class="skills-section">
+        <div class="skills-container">
+          <h2>Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-item" data-proficiency="75%">
+              <i class="fab fa-html5"></i>
+              <span class="skill-name">HTML5</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">75%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="75%">
+              <i class="fab fa-css3-alt"></i>
+              <span class="skill-name">CSS3</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">75%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="50%">
+              <i class="fab fa-js"></i>
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">50%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="35%">
+              <i class="fab fa-bootstrap"></i>
+              <span class="skill-name">Bootstrap</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">35%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="50%">
+              <i class="fab fa-react"></i>
+              <span class="skill-name">React</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">50%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="10%">
+              <i class="fab fa-node-js"></i>
+              <span class="skill-name">Node.js</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">10%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="20%">
+              <i class="fab fa-git-alt"></i>
+              <span class="skill-name">Git</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">20%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="40%">
+              <i class="fab fa-sass"></i>
+              <span class="skill-name">Sass</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">40%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="20%">
+              <i class="fab fa-wordpress"></i>
+              <span class="skill-name">WordPress</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">20%</span>
+              </div>
+            </div>
+            <div class="skill-item" data-proficiency="20%">
+              <i class="fab fa-figma"></i>
+              <span class="skill-name">Figma</span>
+              <div class="skill-proficiency">
+                <div class="proficiency-bar"></div>
+                <span class="proficiency-text">20%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!----- Projects Section ----->
+      <section id="projects" class="projects-section">
+        <h2>Projects</h2>
+        <button id="load-new-cards">Load New Projects</button>
+        <div class="projects-container">
+          <div class="projects-grid" id="card-grid">
+            <!-- Cards will be generated here -->
+          </div>
+        </div>
+      </section>
+
+      <!----- Blog Section ----->
+
+      <section id="blog" class="blog-section">
+        <h2>Blog</h2>
+        <div class="blog-container">
+          <div class="blog-grid">
+            <div class="blog-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="blog-image">
+                    <img src="/img/Keyboard.jpg" alt="Image of a keyboard" />
+                  </div>
+                  <div class="blog-content">
+                    <h3>The new Keyboard</h3>
+                    <p>
+                      After a long time I have finally found the perfect
+                      keyboard for me.
+                    </p>
+                    <span class="flip-prompt">Click to read more</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h3>The new Keyboard</h3>
+                  <p>
+                    Finally upgraded my keyboard after the last one gave
+                    up—loving the new Asus ROG 75%! It’s been great for coding,
+                    especially as I dive deeper into HTML, Sass, and React.
+                  </p>
+                  <p>
+                    Things are going well on the coding front, and I’m excited
+                    about the progress on our game project—soon moving into the
+                    backend, which I’m really looking forward to. Lots of fun
+                    challenges ahead!
+                  </p>
+                  <span class="read-more">Click to flip back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="blog-image">
+                    <img
+                      src="img/TLT.jpg"
+                      alt="image of a screen of a website"
+                    />
+                  </div>
+                  <div class="blog-content">
+                    <h3>✨ Another Step Forward: Weekend Hustle ✨</h3>
+                    <p>
+                      The workweek is officially over, but the grind doesn’t
+                      stop here! Tomorrow,
+                    </p>
+                    <span class="flip-prompt">Click to read more</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h3>✨ Another Step Forward: Weekend Hustle ✨</h3>
+                  <p>
+                    I’ll be diving deeper into React and Figma, sharpening my
+                    skills to build more dynamic projects and elevate my
+                    designs. Each step brings me closer to launching my
+                    portfolio, and I couldn’t be more excited to showcase what
+                    I’ve been working on! 🎯 It’s all about consistency,
+                    learning, and staying committed to the journey. Here’s to
+                    turning knowledge into results and making dreams a reality!
+                    🚀 How are you using your weekend to grow? Let’s inspire
+                    each other!
+                  </p>
+                  <span class="read-more">Click to flip back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="blog-image">
+                    <img
+                      src="img/Monday.jpg"
+                      alt="Image of a monday with sun and text"
+                    />
+                  </div>
+                  <div class="blog-content">
+                    <h3>Sunday vibes, Monday mindset!</h3>
+                    <p>
+                      A new week begins tomorrow, and it’s the perfect time to
+                      refocus and recharge.
+                    </p>
+                    <span class="flip-prompt">Click to read more</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h3>Sunday vibes, Monday mindset!</h3>
+                  <p>
+                    Let’s step into the week with purpose, positivity, and a
+                    commitment to doing our best work.
+                  </p>
+
+                  <p>
+                    Make this week yours—stay productive, stay determined, and
+                    keep moving toward your goals. Small steps add up to big
+                    wins, so let’s keep pushing forward!
+                  </p>
+
+                  <p>
+                    Here’s to a productive and fulfilling week ahead. Let’s make
+                    it count, people!
+                  </p>
+                  <span class="read-more">Click to flip back</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="blog-image">
+                    <img src="img/Anime-vid.png" alt="Video of an anime" />
+                  </div>
+                  <div class="blog-content">
+                    <h3>Exciting Progress on My React Project!</h3>
+                    <p>
+                      Currently working on a small React project at school,
+                      building an anime search site powered by an API.
+                    </p>
+                    <span class="flip-prompt">Click to read more</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h3>Exciting Progress on My React Project!</h3>
+                  <p>
+                    Here's a quick peek into my progress so far (see video)!
+                  </p>
+                  <p>
+                    This project has been a great learning experience in: API
+                    Integration React Development Combining creativity and
+                    functionality.
+                  </p>
+                  <p>
+                    Still a work in progress, but I’m proud of how far I’ve
+                    come! Today feels like a good day, reflecting on this
+                    journey.
+                  </p>
+                  <p>
+                    Feel free to share your thoughts or tips—always open to
+                    learning!
+                  </p>
+                  <a
+                    href="#"
+                    class="video-link"
+                    onclick="playVideo('videos/Anime.mp4'); return false;"
+                    >Watch Demo Video</a
+                  >
+                  <span class="read-more">Click to flip back</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!----- Contact Section ----->
+
+      <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <div class="contact-container">
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!----- Footer ----->
+
+    <footer>
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://github.com/Sweodin"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/peter-gustafsson-3206a8108"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://twitter.com/@pg85developer"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.instagram.com/peter_gus85/"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <p>&copy; 2024 Peter Gustafsson. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>
