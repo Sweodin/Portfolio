@@ -1,6 +1,6 @@
 /*----- Contact Section -----*/
 .contact-section {
-  padding: 4rem 0;
+  padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
 .contact-container {
@@ -12,21 +12,21 @@
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
   @include card-styles;
 
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
 
     label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
     }
 
     input,
     textarea {
       width: 100%;
-      padding: 0.8rem;
+      padding: clamp(0.5rem, 1.5vw, 0.8rem);
       border: none;
       border-radius: 5px;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -45,11 +45,12 @@
 button {
   background: $accent-color;
   color: $primary-color;
-  padding: 1rem 2rem;
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 
   &:hover {
     transform: translateY(-2px);

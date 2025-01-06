@@ -6,7 +6,7 @@ header {
   background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: 40px 0;
+  padding: clamp(20px, 5vw, 40px) 0;
 
   nav {
     max-width: 1200px;
@@ -17,7 +17,7 @@ header {
     align-items: center;
 
     .logo {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
       font-weight: bold;
       background: linear-gradient(45deg, $accent-color, #00ff9d);
       -webkit-background-clip: text;
@@ -28,12 +28,13 @@ header {
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: clamp(1rem, 3vw, 2rem);
 
       a {
         color: $text-color;
         text-decoration: none;
         transition: color 0.3s ease;
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
 
         &:focus {
           outline: none;
@@ -47,7 +48,7 @@ header {
   }
 }
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .nav-links {
     display: none;
   }
@@ -60,3 +61,4 @@ header {
     padding: 0 1rem;
   }
 }
+ */

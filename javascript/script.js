@@ -142,6 +142,9 @@ function generateNewCardData() {
 function createCard(cardData) {
   const card = document.createElement("div");
   card.classList.add("project-card");
+  /* card.style.width = "200px";
+  card.style.height = "200px"; */
+  /* card.style.backgroundColor = "red"; */
   card.innerHTML = `
           <div class="project-card-inner">
               <div class="project-card-front">
@@ -189,9 +192,6 @@ loadNewCardsButton.addEventListener("click", () => {
   // 2. Wait and then Add New Cards
   setTimeout(() => {
     const newCardData = generateNewCardData();
-    console.log("New Card Data:", newCardData);
-    console.log("cardGrid element:", cardGrid);
-
     newCardData.forEach((data, index) => {
       console.log("Creating card with data:", data);
       const newCard = createCard(data);
@@ -202,7 +202,6 @@ loadNewCardsButton.addEventListener("click", () => {
     });
 
     currentCardIndex += cardsPerPage; // Increment for the next load
-    console.log("Current card index updated to:", currentCardIndex);
   }, 900);
 });
 
