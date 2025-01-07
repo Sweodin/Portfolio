@@ -421,11 +421,16 @@ section h2::after {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   box-sizing: border-box;
   border-radius: 15px;
+  text-align: center;
+}
+.project-card .project-card-front h3,
+.project-card .project-card-back h3 {
+  color: #00ff9d;
 }
 .project-card .project-card-front .flip-prompt {
   word-wrap: break-word;
   overflow-wrap: break-word;
-  position: relative;
+  /* position: relative; */
   bottom: 0;
   top: clamp(10px, 3vw, 15px);
   left: 0;
@@ -557,12 +562,12 @@ section h2::after {
 /*----- Blog Section -----*/
 .blog-section {
   padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .blog-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 1rem;
 }
 
@@ -700,7 +705,7 @@ section h2::after {
   padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1.5rem, 3vw, 2rem);
   font-size: clamp(0.9rem, 1.6vw, 1rem);
   background-color: #00ff9d;
-  color: #242424;
+  color: #1a1a1a;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -749,7 +754,7 @@ section h2::after {
   display: inline-block;
   padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 1.8vw, 1.2rem);
   background-color: #00ff9d;
-  color: #242424;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   margin-top: 30px;

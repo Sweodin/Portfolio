@@ -54,13 +54,18 @@
     background: $gradient-1;
     box-sizing: border-box;
     border-radius: 15px;
+    text-align: center;
+
+    h3 {
+      color: $accent-color;
+    }
   }
 
   .project-card-front {
     .flip-prompt {
       word-wrap: break-word;
       overflow-wrap: break-word;
-      position: relative;
+      /* position: relative; */
       bottom: 0;
       top: clamp(10px, 3vw, 15px);
       left: 0;

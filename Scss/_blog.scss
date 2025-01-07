@@ -2,12 +2,12 @@
 
 .blog-section {
   padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .blog-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 1rem;
 }
 
@@ -161,7 +161,7 @@
   padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1.5rem, 3vw, 2rem);
   font-size: clamp(0.9rem, 1.6vw, 1rem);
   background-color: $accent-color;
-  color: $secondary-color;
+  color: $primary-color;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -213,7 +213,7 @@
   display: inline-block;
   padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 1.8vw, 1.2rem);
   background-color: $accent-color;
-  color: $secondary-color;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   margin-top: 30px;
