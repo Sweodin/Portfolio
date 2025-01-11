@@ -22,6 +22,9 @@ html {
 }
 
 body {
+  background: url("./img/background.jpg") no-repeat center center fixed;
+  /* min-height: 100vh; */
+  background-size: cover;
   font-family: $body-font;
   line-height: 1.6;
   color: $text-color;

@@ -1,59 +1,168 @@
 /*----- Contact Section -----*/
 .contact-section {
-  padding: clamp(2rem, 5vw, 4rem) 0;
-}
+  padding: clamp(4rem, 10vw, 8rem) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
 
-.contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: clamp(1rem, 3vw, 2rem);
-  @include card-styles;
-
-  .form-group {
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
-
-    label {
-      display: block;
-      margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: clamp(0.5rem, 1.5vw, 0.8rem);
-      border: none;
-      border-radius: 5px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: $secondary-color;
-      color: $text-color;
-      font-family: $body-font;
-    }
-
-    textarea {
-      height: 100px;
-      resize: none;
-    }
+  h2 {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+    color: $text-color;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 clamp(1rem, 3vw, 2rem);
   }
 }
 
-button {
-  background: $accent-color;
-  color: $primary-color;
-  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  font-size: clamp(0.9rem, 2vw, 1rem);
+.contact-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info {
+  @include card-styles;
+  padding: clamp(2.5rem, 6vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  background: $primary-color;
+  border: 1px solid rgba($accent-color, 0.1);
+  box-shadow: 0 10px 30px -15px rgba($accent-color, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: -2rem; // Pull up slightly to better center visually
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -20px rgba($accent-color, 0.3);
+  }
+
+  .info-item {
+    i {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: $accent-color;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    h3 {
+      color: $text-color;
+      font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: $text-color;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      opacity: 0.8;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .contact-link {
+      color: $text-color;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      opacity: 0.8;
+      position: relative;
+      display: inline-block;
+      padding: 0.25rem 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: $accent-color;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        color: $accent-color;
+        opacity: 1;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba($text-color, 0.1);
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($accent-color, 0.1);
+      border-radius: 50%;
+      color: $accent-color;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        background: $accent-color;
+        color: $primary-color;
+        transform: translateY(-2px);
+
+        &::after {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      &::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(5px);
+        background: rgba($primary-color, 0.95);
+        color: $text-color;
+        padding: 0.35rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 }

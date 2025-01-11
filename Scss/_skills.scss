@@ -5,96 +5,205 @@
 
 .skills-container {
   @include card-styles;
-  padding: clamp(1.5rem, 5vw, 3rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .skills-section h2 {
-  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: clamp(1rem, 3vw, 2rem);
-  padding: 0 1rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(120px, 18vw, 180px), 1fr)
+  );
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .skill-item {
   position: relative;
-  background: $secondary-color;
-  border-radius: 10px;
-  padding: clamp(1rem, 3vw, 1.5rem);
+  background: linear-gradient(
+    145deg,
+    rgba($secondary-color, 0.8),
+    rgba($secondary-color, 0.6)
+  );
+  border-radius: 12px;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(0.8rem, 1.5vw, 1rem);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($accent-color, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: clamp(130px, 20vh, 170px);
+  gap: 0.5rem;
   overflow: hidden;
+  cursor: pointer;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 255, 157, 0.1);
-
-    .skill-proficiency {
-      height: 100%;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      225deg,
+      rgba($accent-color, 0.15),
+      rgba($secondary-color, 0.4)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   i {
-    font-size: clamp(30px, 6vw, 40px);
+    font-size: clamp(2.2rem, 5vw, 3rem);
     color: $accent-color;
-    margin-bottom: clamp(5px, 1vw, 10px);
+    margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba($accent-color, 0.2));
   }
 
   .skill-name {
     display: block;
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     color: $text-color;
-    margin-bottom: clamp(5px, 1vw, 10px);
+    margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
+    font-weight: 500;
     position: relative;
     z-index: 1;
   }
 
   .skill-proficiency {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    height: 0;
-    background: rgba(0, 0, 0, 0.8);
-    @include center-flex;
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    display: flex;
     flex-direction: column;
-    transition: height 0.3s ease;
-    overflow: hidden;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
   }
-}
 
-.proficiency-bar {
-  width: 80%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  margin-bottom: 10px;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: $accent-color;
+  .proficiency-bar {
+    width: 85%;
+    height: clamp(4px, 1vw, 6px);
+    background: rgba($text-color, 0.2);
     border-radius: 3px;
-    width: var(--proficiency, 0%);
-    animation: fillBar 1s ease-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) inset;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        $accent-color,
+        lighten($accent-color, 10%)
+      );
+      border-radius: 3px;
+      width: var(--proficiency, 0%);
+      animation: fillBar 1s ease-out forwards;
+      box-shadow: 0 0 10px rgba($accent-color, 0.3);
+    }
+  }
+
+  .proficiency-text {
+    color: $text-color;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 600;
+    font-family: $heading-font;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover,
+  &:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba($accent-color, 0.15),
+      0 0 15px rgba($accent-color, 0.1) inset;
+    border-color: rgba($accent-color, 0.3);
+
+    &::before {
+      opacity: 1;
+    }
+
+    i {
+      transform: scale(1.1);
+      color: lighten($accent-color, 10%);
+      filter: drop-shadow(0 3px 6px rgba($accent-color, 0.3));
+    }
+
+    .skill-proficiency {
+      opacity: 1;
+      max-height: 100px;
+      transform: translateY(0);
+    }
   }
 }
 
-.proficiency-text {
-  color: $text-color;
-  font-size: 24px;
-  font-weight: 600;
-  font-family: $heading-font;
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(clamp(110px, 18vw, 160px), 1fr)
+    );
+    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  }
+
+  .skill-item {
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+
+    i {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+    }
+
+    &:hover .skill-proficiency {
+      max-height: 60px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-container {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .skill-item {
+    padding: 0.8rem;
+
+    i {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-name {
+      font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+    }
+
+    .proficiency-text {
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+  }
 }
 
 @keyframes fillBar {
@@ -105,54 +214,3 @@
     width: var(--proficiency);
   }
 }
-
-/*----- Responsive design for skills -----*/
-/* @media (max-width: 1200px) {
-  .skills-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .skills-container {
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .skill-item {
-    padding: 1.5rem;
-
-    i {
-      font-size: 3rem;
-    }
-  }
-
-  .skills-container {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .skill-item {
-    padding: 1rem;
-  }
-
-  .skills-container {
-    padding: 1rem;
-  }
-}
- */

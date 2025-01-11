@@ -1,38 +1,70 @@
-/*----- Smooth scrolling for navigation links -----*/
+/*----- Event listener for the logo -----*/
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+const logoLink = document.querySelector(".logo");
+if (logoLink) {
+  logoLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+/*----- Event listener for other internal links -----*/
+
+document.querySelectorAll('a[href^="#"]:not(.logo)').forEach((anchor) => {
+  /*----- Exclude the logo -----*/
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      console.error(
+        `Target element with selector "${this.getAttribute("href")}" not found.`
+      );
+    }
   });
 });
 
-/*----- Contact form handling -----*/
+/*----- Toggle menu for the navbar -----*/
 
-const contactForm = document.querySelector(".contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+const menuIcon = document.querySelector("#menu-icon");
+const navbar = document.querySelector(".navbar");
 
-    /*----- Add your form submission logic here -----*/
+menuIcon.addEventListener("click", () => {
+  navbar.classList.toggle("active");
+  menuIcon.classList.toggle("active");
+});
 
-    const formData = new FormData(this);
-    console.log("Form submitted:", Object.fromEntries(formData));
-    /*----- You can add an AJAX request here to handle the form submission -----*/
+/*----- Close menu when clicking outside -----*/
+document.addEventListener("click", (e) => {
+  if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+    menuIcon.classList.remove("active");
+    navbar.classList.remove("active");
+  }
+});
+
+/*----- Close menu when clicking a nav link -----*/
+navbar.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    menuIcon.classList.remove("active");
+    navbar.classList.remove("active");
   });
+});
+
+/*----- Contact Form Handling -----*/
+if (document.querySelector(".contact-section")) {
+  // Contact section interactions can be added here if needed
 }
 
 /*----- project Animation for my project cards -----*/
 
 /*----- Slide Out Old Cards -----*/
-
-const cardGrid = document.getElementById("card-grid");
-const loadNewCardsButton = document.getElementById("load-new-cards");
-const projectsSection = document.getElementById("projects");
 
 const observerOptions = {
   threshold: 0.1,
@@ -46,7 +78,7 @@ const combinedObserver = new IntersectionObserver((entries) => {
         setTimeout(() => {
           loadInitialCards();
           combinedObserver.unobserve(
-            projectsSection
+            entry.target
           ); /*----- Load cards only once -----*/
         }, 500);
         /*----- Logic for adding the "visible" class to sections -----*/
@@ -137,83 +169,135 @@ const allCardData = [
   },
 ];
 
-function generateNewCardData() {
-  /*----- Check if we've reached the end of the cards -----*/
-
-  if (currentCardIndex >= allCardData.length) {
-    currentCardIndex = 0; /*----- Reset to the beginning -----*/
-  }
-  const startIndex = currentCardIndex;
-  const endIndex = startIndex + cardsPerPage;
-  return allCardData.slice(startIndex, endIndex);
-}
+const cardGrid = document.querySelector("#card-grid");
+const loadNewCardsButton = document.querySelector("#load-new-cards");
+let visibleCards = 0;
+const cardsPerLoad = window.innerWidth <= 768 ? 2 : 3; // Show fewer cards on mobile
 
 /*----- Here i can handle styling for the cards -----*/
 
 function createCard(cardData) {
   const card = document.createElement("div");
-  card.classList.add("project-card");
-  card.innerHTML = `
-          <div class="project-card-inner">
-              <div class="project-card-front">
-                  <div class="project-image">
-                      <img src="${cardData.image}" alt="${cardData.title}">
-                  </div>
-                  <div class="project-content">
-                  <div class="flip-prompt"></div>
-                      <h3>${cardData.title}</h3>
-                      
-                  </div>
-              </div>
-              <div class="project-card-back">
-                  <h3>${cardData.title}</h3>
-                  <div class="project-description">
-                      <p>${cardData.description}</p>
-                  </div>
-                  <a href="${cardData.githubLink}" class="github-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
-              </div>
-          </div>
-      `;
+  card.className = "project-card";
+
+  const cardInner = document.createElement("div");
+  cardInner.className = "project-card-inner";
+
+  cardInner.innerHTML = `
+    <div class="project-card-front">
+      <div class="project-image">
+        <img src="${cardData.image}" alt="${cardData.title}">
+      </div>
+      <h3>${cardData.title}</h3>
+      <p class="flip-prompt">Click to see more</p>
+    </div>
+    <div class="project-card-back">
+      <h3>${cardData.title}</h3>
+      <p>${cardData.description}</p>
+      <a href="${cardData.link}" class="github-link" target="_blank">View on GitHub</a>
+    </div>
+  `;
+
+  card.appendChild(cardInner);
+
+  // Add touch support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  card.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    false
+  );
+
+  card.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    false
+  );
+
+  function handleSwipe() {
+    const diffX = touchEndX - touchStartX;
+    if (Math.abs(diffX) > 50) {
+      // Minimum swipe distance
+      cardInner.style.transform =
+        diffX > 0 ? "rotateY(180deg)" : "rotateY(0deg)";
+    }
+  }
+
+  // Add click handler for flipping
+  const flipPrompt = cardInner.querySelector(".flip-prompt");
+  const githubLink = cardInner.querySelector(".github-link");
+
+  flipPrompt.addEventListener("click", () => {
+    cardInner.style.transform = "rotateY(180deg)";
+  });
+
+  githubLink.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
   return card;
 }
 
 function loadInitialCards() {
-  const initialCards = generateNewCardData();
-  initialCards.forEach((cardData, index) => {
-    const card = createCard(cardData);
-    card.classList.add(index % 2 === 0 ? "slide-in-right" : "slide-in-left");
+  visibleCards = 0;
+  cardGrid.innerHTML = "";
+  for (let i = 0; i < cardsPerLoad; i++) {
+    const card = createCard(allCardData[i]);
     cardGrid.appendChild(card);
-  });
-  currentCardIndex += cardsPerPage;
+    // Delay each card's appearance
+    setTimeout(() => {
+      card.classList.add("active");
+    }, i * 200);
+    visibleCards++;
+  }
 }
 
 loadNewCardsButton.addEventListener("click", () => {
-  /*----- Slide Out Old Cards -----*/
+  const isMobile = window.innerWidth <= 768;
+
+  // Slide out old cards
   const currentCards = Array.from(cardGrid.children);
   currentCards.forEach((card, index) => {
-    card.classList.add(index % 2 === 0 ? "slide-out-left" : "slide-out-right");
-    setTimeout(() => {
-      card.remove();
-    }, 900);
+    const direction = index % 2 === 0 ? "Left" : "Right";
+    card.style.animation = `slideOut${direction} 0.5s ease forwards`;
   });
 
-  /*----- Wait and then Add New Cards -----*/
-
+  // After animation, load new cards
   setTimeout(() => {
-    const newCardData = generateNewCardData();
-    newCardData.forEach((data, index) => {
-      console.log("Creating card with data:", data);
-      const newCard = createCard(data);
-      newCard.classList.add(
-        index % 2 === 0 ? "slide-in-right" : "slide-in-left"
-      );
-      cardGrid.appendChild(newCard);
-    });
+    cardGrid.innerHTML = "";
+    const startIndex = visibleCards % allCardData.length;
+    const numCardsToLoad = isMobile ? 2 : 3;
 
-    currentCardIndex +=
-      cardsPerPage; /*----- Increment for the next load -----*/
-  }, 900);
+    for (let i = 0; i < numCardsToLoad; i++) {
+      const cardIndex = (startIndex + i) % allCardData.length;
+      const card = createCard(allCardData[cardIndex]);
+      cardGrid.appendChild(card);
+
+      setTimeout(() => {
+        card.classList.add("active");
+      }, i * 200);
+    }
+    visibleCards += numCardsToLoad;
+  }, 500);
 });
+
+// Update cards per load on window resize
+window.addEventListener("resize", () => {
+  const newCardsPerLoad = window.innerWidth <= 768 ? 2 : 3;
+  if (newCardsPerLoad !== cardsPerLoad) {
+    loadInitialCards();
+  }
+});
+
+// Initial load
+loadInitialCards();
 
 /*----- Here i handle my blog cards -----*/
 
@@ -233,6 +317,7 @@ const blogPostsData = [
               about the progress on our game project—soon moving into the
               backend, which I’m really looking forward to. Lots of fun
               challenges ahead!`,
+    link: "#",
   },
   {
     title: "✨ Another Step Forward: Weekend Hustle ✨",
@@ -248,6 +333,7 @@ const blogPostsData = [
               turning knowledge into results and making dreams a reality!
               🚀 How are you using your weekend to grow? Let’s inspire
               each other!`,
+    link: "#",
   },
   {
     title: "Sunday vibes, Monday mindset!",
@@ -261,6 +347,7 @@ const blogPostsData = [
               wins, so let’s keep pushing forward!
               Here’s to a productive and fulfilling week ahead. Let’s make
               it count, people!`,
+    link: "#",
   },
   {
     title: "Exciting Progress on My React Project!",
@@ -281,13 +368,26 @@ const blogPostsData = [
                 class="video-link"
                 onclick="playVideo('videos/Anime.mp4'); return false;"
                 >Watch Demo Video</a>`,
+    link: "#",
   },
   {
-    title: "Another Blog Post Example 1",
-    image: "./img/Coding.jpg",
-    frontText: "This is a short preview for another blog post.",
-    backText:
-      "This is the full content of another example blog post. You can add as much text as you need here.",
+    title: "🌟 Another week wrapped up! 🌟",
+    image: "./img/Minport.jpg",
+    frontText: "Today is Lucia, but the grind doesn’t stop! 🔥",
+    backText: `School is going great, and my portfolio is starting to come together (at least, I hope so 🤞). Here’s a little sneak peek of what I’ve been working on:.
+     💻 Anime Project: Building a search site powered by APIs, working hard to make it both functional and fun!
+     🎫 Event Tickets with QR Codes:
+Tackling backend magic with Node.js, TypeScript, and a database.
+The flow is strong, and who knows? Maybe I’ll keep going tonight! For now, I’m just enjoying the process and learning something new every day.
+Wishing you all a fantastic weekend ahead! 🎉
+Let’s keep the energy up and the ideas flowing! 🚀
+
+<a
+                href="#"
+                class="video-link"
+                onclick="playVideo('videos/Myportfolio.mp4'); return false;"
+                >Watch Demo Video</a>`,
+    link: "#",
   },
   {
     title: "Another Blog Post Example 2",
@@ -295,6 +395,7 @@ const blogPostsData = [
     frontText: "Just sharing some thoughts on a new topic.",
     backText:
       "Here are more details and insights about the topic I mentioned in the short preview.",
+    link: "#",
   },
   {
     title: "Another Blog Post Example 3",
@@ -302,6 +403,7 @@ const blogPostsData = [
     frontText: "Quick update on something interesting.",
     backText:
       "More information and context about the interesting update. Hope you find it useful!",
+    link: "#",
   },
   {
     title: "Another Blog Post Example 4",
@@ -309,6 +411,7 @@ const blogPostsData = [
     frontText: "Thinking about future projects and ideas.",
     backText:
       "Some brainstorming and thoughts on what I might work on next. Stay tuned!",
+    link: "#",
   },
 ];
 
@@ -324,41 +427,45 @@ function generateNewBlogPosts() {
   return blogPostsData.slice(startIndex, endIndex);
 }
 
-function createBlogPostCard(post) {
+function createBlogCard(blogData) {
   const card = document.createElement("div");
-  card.classList.add("blog-card");
-  card.innerHTML = `
-    <div class="card-inner">
-      <div class="card-front">
-        <div class="blog-image">
-          <img src="${post.image}" alt="${post.title}" />
-        </div>
-        <div class="blog-content">
-          <h3>${post.title}</h3>
-          <p>${post.frontText}</p>
-          <span class="flip-prompt">Click to read more</span>
-        </div>
+  card.className = "blog-card";
+
+  const cardInner = document.createElement("div");
+  cardInner.className = "card-inner";
+
+  cardInner.innerHTML = `
+    <div class="card-front">
+      <div class="blog-image">
+        <img src="${blogData.image}" alt="${blogData.title}">
       </div>
-      <div class="card-back">
-        <h3>${post.title}</h3>
-        <p>${post.backText}</p>
-        <span class="read-more">Click to flip back</span>
+      <div class="blog-content">
+        <h3>${blogData.title}</h3>
+        <p>${blogData.frontText}</p>
+        <span class="flip-prompt">Click to read more</span>
       </div>
+    </div>
+    <div class="card-back">
+      <div class="back-content">
+        <h3>${blogData.title}</h3>
+        <p>${blogData.backText}</p>
+      </div>
+      <span class="read-more">Click to flip back</span>
     </div>
   `;
 
-  /*----- Add event listener for flipping the card -----*/
+  card.appendChild(cardInner);
 
-  const cardInner = card.querySelector(".card-inner");
-  const flipPrompt = card.querySelector(".flip-prompt");
-  const readMore = card.querySelector(".read-more");
+  // Add click handlers for flipping
+  const flipPrompt = cardInner.querySelector(".flip-prompt");
+  const readMore = cardInner.querySelector(".read-more");
 
-  flipPrompt.addEventListener("click", function () {
-    cardInner.classList.toggle("is-flipped");
+  flipPrompt.addEventListener("click", () => {
+    cardInner.style.transform = "rotateY(180deg)";
   });
 
-  readMore.addEventListener("click", function () {
-    cardInner.classList.toggle("is-flipped");
+  readMore.addEventListener("click", () => {
+    cardInner.style.transform = "rotateY(0deg)";
   });
 
   return card;
@@ -370,7 +477,7 @@ function loadInitialBlogPosts() {
   blogGrid.innerHTML = ""; // Clear existing cards
   const initialPosts = generateNewBlogPosts();
   initialPosts.forEach((post) => {
-    const card = createBlogPostCard(post);
+    const card = createBlogCard(post);
     blogGrid.appendChild(card);
   });
   currentBlogIndex += blogsPerPage;
@@ -391,7 +498,7 @@ loadMoreBlogsButton.addEventListener("click", () => {
   setTimeout(() => {
     const newBlogPosts = generateNewBlogPosts();
     newBlogPosts.forEach((post) => {
-      const newCard = createBlogPostCard(post);
+      const newCard = createBlogCard(post);
       newCard.classList.add(
         currentBlogIndex % 2 === 0 ? "slide-in-right" : "slide-in-left"
       );

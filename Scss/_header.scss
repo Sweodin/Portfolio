@@ -1,64 +1,174 @@
 /*----- Header and Navigation -----*/
-header {
+
+.header {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(26, 26, 26, 0.95);
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: clamp(20px, 5vw, 40px) 0;
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
 
-  nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.header-content {
+  max-width: 1200px; /*----- Set your desired maximum width -----*/
+  width: clamp(
+    300px,
+    90%,
+    1200px
+  ); /*----- Allow it to take full width on smaller screens -----*/
+  display: flex;
+  justify-content: space-between; /*----- Distribute logo and navigation within the container -----*/
+  align-items: center;
+  padding: 0 clamp(20px, 5vw, 50px); /*----- Add horizontal padding within the container -----*/
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 1s;
+}
+
+.header:hover::before {
+  left: 100%;
+}
+
+.logo {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: bold;
+  background: linear-gradient(45deg, $text-color-highlight, $accent-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+}
+.navbar {
+  display: flex;
+  align-items: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: clamp(0.5rem, 2vw, 2rem);
+  }
 
-    .logo {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      font-weight: bold;
-      background: linear-gradient(45deg, $accent-color, #00ff9d);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+  ul li a {
+    color: $text-color-highlight;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    text-decoration: none;
+    font-weight: bold;
+    padding: clamp(0.3rem, 1vw, 0.8rem) clamp(0.5rem, 2vw, 1.5rem);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accent-color;
     }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: clamp(1rem, 3vw, 2rem);
-
-      a {
-        color: $text-color;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        font-size: clamp(0.8rem, 1.5vw, 1rem);
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          color: $accent-color;
-        }
-      }
+    &:focus {
+      outline: none;
     }
   }
 }
-/* Responsive Design */
-/* @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
 
-  header {
-    padding: 1rem 0;
-  }
+#menu-icon {
+  display: none;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: $text-color-highlight;
+  cursor: pointer;
+  transition: transform 0.3s ease; /*----- Add smooth transition -----*/
 
-  nav {
-    padding: 0 1rem;
+  &.active {
+    /*----- Style for the active (open) state -----*/
+    transform: rotate(90deg);
   }
 }
- */
+
+@media (max-width: 768px) {
+  .header {
+    padding: clamp(10px, 5vw, 30px) clamp(15px, 5vw, 40px);
+  }
+  #menu-icon {
+    display: block;
+  }
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: clamp(1rem, 3vh, 2rem) 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+
+    ul {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: clamp(1rem, 4vh, 2rem);
+    }
+
+    ul li a {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 3vw, 2rem);
+    }
+
+    &.active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .header-content {
+    width: 100%;
+    padding: 0 0.75rem;
+  }
+
+  .logo {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  #menu-icon {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  .navbar {
+    padding: 0.75rem 0;
+
+    ul {
+      gap: 0.75rem;
+      padding: 0 0.5rem;
+    }
+
+    ul li a {
+      font-size: clamp(0.9rem, 4vw, 1rem);
+      padding: 0.4rem 0.75rem;
+    }
+  }
+}
