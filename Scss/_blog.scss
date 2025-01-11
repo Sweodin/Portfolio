@@ -1,26 +1,30 @@
 /*----- Blog Section -----*/
 
 .blog-section {
-  padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  margin-top: 2rem;
-}
+  padding: 4rem 0;
 
-.blog-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 1rem;
+  h2 {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+    color: $text-color;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
 }
 
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  padding: clamp(1rem, 3vw, 2rem) 0;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .blog-card {
   perspective: 1000px;
-  height: clamp(300px, 50vh, 350px);
+  height: 400px;
 
   .card-inner {
     position: relative;
@@ -29,7 +33,6 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    cursor: pointer;
 
     &.is-flipped {
       transform: rotateY(180deg);
@@ -43,137 +46,93 @@
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    overflow: hidden;
     background: $gradient-1;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* padding: clamp(
-      1rem,
-      2vw,
-      1.5rem
-    ); 
-    display: flex;
-    flex-direction: column; */
-  }
-
-  .card-back {
-    transform: rotateY(180deg);
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+  }
 
-    h3 {
-      color: $accent-color;
-      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
-      font-size: clamp(1rem, 2vw, 1.1rem);
+  .card-front {
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border-radius: 15px 15px 0 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
-    p {
-      color: $text-color;
-      font-size: clamp(0.8rem, 1.6vw, 0.9rem);
-      line-height: 1.5;
-      margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    }
+    .blog-content {
+      padding: 0 1.5rem;
+      flex: 1;
 
-    .read-more {
-      color: $accent-color;
-      margin-top: auto;
-      font-size: clamp(0.8rem, 1.4vw, 0.85rem);
-      cursor: pointer;
-      display: inline-block;
-      padding: clamp(0.3rem, 0.8vw, 0.4rem) clamp(0.8rem, 1.5vw, 0.9rem);
-      border: 1px solid $accent-color;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      text-align: center;
+      h3 {
+        color: $text-color;
+        margin-bottom: 1rem;
+      }
 
-      &:hover {
-        background: $accent-color;
-        color: $primary-color;
+      p {
+        color: $text-color;
+        margin-bottom: 1rem;
+      }
+
+      .flip-prompt {
+        color: $accent-color;
+        cursor: pointer;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba($accent-color, 0.2);
       }
     }
   }
 
-  /* .card-front {
-    justify-content: space-between;
-    flex-direction: column; */
+  .card-back {
+    transform: rotateY(180deg);
+    padding: 1.5rem;
 
-  .blog-image {
-    width: 100%;
-    height: clamp(150px, 30vh, 200px);
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    h3 {
+      color: $accent-color;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.3s ease;
+    p {
+      color: $text-color;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: rgba($accent-color, 0.1);
+      color: $accent-color;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba($accent-color, 0.2);
+      }
+    }
+
+    .read-more {
+      color: $accent-color;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba($accent-color, 0.2);
+      font-size: 0.85rem;
     }
   }
-
-  &:hover .blog-image img {
-    transform: scale(1.05);
-  }
-
-  .blog-content {
-    padding: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
-    align-items: center;
-    /* height: calc(100% - clamp(150px, 30vh, 200px)); */
-  }
-  .blog-content h3 {
-    color: $text-color;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem); /* Adjust font size */
-    margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem); /* Adjust margin */
-    text-align: center;
-  }
-
-  .blog-content p {
-    color: $text-color;
-    font-size: clamp(0.9rem, 1.8vw, 1rem); /* Adjust font size */
-    line-height: 1.4;
-    text-align: center;
-  }
-
-  .flip-prompt {
-    color: $accent-color;
-    font-size: clamp(0.7rem, 1.3vw, 0.8rem); /* Adjust font size */
-    margin-top: clamp(0.5rem, 1vw, 0.75rem); /* Adjust margin */
-    padding-top: clamp(0.5rem, 1vw, 0.75rem);
-    text-align: center;
-    border-top: 1px solid rgba(0, 255, 157, 0.2);
-    align-self: center;
-  }
 }
-
-/*----- Load More Button -----*/
-
-#load-more-blogs {
-  display: block;
-  margin: 2rem auto 0; /* Center horizontally, add top margin */
-  padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(0.9rem, 1.6vw, 1rem);
-  background-color: $accent-color;
-  color: $secondary-color;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
-  }
-}
-
-/*----- Responsive design for blog cards -----*/
 
 @media (max-width: 768px) {
   .blog-grid {
@@ -206,24 +165,6 @@
     background: none;
     border: none;
     cursor: pointer;
-  }
-}
-
-.video-link {
-  display: inline-block;
-  padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 1.8vw, 1.2rem);
-  background-color: $accent-color;
-  color: $secondary-color;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 30px;
-  transition: background-color 0.3s ease;
-  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
-  text-align: center;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
   }
 }
 
@@ -287,4 +228,30 @@
 
 .slide-out-right {
   animation: slideOutToRight 0.9s ease-in forwards;
+}
+
+#load-more-blogs {
+  display: block;
+  margin: clamp(2rem, 4vw, 3rem) auto;
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  background: $accent-color;
+  color: $secondary-color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: min(250px, 80%);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($accent-color, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }

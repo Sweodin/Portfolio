@@ -1,31 +1,62 @@
 /*----- Project Card Styles -----*/
+
 .projects-section {
   margin-bottom: clamp(2rem, 5vw, 4rem);
   text-align: center;
+  padding: 4rem 0;
 
   h2 {
-    margin-bottom: clamp(5px, 2vw, 10px);
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+    color: $text-color;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.5px;
   }
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow: hidden;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: clamp(15px, 5vw, 30px);
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(2rem, 5vw, 3rem);
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    gap: 3rem;
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
 }
 
 /*----- Projects Section -----*/
+
 .project-card {
   height: clamp(150px, 30vh, 250px);
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   width: 100%;
-  max-width: 400px;
+  max-width: min(400px, 90vw);
   margin: 0 auto;
+  position: relative;
+
+  @media (max-width: 768px) {
+    height: clamp(130px, 25vh, 200px);
+    max-width: min(350px, 85vw);
+    margin: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    height: clamp(120px, 20vh, 180px);
+    max-width: 100%;
+  }
 
   &.active {
     opacity: 1;
@@ -44,63 +75,101 @@
   &:hover .project-card-inner {
     transform: rotateY(180deg);
   }
+}
 
-  .project-card-front,
-  .project-card-back {
-    position: absolute;
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: $gradient-1;
+  box-sizing: border-box;
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-front {
+  .project-image {
     width: 100%;
-    height: clamp(150px, 30vh, 250px);
-    backface-visibility: hidden;
-    background: $gradient-1;
-    box-sizing: border-box;
-    border-radius: 15px;
-  }
+    height: 70%;
+    position: relative;
 
-  .project-card-front {
-    .flip-prompt {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      position: relative;
-      bottom: 0;
-      top: clamp(10px, 3vw, 15px);
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: clamp(0.8rem, 2vw, 1rem);
+    @media (max-width: 768px) {
+      height: 60%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 15px 15px 0 0;
     }
   }
 
-  .project-card-back {
-    transform: rotateY(180deg);
-  }
-
-  .github-link {
-    text-decoration: none;
+  h3 {
     color: $accent-color;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: clamp(5px, 2vw, 10px);
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin: 0.5rem 0;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    padding: 0 1rem;
   }
 
-  .github-link:hover {
+  .flip-prompt {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+      font-size: 0.9rem;
+      color: rgba($text-color, 0.8);
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.project-card-back {
+  transform: rotateY(180deg);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  justify-content: space-between;
+
+  h3 {
+    color: $accent-color;
+    margin-bottom: auto;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+  }
+
+  p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.4;
+    margin: auto auto 0;
+    max-width: 90%;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.github-link {
+  text-decoration: none;
+  color: $accent-color;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  transition: all 0.3s ease;
+  width: auto;
+
+  &:hover {
     text-decoration: underline;
     transform: scale(1.05);
     color: $text-color;
-  }
-
-  .project-image {
-    img {
-      margin-bottom: clamp(5px, 2vw, 10px);
-      max-width: 100%;
-      max-height: 200px;
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 15px 15px 0 0;
-    }
   }
 }
 
@@ -175,7 +244,7 @@
 /*----- Adjust the load more button spacing -----*/
 
 #load-new-cards {
-  margin: 0 auto clamp(1rem, 3vw, 2rem);
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto;
   display: block;
   padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
   background: $accent-color;
@@ -188,28 +257,18 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top: 30px;
+
+  @media (max-width: 768px) {
+    width: min(250px, 80%);
+    margin: clamp(1rem, 3vw, 1.5rem) auto;
+  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+    box-shadow: 0 5px 15px rgba($accent-color, 0.3);
   }
 
   &:active {
     transform: translateY(0);
   }
 }
-
-/*----- Projects Section -----*/
-
-/*----- Responsive adjustments for project cards -----*/
-/* @media (max-width: 768px) {
-  .project-image {
-    height: 200px;
-  }
-
-  .project-content {
-    height: calc(100% - 200px);
-  }
-}
- */
