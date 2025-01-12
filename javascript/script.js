@@ -372,7 +372,7 @@ const blogPostsData = [
   },
   {
     title: "🌟 Another week wrapped up! 🌟",
-    image: "./img/Minport.jpg",
+    image: "./img/Minport.png",
     frontText: "Today is Lucia, but the grind doesn’t stop! 🔥",
     backText: `School is going great, and my portfolio is starting to come together (at least, I hope so 🤞). Here’s a little sneak peek of what I’ve been working on:.
      💻 Anime Project: Building a search site powered by APIs, working hard to make it both functional and fun!

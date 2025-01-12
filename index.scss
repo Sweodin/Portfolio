@@ -10,30 +10,64 @@
 @import "./Scss/footer";
 /* @import "./pages/intro"; */
 
-* {
+/*----- Reset and base styles -----*/
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
 }
 
-html {
-  scroll-behavior: smooth;
+/*----- Smooth scrolling with reduced motion preference -----*/
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem; /*----- Account for fixed header -----*/
+  }
+}
+
+/*----- Root variables for theme customization -----*/
+
+:root {
+  --content-width: min(90%, 1200px);
+  --section-spacing: clamp(3rem, 8vh, 6rem);
+  --header-height: 4rem;
 }
 
 body {
   background: url("./img/background.jpg") no-repeat center center fixed;
-  /* min-height: 100vh; */
   background-size: cover;
   font-family: $body-font;
   line-height: 1.6;
   color: $text-color;
   background-color: $primary-color;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
+  /*----- Optimize performance -----*/
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /*----- Disable selection where needed -----*/
+  &.no-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /*----- Better mobile experience -----*/
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+
+  /*----- Dark mode support -----*/
+  @media (prefers-color-scheme: dark) {
+    background-color: darken($primary-color, 5%);
+  }
 }
 
+/*----- Typography -----*/
 h1,
 h2,
 h3,
@@ -42,9 +76,80 @@ h5,
 h6 {
   font-family: $heading-font;
   font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+/*----- Links and buttons -----*/
 
 a,
 button {
+  color: inherit;
   -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
+
+  &:focus-visible {
+    outline: 2px solid $accent-color;
+    outline-offset: 4px;
+  }
+}
+
+/*----- Container for consistent content width -----*/
+
+.container {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/*----- Section spacing -----*/
+
+section {
+  padding: var(--section-spacing) 0;
+}
+
+/*----- Utility classes -----*/
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*----- Media queries for responsive design -----*/
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: clamp(2rem, 5vh, 4rem);
+  }
+
+  body {
+    font-size: 0.95rem;
+  }
+}
+
+/*----- Print styles -----*/
+@media print {
+  body {
+    background: none;
+    color: black;
+  }
+
+  .no-print {
+    display: none;
+  }
 }
