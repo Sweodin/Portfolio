@@ -5,61 +5,45 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($primary-color, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: clamp(0.5rem, 2vw, 1.5rem) 0;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba($accent-color, 0.2);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: rgba($primary-color, 0.98);
+  }
 }
 
 .header-content {
-  max-width: 1200px; /*----- Set your desired maximum width -----*/
-  width: clamp(
-    300px,
-    90%,
-    1200px
-  ); /*----- Allow it to take full width on smaller screens -----*/
-  display: flex;
-  justify-content: space-between; /*----- Distribute logo and navigation within the container -----*/
-  align-items: center;
-  padding: 0 clamp(20px, 5vw, 50px); /*----- Add horizontal padding within the container -----*/
-}
-
-.header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
+  max-width: var(--content-width);
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: 1s;
-}
-
-.header:hover::before {
-  left: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
 .logo {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
-  background: linear-gradient(45deg, $text-color-highlight, $accent-color);
+  background: linear-gradient(45deg, $text-color, $accent-color);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-decoration: none;
-  &:focus {
-    outline: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
   }
 }
+
 .navbar {
   display: flex;
   align-items: center;
@@ -69,106 +53,104 @@
     padding: 0;
     margin: 0;
     display: flex;
-    gap: clamp(0.5rem, 2vw, 2rem);
-  }
+    gap: clamp(1rem, 3vw, 2rem);
 
-  ul li a {
-    color: $text-color-highlight;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
-    text-decoration: none;
-    font-weight: bold;
-    padding: clamp(0.3rem, 1vw, 0.8rem) clamp(0.5rem, 2vw, 1.5rem);
-    transition: color 0.3s ease;
+    li a {
+      color: $text-color;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
 
-    &:hover {
-      color: $accent-color;
-    }
-    &:focus {
-      outline: none;
+      &:hover {
+        color: $accent-color;
+        background: rgba($accent-color, 0.1);
+      }
     }
   }
 }
 
 #menu-icon {
   display: none;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: $text-color-highlight;
+  font-size: 1.5rem;
+  color: $text-color;
   cursor: pointer;
-  transition: transform 0.3s ease; /*----- Add smooth transition -----*/
+  transition: all 0.3s ease;
+  z-index: 1001;
 
   &.active {
-    /*----- Style for the active (open) state -----*/
+    color: $accent-color;
     transform: rotate(90deg);
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: clamp(10px, 5vw, 30px) clamp(15px, 5vw, 40px);
+    padding: clamp(0.5rem, 3vw, 1rem);
+    background: rgba($primary-color, 0.98);
   }
+
   #menu-icon {
     display: block;
   }
+
   .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: clamp(1rem, 3vh, 2rem) 0;
-    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba($primary-color, 0.98);
     backdrop-filter: blur(10px);
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
+    padding: 5rem 1.5rem 2rem;
+    transition: 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+
+    &.active {
+      right: 0;
+    }
 
     ul {
       flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-      gap: clamp(1rem, 4vh, 2rem);
-    }
+      gap: 1.5rem;
 
-    ul li a {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 3vw, 2rem);
-    }
+      li {
+        width: 100%;
 
-    &.active {
-      transform: translateY(0);
+        a {
+          display: block;
+          padding: 0.8rem 1rem;
+          font-size: 1.1rem;
+          border-left: 3px solid transparent;
+          border-radius: 0;
+
+          &:hover {
+            background: rgba($accent-color, 0.1);
+            border-left-color: $accent-color;
+            padding-left: 1.5rem;
+          }
+        }
+      }
     }
   }
 }
 
-/* Small mobile devices */
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .header {
     padding: 0.5rem;
   }
 
   .header-content {
-    width: 100%;
-    padding: 0 0.75rem;
+    padding: 0 1rem;
   }
 
   .logo {
-    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-size: 1.2rem;
   }
 
   #menu-icon {
-    font-size: clamp(1rem, 5vw, 1.2rem);
-  }
-
-  .navbar {
-    padding: 0.75rem 0;
-
-    ul {
-      gap: 0.75rem;
-      padding: 0 0.5rem;
-    }
-
-    ul li a {
-      font-size: clamp(0.9rem, 4vw, 1rem);
-      padding: 0.4rem 0.75rem;
-    }
+    font-size: 1.3rem;
   }
 }
