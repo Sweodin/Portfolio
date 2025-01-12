@@ -5,51 +5,41 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: clamp(0.5rem, 2vw, 1.5rem) 0;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+  transition: background-color 0.3s ease;
+}
+.header:hover {
+  background: rgba(26, 26, 26, 0.98);
 }
 
 .header-content {
-  max-width: 1200px; /*----- Set your desired maximum width -----*/
-  width: clamp(300px, 90%, 1200px); /*----- Allow it to take full width on smaller screens -----*/
-  display: flex;
-  justify-content: space-between; /*----- Distribute logo and navigation within the container -----*/
-  align-items: center;
-  padding: 0 clamp(20px, 5vw, 50px); /*----- Add horizontal padding within the container -----*/
-}
-
-.header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
+  max-width: var(--content-width);
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: 1s;
-}
-
-.header:hover::before {
-  left: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
 .logo {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
-  background: linear-gradient(45deg, #ffffff, #00ff9d);
+  background: linear-gradient(45deg, #e0e0e0, #00ff9d);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-decoration: none;
+  transition: opacity 0.3s ease;
 }
-.logo:focus {
-  outline: none;
+.logo:hover {
+  opacity: 0.8;
 }
 
 .navbar {
@@ -61,93 +51,216 @@
   padding: 0;
   margin: 0;
   display: flex;
-  gap: clamp(0.5rem, 2vw, 2rem);
+  gap: clamp(1rem, 3vw, 2rem);
 }
 .navbar ul li a {
-  color: #ffffff;
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  color: #e0e0e0;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   text-decoration: none;
-  font-weight: bold;
-  padding: clamp(0.3rem, 1vw, 0.8rem) clamp(0.5rem, 2vw, 1.5rem);
-  transition: color 0.3s ease;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 .navbar ul li a:hover {
   color: #00ff9d;
-}
-.navbar ul li a:focus {
-  outline: none;
+  background: rgba(0, 255, 157, 0.1);
 }
 
 #menu-icon {
   display: none;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: #ffffff;
+  font-size: 1.5rem;
+  color: #e0e0e0;
   cursor: pointer;
-  transition: transform 0.3s ease; /*----- Add smooth transition -----*/
+  transition: all 0.3s ease;
+  z-index: 1001;
 }
 #menu-icon.active {
-  /*----- Style for the active (open) state -----*/
+  color: #00ff9d;
   transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: clamp(10px, 5vw, 30px) clamp(15px, 5vw, 40px);
+    padding: clamp(0.5rem, 3vw, 1rem);
+    background: rgba(26, 26, 26, 0.98);
   }
   #menu-icon {
     display: block;
   }
   .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: clamp(1rem, 3vh, 2rem) 0;
-    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(26, 26, 26, 0.98);
     backdrop-filter: blur(10px);
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
+    padding: 5rem 1.5rem 2rem;
+    transition: 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+  .navbar.active {
+    right: 0;
   }
   .navbar ul {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .navbar ul li {
     width: 100%;
-    gap: clamp(1rem, 4vh, 2rem);
   }
   .navbar ul li a {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 3vw, 2rem);
+    display: block;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    border-left: 3px solid transparent;
+    border-radius: 0;
   }
-  .navbar.active {
-    transform: translateY(0);
+  .navbar ul li a:hover {
+    background: rgba(0, 255, 157, 0.1);
+    border-left-color: #00ff9d;
+    padding-left: 1.5rem;
   }
 }
-/* Small mobile devices */
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .header {
     padding: 0.5rem;
   }
   .header-content {
-    width: 100%;
-    padding: 0 0.75rem;
+    padding: 0 1rem;
   }
   .logo {
-    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-size: 1.2rem;
   }
   #menu-icon {
-    font-size: clamp(1rem, 5vw, 1.2rem);
+    font-size: 1.3rem;
   }
-  .navbar {
-    padding: 0.75rem 0;
+}
+/*----- Welcome Section -----*/
+.welcome-section {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.welcome-content {
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.welcome-section h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #e0e0e0, #00ff9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 5s ease infinite;
+  text-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(224, 224, 224, 0.7);
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.scroll-indicator {
+  margin-top: 4rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards, bounce 2s infinite;
+  animation-delay: 1.2s;
+}
+.scroll-indicator span {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(224, 224, 224, 0.5);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.scroll-indicator i {
+  color: #00ff9d;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  .navbar ul {
-    gap: 0.75rem;
-    padding: 0 0.5rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .navbar ul li a {
-    font-size: clamp(0.9rem, 4vw, 1rem);
-    padding: 0.4rem 0.75rem;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@media (max-width: 768px) {
+  .welcome-section {
+    min-height: 60vh;
+    padding: 4rem 1rem;
+  }
+  .scroll-indicator {
+    margin-top: 3rem;
+  }
+}
+@media (max-width: 480px) {
+  .welcome-section {
+    min-height: 50vh;
+    padding: 3rem 1rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+  .scroll-indicator span {
+    font-size: 0.8rem;
+  }
+  .scroll-indicator i {
+    font-size: 1rem;
   }
 }
 /*----- Main Content -----*/
@@ -1228,12 +1341,14 @@ textarea:focus {
 }
 
 body {
-  background: url("./img/background.jpg") no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(135deg, #1a1a1a 0%, #272727 100%);
+  background-attachment: fixed;
   font-family: "Source Sans Pro", sans-serif;
   line-height: 1.6;
   color: #e0e0e0;
-  background-color: #1a1a1a;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
   /*----- Optimize performance -----*/
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -1241,8 +1356,18 @@ body {
   /*----- Disable selection where needed -----*/
   /*----- Better mobile experience -----*/
   -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
   /*----- Dark mode support -----*/
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.03) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(102, 255, 196, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
 }
 body.no-select {
   -webkit-user-select: none;
