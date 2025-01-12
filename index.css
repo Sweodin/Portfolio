@@ -1203,30 +1203,59 @@ textarea:focus {
 }
 
 /* @import "./pages/intro"; */
-* {
+/*----- Reset and base styles -----*/
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
 }
 
-html {
-  scroll-behavior: smooth;
+/*----- Smooth scrolling with reduced motion preference -----*/
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem; /*----- Account for fixed header -----*/
+  }
+}
+/*----- Root variables for theme customization -----*/
+:root {
+  --content-width: min(90%, 1200px);
+  --section-spacing: clamp(3rem, 8vh, 6rem);
+  --header-height: 4rem;
 }
 
 body {
   background: url("./img/background.jpg") no-repeat center center fixed;
-  /* min-height: 100vh; */
   background-size: cover;
   font-family: "Source Sans Pro", sans-serif;
   line-height: 1.6;
   color: #e0e0e0;
   background-color: #1a1a1a;
+  /*----- Optimize performance -----*/
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*----- Disable selection where needed -----*/
+  /*----- Better mobile experience -----*/
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  /*----- Dark mode support -----*/
+}
+body.no-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0d0d0d;
+  }
+}
 
+/*----- Typography -----*/
 h1,
 h2,
 h3,
@@ -1235,9 +1264,75 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+/*----- Links and buttons -----*/
 a,
 button {
+  color: inherit;
   -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #00ff9d;
+  outline-offset: 4px;
+}
+
+/*----- Container for consistent content width -----*/
+.container {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/*----- Section spacing -----*/
+section {
+  padding: var(--section-spacing) 0;
+}
+
+/*----- Utility classes -----*/
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*----- Media queries for responsive design -----*/
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: clamp(2rem, 5vh, 4rem);
+  }
+  body {
+    font-size: 0.95rem;
+  }
+}
+/*----- Print styles -----*/
+@media print {
+  body {
+    background: none;
+    color: black;
+  }
+  .no-print {
+    display: none;
+  }
 }
