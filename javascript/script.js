@@ -62,242 +62,139 @@ if (document.querySelector(".contact-section")) {
   // Contact section interactions can be added here if needed
 }
 
-/*----- project Animation for my project cards -----*/
-
-/*----- Slide Out Old Cards -----*/
-
-const observerOptions = {
-  threshold: 0.1,
-};
-
-const combinedObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.target.id === "projects") {
-        /*----- Logic for loading project cards when the projects section is visible -----*/
-        setTimeout(() => {
-          loadInitialCards();
-          combinedObserver.unobserve(
-            entry.target
-          ); /*----- Load cards only once -----*/
-        }, 500);
-        /*----- Logic for adding the "visible" class to sections -----*/
-        entry.target.classList.add("visible");
-      }
-    }
-  }, observerOptions);
-});
-
-/*----- Here i handle my project cards -----*/
-
-document.querySelectorAll("section").forEach((section) => {
-  combinedObserver.observe(section);
-});
-
-let currentCardIndex = 0;
-const cardsPerPage = 4;
-const allCardData = [
+/*----- Project Card Generation -----*/
+// Project data
+const projectsData = [
   {
-    title: "World of Anime",
+    title: "Portfolio Website",
     description:
-      "This project is an anime-themed website that allows users to browse and discover new series or revisit old favorites",
-    image: "./img/Anime-project.webp",
-    githubLink: "https://github.com/Sweodin/Anime-Api.git",
+      "My personal portfolio website built with HTML, SCSS, and JavaScript.",
+    longDescription:
+      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
+    image: "./img/Minport.png",
+    tech: ["HTML", "SCSS", "JavaScript"],
+    githubLink: "#",
+    liveLink: "#",
+    category: "frontend",
   },
   {
-    title: "Virtual pet game",
+    title: "Anime Search App",
     description:
-      "This project is a web-based virtual pet game where users can interact with and care for a virtual pet, with its status updating in real-time using React's useState and useEffect hooks.",
+      "Search and discover anime using the Jikan API. Features a modern UI.",
+    longDescription:
+      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
+    image: "./img/Anime-Project.webp",
+    tech: ["React", "API", "CSS"],
+    githubLink: "#",
+    liveLink: "#",
+    category: "web",
+  },
+  {
+    title: "Virtual Pet Game",
+    description:
+      "An interactive virtual pet game with animations and game mechanics.",
+    longDescription:
+      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
     image: "./img/Virtual-pet-game.png",
-    githubLink: "https://github.com/Sweodin/Virtual-Pet-Game.git",
-  },
-  {
-    title: "Code portfolio Generator",
-    description:
-      "A dynamic portfolio generator built with JavaScript that allows developers to create and customize their online portfolios from GitHub repositories with custom themes.",
-    image: "./img/Coding.jpg",
+    tech: ["JavaScript", "Canvas", "CSS"],
     githubLink: "#",
-  },
-  {
-    title: "System Monitor Dashboard",
-    description:
-      "Real-time system monitoring dashboard built with React, displaying key metrics like CPU usage, memory usage, and network usage with interactive charts and alerts.",
-    image: "./img/Motherboard.jpg",
-    githubLink: "#",
-  },
-  {
-    title: "E-commerce Product Page",
-    description:
-      "A responsive e-commerce product page showcasing product details, images, and purchasing options with a clean and user-friendly design.",
-    image: "./img/Coding.jpg",
-    githubLink: "#",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A simple task management application allowing users to create, organize, and track their tasks with features like due dates and priority levels.",
-    image: "./img/Anime-project.webp",
-    githubLink: "#",
-  },
-  {
-    title: "Weather Application",
-    description:
-      "A web application that fetches and displays current weather information for a specified location using a weather API.",
-    image: "./img/Virtual-pet-game.png",
-    githubLink: "#",
-  },
-  {
-    title: "Recipe Finder App",
-    description:
-      "An application that allows users to search for recipes based on ingredients or dietary restrictions, utilizing a recipe database or API.",
-    image: "./img/Coding.jpg",
-    githubLink: "#",
-  },
-  {
-    title: "Personal Blog Website",
-    description:
-      "A personal blog website built with a focus on clean design and readability, allowing the author to share their thoughts and ideas through articles and posts.",
-    image: "./img/Virtual-pet-game.png",
-    githubLink: "#",
-  },
-  {
-    title: "Interactive Data Visualization",
-    description:
-      "A project focused on visualizing data using libraries like D3.js or Chart.js to create interactive and informative charts and graphs.",
-    image: "./img/Anime-project.webp",
-    githubLink: "#",
+    liveLink: "#",
+    category: "frontend",
   },
 ];
 
-const cardGrid = document.querySelector("#card-grid");
-const loadNewCardsButton = document.querySelector("#load-new-cards");
-let visibleCards = 0;
-const cardsPerLoad = window.innerWidth <= 768 ? 2 : 3; // Show fewer cards on mobile
+// Create and append project cards
+function createProjectCards(projects = projectsData) {
+  const projectsGrid = document.querySelector(".projects-grid");
+  if (!projectsGrid) return;
 
-/*----- Here i can handle styling for the cards -----*/
-
-function createCard(cardData) {
-  const card = document.createElement("div");
-  card.className = "project-card";
-
-  const cardInner = document.createElement("div");
-  cardInner.className = "project-card-inner";
-
-  cardInner.innerHTML = `
-    <div class="project-card-front">
-      <div class="project-image">
-        <img src="${cardData.image}" alt="${cardData.title}">
+  projectsGrid.innerHTML = projects
+    .map(
+      (project) => `
+    <div class="project-card" data-category="${project.category}">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="${project.image}" alt="${project.title}" loading="lazy">
+          <div class="project-info">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <span class="flip-prompt">Click to read more</span>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="back-content">
+            <h3>${project.title}</h3>
+            <p>${project.longDescription}</p>
+            <div class="tech-stack">
+              ${project.tech
+                .map((tech) => `<span class="tech-tag">${tech}</span>`)
+                .join("")}
+            </div>
+            <div class="project-links">
+              <a href="${
+                project.liveLink
+              }" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+              <a href="${
+                project.githubLink
+              }" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <span class="read-more">Click to flip back</span>
+        </div>
       </div>
-      <h3>${cardData.title}</h3>
-      <p class="flip-prompt">Click to see more</p>
     </div>
-    <div class="project-card-back">
-      <h3>${cardData.title}</h3>
-      <p>${cardData.description}</p>
-      <a href="${cardData.link}" class="github-link" target="_blank">View on GitHub</a>
-    </div>
-  `;
+  `
+    )
+    .join("");
 
-  card.appendChild(cardInner);
+  // Add flip functionality
+  const projectCards = document.querySelectorAll(".project-card");
+  projectCards.forEach((card) => {
+    const cardInner = card.querySelector(".card-inner");
+    const flipPrompt = card.querySelector(".flip-prompt");
+    const readMore = card.querySelector(".read-more");
 
-  // Add touch support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
+    flipPrompt.addEventListener("click", () => {
+      cardInner.style.transform = "rotateY(180deg)";
+    });
 
-  card.addEventListener(
-    "touchstart",
-    (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    },
-    false
-  );
-
-  card.addEventListener(
-    "touchend",
-    (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    },
-    false
-  );
-
-  function handleSwipe() {
-    const diffX = touchEndX - touchStartX;
-    if (Math.abs(diffX) > 50) {
-      // Minimum swipe distance
-      cardInner.style.transform =
-        diffX > 0 ? "rotateY(180deg)" : "rotateY(0deg)";
-    }
-  }
-
-  // Add click handler for flipping
-  const flipPrompt = cardInner.querySelector(".flip-prompt");
-  const githubLink = cardInner.querySelector(".github-link");
-
-  flipPrompt.addEventListener("click", () => {
-    cardInner.style.transform = "rotateY(180deg)";
+    readMore.addEventListener("click", () => {
+      cardInner.style.transform = "rotateY(0deg)";
+    });
   });
-
-  githubLink.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
-
-  return card;
 }
 
-function loadInitialCards() {
-  visibleCards = 0;
-  cardGrid.innerHTML = "";
-  for (let i = 0; i < cardsPerLoad; i++) {
-    const card = createCard(allCardData[i]);
-    cardGrid.appendChild(card);
-    // Delay each card's appearance
-    setTimeout(() => {
-      card.classList.add("active");
-    }, i * 200);
-    visibleCards++;
-  }
+// Filter functionality
+function initializeFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Update active state
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Filter projects
+      const filter = btn.dataset.filter;
+      const filteredProjects =
+        filter === "all"
+          ? projectsData
+          : projectsData.filter((project) => project.category === filter);
+
+      createProjectCards(filteredProjects);
+    });
+  });
 }
 
-loadNewCardsButton.addEventListener("click", () => {
-  const isMobile = window.innerWidth <= 768;
-
-  // Slide out old cards
-  const currentCards = Array.from(cardGrid.children);
-  currentCards.forEach((card, index) => {
-    const direction = index % 2 === 0 ? "Left" : "Right";
-    card.style.animation = `slideOut${direction} 0.5s ease forwards`;
-  });
-
-  // After animation, load new cards
-  setTimeout(() => {
-    cardGrid.innerHTML = "";
-    const startIndex = visibleCards % allCardData.length;
-    const numCardsToLoad = isMobile ? 2 : 3;
-
-    for (let i = 0; i < numCardsToLoad; i++) {
-      const cardIndex = (startIndex + i) % allCardData.length;
-      const card = createCard(allCardData[cardIndex]);
-      cardGrid.appendChild(card);
-
-      setTimeout(() => {
-        card.classList.add("active");
-      }, i * 200);
-    }
-    visibleCards += numCardsToLoad;
-  }, 500);
+// Initialize when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  createProjectCards();
+  initializeFilters();
 });
-
-// Update cards per load on window resize
-window.addEventListener("resize", () => {
-  const newCardsPerLoad = window.innerWidth <= 768 ? 2 : 3;
-  if (newCardsPerLoad !== cardsPerLoad) {
-    loadInitialCards();
-  }
-});
-
-// Initial load
-loadInitialCards();
 
 /*----- Here i handle my blog cards -----*/
 
@@ -353,7 +250,7 @@ const blogPostsData = [
     title: "Exciting Progress on My React Project!",
     image: "./img/Anime-vid.png",
     frontText:
-      "Currently working on a small React project at school, building an anime search site powered by an API.",
+      "Currently working on a small React project, building an anime search site powered by an API.",
     backText: `Here's a quick peek into my progress so far (see video)!
               This project has been a great learning experience in: API
               Integration React Development Combining creativity and
@@ -416,7 +313,7 @@ Let’s keep the energy up and the ideas flowing! 🚀
 ];
 
 let currentBlogIndex = 0;
-const blogsPerPage = 4;
+const blogsPerPage = 3;
 
 function generateNewBlogPosts() {
   if (currentBlogIndex >= blogPostsData.length) {
@@ -434,6 +331,17 @@ function createBlogCard(blogData) {
   const cardInner = document.createElement("div");
   cardInner.className = "card-inner";
 
+  // Truncate text if it's too long
+  const frontText =
+    blogData.frontText.length > 100
+      ? blogData.frontText.substring(0, 100) + "..."
+      : blogData.frontText;
+
+  const backText =
+    blogData.backText.length > 200
+      ? blogData.backText.substring(0, 250) + "..."
+      : blogData.backText;
+
   cardInner.innerHTML = `
     <div class="card-front">
       <div class="blog-image">
@@ -441,14 +349,15 @@ function createBlogCard(blogData) {
       </div>
       <div class="blog-content">
         <h3>${blogData.title}</h3>
-        <p>${blogData.frontText}</p>
+        <p>${frontText}</p>
         <span class="flip-prompt">Click to read more</span>
       </div>
     </div>
     <div class="card-back">
       <div class="back-content">
         <h3>${blogData.title}</h3>
-        <p>${blogData.backText}</p>
+        <p>${backText}</p>
+        <a href="${blogData.link}" class="read-full-post">Read Full Post</a>
       </div>
       <span class="read-more">Click to flip back</span>
     </div>
@@ -512,16 +421,6 @@ loadMoreBlogsButton.addEventListener("click", () => {
 /*----- Initial loading of blog posts -----*/
 
 loadInitialBlogPosts();
-
-/*----- Set up skill proficiency bars -----*/
-
-document.querySelectorAll(".skill-item").forEach((item) => {
-  const proficiency = item.getAttribute("data-proficiency");
-  const bar = item.querySelector(".proficiency-bar");
-  if (bar) {
-    bar.style.setProperty("--proficiency", proficiency);
-  }
-});
 
 function playVideo(videoUrl) {
   /*----- Create modal container -----*/

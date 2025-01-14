@@ -39,7 +39,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, $primary-color 0%, lighten($primary-color, 5%) 100%);
+  background: linear-gradient(
+    135deg,
+    $primary-color 0%,
+    lighten($primary-color, 5%) 100%
+  );
   background-attachment: fixed;
   font-family: $body-font;
   line-height: 1.6;
@@ -54,15 +58,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   &::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-      radial-gradient(circle at 10% 20%, rgba($accent-color, 0.03) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(lighten($accent-color, 20%), 0.03) 0%, transparent 40%);
+    background: radial-gradient(
+        circle at 10% 20%,
+        rgba($accent-color, 0.03) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(lighten($accent-color, 20%), 0.03) 0%,
+        transparent 40%
+      );
     pointer-events: none;
     z-index: -1;
   }
@@ -167,5 +178,127 @@ section {
 
   .no-print {
     display: none;
+  }
+}
+
+/*----- New styles for the skills section -----*/
+.skills-section {
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 1200px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    background: linear-gradient(
+      45deg,
+      $accent-color,
+      lighten($accent-color, 20%)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+.skill-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1.8rem 1.2rem;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+
+    i {
+      transform: scale(1.05);
+      color: $accent-color;
+    }
+
+    .skill-tags {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  i {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.25s ease;
+    display: block;
+  }
+
+  .skill-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.25s ease;
+
+    span {
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      background: rgba($accent-color, 0.1);
+      color: $accent-color;
+      backdrop-filter: blur(5px);
+      letter-spacing: 0.2px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-item {
+    padding: 1.5rem 1rem;
+
+    i {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-name {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-tags span {
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+    }
   }
 }
