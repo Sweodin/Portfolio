@@ -67,10 +67,9 @@ if (document.querySelector(".contact-section")) {
 const projectsData = [
   {
     title: "Portfolio Website",
-    description:
-      "My personal portfolio website built with HTML, SCSS, and JavaScript.",
+    description: "Dive into my personal portfolio website.",
     longDescription:
-      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
+      "A dynamic showcase of my skills built with HTML, SCSS, and JavaScript. Experience a nostalgic journey through a Sonic the Hedgehog-inspired theme, bringing a touch of retro gaming flair to my web development work.",
     image: "./img/Minport.png",
     tech: ["HTML", "SCSS", "JavaScript"],
     githubLink: "#",
@@ -79,10 +78,9 @@ const projectsData = [
   },
   {
     title: "Anime Search App",
-    description:
-      "Search and discover anime using the Jikan API. Features a modern UI.",
+    description: "Explore the vast world of Anime.",
     longDescription:
-      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
+      "With my Anime Search App. This application leverages the Jikan API to provide a seamless experience for discovering new and favorite anime titles, all within a sleek and contemporary user interface.",
     image: "./img/Animeproject.jpg",
     tech: ["React", "API", "CSS"],
     githubLink: "#",
@@ -94,7 +92,7 @@ const projectsData = [
     description:
       "An interactive virtual pet game with animations and game mechanics.",
     longDescription:
-      "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
+      "Engage with a charming digital companion in my Virtual Pet Game. This project brings a virtual pet to life with captivating animations and engaging game mechanics, offering an interactive and entertaining experience.",
     image: "./img/Virtual-pet-game.png",
     tech: ["JavaScript", "Canvas", "CSS"],
     githubLink: "#",
@@ -250,7 +248,7 @@ const blogPostsData = [
     title: "Exciting Progress on My React Project!",
     image: "./img/Anime-vid.png",
     frontText:
-      "Currently working on a small React project, building an anime search site powered by an API.",
+      "Currently working on a React project, an anime search with an API.",
     backText: `Here's a quick peek into my progress so far (see video)!
               This project has been a great learning experience in: API
               Integration React Development Combining creativity and
@@ -259,7 +257,7 @@ const blogPostsData = [
               come! Today feels like a good day, reflecting on this
               journey.
               Feel free to share your thoughts or tips—always open to
-              learning!
+              learning!s
               <a
                 href="#"
                 class="video-link"
