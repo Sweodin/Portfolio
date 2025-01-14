@@ -83,7 +83,7 @@ const projectsData = [
       "Search and discover anime using the Jikan API. Features a modern UI.",
     longDescription:
       "A modern portfolio showcasing my projects and skills, featuring a cyberpunk theme with interactive elements and smooth animations.",
-    image: "./img/Anime-Project.webp",
+    image: "./img/AnimeProject.jpg",
     tech: ["React", "API", "CSS"],
     githubLink: "#",
     liveLink: "#",
