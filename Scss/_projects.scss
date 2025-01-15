@@ -19,11 +19,11 @@
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    background: linear-gradient(45deg, #00ff9d, #00ff9d);
+    background: linear-gradient(45deg, #ffd700, #ffb700);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
   }
 
   .projects-filters {
@@ -40,15 +40,16 @@
 
     .filter-btn {
       padding: 0.6rem 1.2rem;
-      color: #00ff9d;
-      background: rgba(0, 255, 157, 0.05);
-      border: 1px solid rgba(0, 255, 157, 0.3);
+      color: #ffd700;
+      background: rgba(34, 81, 179, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.3);
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-size: 0.85rem;
       position: relative;
       overflow: hidden;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 
       @media (max-width: 480px) {
         padding: 0.5rem 1rem;
@@ -65,7 +66,7 @@
         background: linear-gradient(
           45deg,
           transparent,
-          rgba(0, 255, 157, 0.1),
+          rgba(255, 215, 0, 0.15),
           transparent
         );
         transform: translateX(-100%);
@@ -74,11 +75,11 @@
 
       &:hover,
       &.active {
-        background: rgba(0, 255, 157, 0.1);
-        border-color: #00ff9d;
+        background: rgba(34, 81, 179, 0.25);
+        border-color: rgba(255, 215, 0, 0.5);
         transform: translateY(-2px);
-        box-shadow: 0 0 20px rgba(0, 255, 157, 0.2),
-          inset 0 0 10px rgba(0, 255, 157, 0.1);
+        box-shadow: 0 4px 12px rgba(34, 81, 179, 0.2),
+          inset 0 0 10px rgba(255, 215, 0, 0.2);
 
         &::before {
           transform: translateX(100%);
@@ -86,7 +87,10 @@
       }
 
       &.active {
-        background: rgba(0, 255, 157, 0.15);
+        background: rgba(255, 215, 0, 0.15);
+        /* border-color: rgba(255, 215, 0, 0.5);
+        color: #ffd700;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); */
       }
     }
   }
@@ -141,8 +145,8 @@
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    background: rgba(0, 255, 157, 0.05);
-    border: 1px solid rgba(0, 255, 157, 0.3);
+    background: rgba(34, 81, 179, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     overflow: hidden;
   }
 
@@ -163,7 +167,7 @@
       flex-direction: column;
 
       h3 {
-        color: #00ff9d;
+        color: $accent-color;
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
 
@@ -171,7 +175,6 @@
           font-size: 1.1rem;
         }
       }
-
       p {
         color: #fff;
         margin-bottom: 1rem;
@@ -200,11 +203,12 @@
 
     .tech-tag {
       padding: 0.3rem 0.8rem;
-      background: rgba(0, 255, 157, 0.1);
-      border: 1px solid rgba(0, 255, 157, 0.3);
+      background: rgba(34, 81, 179, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.2);
       border-radius: 4px;
-      color: #00ff9d;
+      color: #ffd700;
       font-size: 0.8rem;
+      transition: all 0.3s ease;
 
       @media (max-width: 480px) {
         padding: 0.25rem 0.6rem;
@@ -236,16 +240,17 @@
 
     a {
       padding: 0.6rem 1.2rem;
-      color: #00ff9d;
-      background: rgba(0, 255, 157, 0.1);
-      border: 1px solid rgba(0, 255, 157, 0.3);
+      color: #ffd700;
+      background: rgba(34, 81, 179, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.2);
       border-radius: 4px;
       transition: all 0.3s ease;
       text-decoration: none;
       font-size: 0.9rem;
 
       &:hover {
-        background: rgba(0, 255, 157, 0.2);
+        background: rgba(34, 81, 179, 0.2);
+        transform: translateY(-2px);
       }
 
       i {
@@ -257,8 +262,8 @@
   .read-more {
     align-self: center;
     margin-top: auto;
-    background: rgba(0, 255, 157, 0.15);
-    border: 1px solid rgba(0, 255, 157, 0.4);
+    background: rgba(34, 81, 179, 0.8);
+    border: 1px solid rgba(255, 215, 0, 0.4);
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
     font-weight: 500;
@@ -289,7 +294,7 @@
 
     h3 {
       margin-bottom: 0.5rem;
-      color: #00ff9d;
+      color: $accent-color;
 
       @media (max-width: 480px) {
         font-size: 1.1rem;
@@ -311,7 +316,7 @@
 
   .flip-prompt,
   .read-more {
-    color: #00ff9d;
+    color: $accent-color;
     cursor: pointer;
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -323,8 +328,8 @@
     margin-top: 0.5rem;
 
     &:hover {
-      background: rgba(0, 255, 157, 0.2);
-      color: lighten(#00ff9d, 10%);
+      background: rgba($color: $accent-color, $alpha: 0.2);
+      color: lighten($color: $accent-color, $amount: 10%);
     }
 
     @media (max-width: 480px) {
@@ -340,15 +345,16 @@
   margin: 3rem auto 0;
   padding: 0.8rem 2rem;
   min-width: 200px;
-  color: #00ff9d;
-  background: rgba(0, 255, 157, 0.05);
-  border: 1px solid rgba(0, 255, 157, 0.3);
+  color: $accent-color;
+  background: rgba(34, 81, 179, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1rem;
   position: relative;
   overflow: hidden;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 
   &::before {
     content: "";
@@ -360,7 +366,7 @@
     background: linear-gradient(
       45deg,
       transparent,
-      rgba(0, 255, 157, 0.1),
+      rgba(255, 215, 0, 0.1),
       transparent
     );
     transform: translateX(-100%);
@@ -368,11 +374,11 @@
   }
 
   &:hover {
-    background: rgba(0, 255, 157, 0.1);
-    border-color: #00ff9d;
+    background: rgba(34, 81, 179, 0.9);
+    border-color: #ffd700;
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 255, 157, 0.2),
-      inset 0 0 10px rgba(0, 255, 157, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2),
+      inset 0 0 10px rgba(255, 215, 0, 0.1);
 
     &::before {
       transform: translateX(100%);
@@ -386,13 +392,12 @@
     box-shadow: none;
   }
 }
-
 .flip-btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  color: #00ff9d;
-  background: rgba(0, 255, 157, 0.05);
-  border: 1px solid rgba(0, 255, 157, 0.3);
+  color: $accent-color;
+  background: rgba(34, 81, 179, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -420,7 +425,7 @@
 
   &:hover {
     background: rgba(0, 255, 157, 0.1);
-    border-color: #00ff9d;
+    border-color: $accent-color;
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(0, 255, 157, 0.2),
       inset 0 0 10px rgba(0, 255, 157, 0.1);

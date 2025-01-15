@@ -11,14 +11,11 @@
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    background: linear-gradient(
-      45deg,
-      $accent-color,
-      lighten($accent-color, 20%)
-    );
+    background: linear-gradient(45deg, #ffd700, #ffb700);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
   }
 }
 
@@ -30,22 +27,22 @@
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(34, 81, 179, 0.05);
   border-radius: 12px;
   padding: 1.8rem 1.2rem;
   transition: all 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(34, 81, 179, 0.1);
   text-align: center;
   position: relative;
 
   &:hover {
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(34, 81, 179, 0.1);
+    border-color: rgba(255, 215, 0, 0.2);
 
     i {
       transform: scale(1.05);
-      color: $accent-color;
+      color: #ffd700;
     }
 
     .skill-tags {

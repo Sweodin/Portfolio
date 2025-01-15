@@ -2,7 +2,7 @@
 @import "../Scss/fonts";
 
 body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +23,9 @@ body {
   position: relative;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 255, 157, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 157, 0.1),
-    inset 0 0 20px rgba(0, 255, 157, 0.05);
+  border: 1px solid rgba($accent-color, 0.1);
+  box-shadow: 0 0 20px rgba($accent-color, 0.1),
+    inset 0 0 20px rgba($accent-color, 0.05);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateY(20px);
@@ -38,7 +38,7 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #00ff9d, transparent, #00ff9d);
+  background: linear-gradient(45deg, $accent-color, transparent, $accent-color);
   border-radius: 16px;
   z-index: -1;
   animation: borderGlow 3s linear infinite;
@@ -47,21 +47,25 @@ body {
 
 .wrapper:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 255, 157, 0.2),
-    inset 0 0 30px rgba(0, 255, 157, 0.1);
+  box-shadow: 0 0 30px rgba($accent-color, 0.2),
+    inset 0 0 30px rgba($accent-color, 0.1);
 }
 
 .neon-text {
   font-family: "Raleway", sans-serif;
   font-size: clamp(3rem, 10vw, 6rem);
   font-weight: 700;
-  background: linear-gradient(45deg, #00ff9d 30%, #00b8ff 70%);
+  background: linear-gradient(
+    45deg,
+    $accent-color 30%,
+    lighten($accent-color, 20%) 70%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #00ff9d;
-  text-shadow: 0 0 4px rgba(0, 255, 157, 2), 0 0 8px rgba(0, 255, 157, 0.8),
-    0 0 10px rgba(0, 255, 157, 0.6);
+  color: $accent-color;
+  text-shadow: 0 0 4px rgba($accent-color, 1), 0 0 8px rgba($accent-color, 0.8),
+    0 0 10px rgba($accent-color, 0.6);
   padding: 0 1rem 2rem;
   margin: 0;
   visibility: hidden;
@@ -111,8 +115,8 @@ body {
   15% {
     opacity: 1;
     transform: translateY(0);
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
     filter: brightness(1.3);
   }
   20% {
@@ -122,8 +126,8 @@ body {
   }
   25% {
     opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
     filter: brightness(1.3);
   }
   30% {
@@ -133,15 +137,15 @@ body {
   }
   35% {
     opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
     filter: brightness(1.3);
   }
   40%,
   100% {
     opacity: 1;
-    text-shadow: 0 0 2px rgba(0, 255, 157, 0.8), 0 0 4px rgba(0, 255, 157, 0.5),
-      0 0 6px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 2px rgba($accent-color, 0.8),
+      0 0 4px rgba($accent-color, 0.5), 0 0 6px rgba($accent-color, 0.3);
     filter: brightness(1.2);
   }
 }
@@ -156,8 +160,8 @@ body {
   10% {
     opacity: 1;
     transform: translateY(0);
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
   }
   15% {
     opacity: 0.3;
@@ -165,8 +169,8 @@ body {
   }
   20% {
     opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
   }
   25% {
     opacity: 0.5;
@@ -174,14 +178,14 @@ body {
   }
   30% {
     opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.5),
-      0 0 15px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 5px rgba($accent-color, 0.8),
+      0 0 10px rgba($accent-color, 0.5), 0 0 15px rgba($accent-color, 0.3);
   }
   35%,
   100% {
     opacity: 1;
-    text-shadow: 0 0 2px rgba(0, 255, 157, 0.8), 0 0 4px rgba(0, 255, 157, 0.5),
-      0 0 6px rgba(0, 255, 157, 0.3);
+    text-shadow: 0 0 2px rgba($accent-color, 0.8),
+      0 0 4px rgba($accent-color, 0.5), 0 0 6px rgba($accent-color, 0.3);
   }
 }
 
@@ -192,8 +196,8 @@ body {
   padding: 1rem 2rem;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   background: transparent;
-  color: #00ff9d;
-  border: 2px solid rgba(0, 255, 157, 0.3);
+  color: $accent-color;
+  border: 2px solid rgba($accent-color, 0.3);
   border-radius: 8px;
   cursor: pointer;
   position: relative;
@@ -209,25 +213,14 @@ body {
   min-height: 60px;
   line-height: 1;
   padding-bottom: 0.5rem;
-}
 
-#enter-button .letter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(5px);
-  will-change: opacity, transform;
-  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 1em;
-  line-height: 1;
-  margin-top: -0.2em;
-}
-
-#enter-button:hover {
-  color: #000;
-  background: #00ff9d;
-  border-color: #00ff9d;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+  &:hover {
+    color: $primary-color;
+    background: $accent-color;
+    border-color: $accent-color;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($accent-color, 0.3);
+  }
 }
 
 .no-glow {
