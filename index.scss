@@ -1,6 +1,7 @@
 @import "./Scss/variables";
 @import "./Scss/mixins";
 @import "./Scss/fonts";
+@import "./Scss/common";
 @import "./Scss/header";
 @import "./Scss/welcome";
 @import "./Scss/about";
@@ -38,13 +39,8 @@
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    $primary-color 0%,
-    lighten($primary-color, 5%) 100%
-  );
   background-attachment: fixed;
-  font-family: $body-font;
+  /* font-family: "sonic-comics"; */
   line-height: 1.6;
   color: $text-color;
   min-height: 100vh;
@@ -65,12 +61,12 @@ body {
     height: 100%;
     background: radial-gradient(
         circle at 10% 20%,
-        rgba($accent-color, 0.03) 0%,
+        rgba($accent-color, 0.01) 0%,
         transparent 40%
       ),
       radial-gradient(
         circle at 90% 80%,
-        rgba(lighten($accent-color, 20%), 0.03) 0%,
+        rgba(lighten($accent-color, 20%), 0.01) 0%,
         transparent 40%
       );
     pointer-events: none;
@@ -87,241 +83,95 @@ body {
   /*----- Better mobile experience -----*/
   -webkit-tap-highlight-color: transparent;
 
-  /*----- Dark mode support -----*/
-  @media (prefers-color-scheme: dark) {
-    background-color: darken($primary-color, 5%);
-  }
-}
-
-/*----- Typography -----*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $heading-font;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-}
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-}
-h3 {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-}
-
-/*----- Links and buttons -----*/
-
-a,
-button {
-  color: inherit;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.3s ease;
-
-  &:focus-visible {
-    outline: 2px solid $accent-color;
-    outline-offset: 4px;
-  }
-}
-
-/*----- Container for consistent content width -----*/
-
-.container {
-  width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/*----- Section spacing -----*/
-
-section {
-  padding: var(--section-spacing) 0;
-}
-
-/*----- Utility classes -----*/
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* .text-center {
-  text-align: center;
-}
-
-.mb-1 {
-  margin-bottom: 1rem;
-}
-.mb-2 {
-  margin-bottom: 2rem;
-}
-.mb-3 {
-  margin-bottom: 3rem;
-}
-
-.mt-1 {
-  margin-top: 1rem;
-}
-.mt-2 {
-  margin-top: 2rem;
-}
-.mt-3 {
-  margin-top: 3rem;
-} */
-
-/*----- Media queries for responsive design -----*/
-@media (max-width: 768px) {
-  :root {
-    --section-spacing: clamp(2rem, 5vh, 4rem);
+  /*----- Typography -----*/
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $label-font;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
   }
 
-  body {
-    font-size: 0.95rem;
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
   }
-}
-
-/*----- Print styles -----*/
-@media print {
-  body {
-    background: none;
-    color: black;
-  }
-
-  .no-print {
-    display: none;
-  }
-}
-
-/*----- New styles for the skills section -----*/
-.skills-section {
-  padding: 4rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 2rem auto;
-  max-width: 1200px;
-
   h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-    background: linear-gradient(
-      45deg,
-      $accent-color,
-      lighten($accent-color, 20%)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
   }
-}
+  h3 {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+  }
+  p {
+    font-family: $text-font;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    line-height: 1.6;
+  }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 0.5rem;
-}
+  /*----- Links and buttons -----*/
 
-.skill-item {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 1.8rem 1.2rem;
-  transition: all 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: center;
-  position: relative;
+  a,
+  button {
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
-
-    i {
-      transform: scale(1.05);
-      color: $accent-color;
-    }
-
-    .skill-tags {
-      opacity: 1;
-      transform: translateY(0);
+    &:focus-visible {
+      outline: 2px solid $accent-color;
+      outline-offset: 4px;
     }
   }
 
-  i {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    transition: all 0.25s ease;
-    display: block;
+  /*----- Container for consistent content width -----*/
+
+  .container {
+    width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  .skill-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-    display: block;
-    color: rgba(255, 255, 255, 0.9);
+  /*----- Section spacing -----*/
+
+  section {
+    padding: var(--section-spacing) 0;
   }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: all 0.25s ease;
+  /*----- Utility classes -----*/
 
-    span {
-      padding: 0.25rem 0.6rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      background: rgba($accent-color, 0.1);
-      color: $accent-color;
-      backdrop-filter: blur(5px);
-      letter-spacing: 0.2px;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .skills-section {
-    padding: 2.5rem 1rem;
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .skill-item {
-    padding: 1.5rem 1rem;
-
-    i {
-      font-size: 2rem;
-      margin-bottom: 0.6rem;
+  /*----- Media queries for responsive design -----*/
+  @media (max-width: 768px) {
+    :root {
+      --section-spacing: clamp(2rem, 5vh, 4rem);
     }
 
-    .skill-name {
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
+    body {
+      font-size: 0.95rem;
+    }
+  }
+
+  /*----- Print styles -----*/
+  @media print {
+    body {
+      background: none;
+      color: black;
     }
 
-    .skill-tags span {
-      padding: 0.2rem 0.5rem;
-      font-size: 0.75rem;
+    .no-print {
+      display: none;
     }
   }
 }

@@ -5,18 +5,18 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba($primary-color, 0.95);
+  background: rgba($sonic-blue, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
   z-index: 1000;
   padding: clamp(0.5rem, 2vw, 1.5rem) 0;
-  border-bottom: 1px solid rgba($accent-color, 0.2);
+  border-bottom: 1px solid rgba($accent-color, 0.6);
   transition: background-color 0.3s ease;
+  opacity: 0.6;
 
   &:hover {
-    background: rgba($primary-color, 0.98);
+    background: rgba($sonic-blue, 0.5);
   }
 }
 
@@ -30,9 +30,10 @@
 }
 
 .logo {
+  font-family: "Sonic Comics", sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
-  background: linear-gradient(45deg, $text-color, $accent-color);
+  background: linear-gradient(45deg, $softergold-color, $accent-color);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -68,12 +69,11 @@
     gap: clamp(1rem, 3vw, 2rem);
 
     li a {
-      color: $text-color;
-      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      color: $softergold-color;
+      font-size: clamp(1.1rem, 1.8vw, 1rem);
       text-decoration: none;
       font-weight: 500;
       padding: 0.5rem 1rem;
-      /* border-radius: 4px; */
       transition: all 0.3s ease;
       outline: none;
       -webkit-tap-highlight-color: transparent;
@@ -133,7 +133,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 50%;
     height: 100vh;
     background: rgba($primary-color, 0.98);
     backdrop-filter: blur(10px);
@@ -143,6 +143,7 @@
 
     &.active {
       right: 0;
+      opacity: 0.9;
     }
 
     ul {
@@ -185,5 +186,54 @@
 
   #menu-icon {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background: rgba($sonic-blue, 0.95);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+    padding: 4rem 0;
+
+    &.active {
+      right: 0;
+      opacity: 0.98;
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      li {
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+          padding: 1rem;
+          font-size: 1.2rem;
+          color: $softergold-color;
+          font-weight: 600;
+          letter-spacing: 1px;
+
+          border-radius: 8px;
+          margin: 0 1rem;
+          transition: all 0.3s ease;
+
+          &:hover,
+          &.active {
+            color: lighten($softergold-color, 10%);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
   }
 }

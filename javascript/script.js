@@ -1,3 +1,24 @@
+/* document.addEventListener("DOMContentLoaded", funcion (){
+  const sections = document.querySelectorAll("section");
+  const body = document.body;
+
+  function changeBackgroundColor() {
+    let scrollPosition = window.scrollY;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      const sectionColor = window.getComputedStyle(section).backgroundColor;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        body.style.backgroundColor = sectionColor;
+      }
+    });
+  }
+
+  window.addEventListener("scroll", changeBackgroundColor);
+}); */
+
 /*----- Event listener for the logo -----*/
 
 const logoLink = document.querySelector(".logo");

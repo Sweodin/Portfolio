@@ -1,3 +1,27 @@
+/*----- Trying some styling on Body.. -----*/
+/*----- Option 1: Classic Green Hill Progression -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #7AD9FF, #A0E8AF); } -----*/ /*----- Bright Sky Blue to Light Green -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #A0E8AF, #D2B48C); } -----*/ /*----- Light Green to Sandy Brown -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #D2B48C, #6A99C9); } -----*/ /*----- Sandy Brown to Muted Blue -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #6A99C9, #558B2F); } -----*/ /*----- Muted Blue to Darker Green -----*/
+/*----- Option 2: More Sonic Focused with Hints of Green Hill -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #00A2E8, #008080); } -----*/ /*----- Bright Blue to Teal -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #008080, #FFFACD); } -----*/ /*----- Teal to Light Yellow -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #FFFACD, #8FBC8F); } -----*/ /*----- Light Yellow to Muted Green -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #8FBC8F, #303069); } -----*/ /*----- Muted Green to Dark Blue -----*/
+/*----- Option 3: Subtle and Earthy -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #ADD8E6, #F5F5DC); } -----*/ /*----- Pale Blue-Green to Light Beige -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #F5F5DC, #98FB98); } -----*/ /*----- Light Beige to Soft Green -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #98FB98, #DEB887); } -----*/ /*----- Soft Green to Light Brown -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #DEB887, #66CDAA); } -----*/ /*----- Light Brown to Muted Teal -----*/
+/* $heading-font: "Raleway", sans-serif; */
+@font-face {
+  font-family: "Sonic Comics";
+  src: url("../font/sonic-comics.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
   background: linear-gradient(135deg, #2251b3 0%, #1a3d8c 100%);
   display: flex;

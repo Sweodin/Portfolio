@@ -7,6 +7,7 @@ footer {
   position: relative;
   padding: clamp(2rem, 5vw, 3rem) 0;
   margin-top: auto;
+  user-select: none;
 
   &::before {
     content: "";
@@ -79,12 +80,12 @@ footer {
 }
 
 /*----- Accessibility -----*/
-/* @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
   }
-} */
+}
 
 /*----- Focus styles for keyboard navigation -----*/
 a:focus,
