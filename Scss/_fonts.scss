@@ -1,2 +1,11 @@
-$heading-font: "Raleway", sans-serif;
-$body-font: "Source Sans Pro", sans-serif;
+/* $heading-font: "Raleway", sans-serif; */
+$label-font: "Exo 2", serif;
+$text-font: "Montserrat", sans-serif;
+
+@font-face {
+  font-family: "Sonic Comics";
+  src: url("../font/sonic-comics.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

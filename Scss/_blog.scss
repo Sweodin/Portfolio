@@ -2,7 +2,8 @@
 
 .blog-section {
   padding: 4rem 0;
-
+  background: linear-gradient(to bottom, #558b2f, #b8860b);
+  user-select: none;
   @media (max-width: 768px) {
     padding: 3rem 0;
   }
@@ -90,7 +91,6 @@
     backface-visibility: hidden;
     border-radius: 15px;
     background: rgba(34, 81, 179, 0.05);
-    /* backdrop-filter: blur(10px); */
     border: 1px solid rgba(255, 215, 0, 0.2);
     box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
     overflow: hidden;

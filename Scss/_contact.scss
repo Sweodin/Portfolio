@@ -1,16 +1,13 @@
 /*----- Contact Section -----*/
+
 .contact-section {
+  @include center-flex;
   padding: clamp(4rem, 10vw, 8rem) 0;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(34, 81, 179, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 2rem auto;
-  border: 1px solid rgba(34, 81, 179, 0.1);
-  box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
-  max-width: 1200px;
+  background: linear-gradient(to bottom, #b8860b, #6a99c9);
+  width: 100%;
+  user-select: none;
 
   h2 {
     text-align: center;

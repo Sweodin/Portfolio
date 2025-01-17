@@ -3,6 +3,8 @@
 .projects-section {
   position: relative;
   padding: 5rem 0;
+  background: linear-gradient(to bottom, #6a99c9, #558b2f);
+  user-select: none;
 
   &::before {
     content: "";
@@ -88,9 +90,6 @@
 
       &.active {
         background: rgba(255, 215, 0, 0.15);
-        /* border-color: rgba(255, 215, 0, 0.5);
-        color: #ffd700;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); */
       }
     }
   }

@@ -1,22 +1,115 @@
+/*----- Trying some styling on Body.. -----*/
+/*----- Option 1: Classic Green Hill Progression -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #7AD9FF, #A0E8AF); } -----*/ /*----- Bright Sky Blue to Light Green -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #A0E8AF, #D2B48C); } -----*/ /*----- Light Green to Sandy Brown -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #D2B48C, #6A99C9); } -----*/ /*----- Sandy Brown to Muted Blue -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #6A99C9, #558B2F); } -----*/ /*----- Muted Blue to Darker Green -----*/
+/*----- Option 2: More Sonic Focused with Hints of Green Hill -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #00A2E8, #008080); } -----*/ /*----- Bright Blue to Teal -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #008080, #FFFACD); } -----*/ /*----- Teal to Light Yellow -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #FFFACD, #8FBC8F); } -----*/ /*----- Light Yellow to Muted Green -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #8FBC8F, #303069); } -----*/ /*----- Muted Green to Dark Blue -----*/
+/*----- Option 3: Subtle and Earthy -----*/
+/*----- #section1 { background: linear-gradient(to bottom, #ADD8E6, #F5F5DC); } -----*/ /*----- Pale Blue-Green to Light Beige -----*/
+/*----- #section2 { background: linear-gradient(to bottom, #F5F5DC, #98FB98); } -----*/ /*----- Light Beige to Soft Green -----*/
+/*----- #section3 { background: linear-gradient(to bottom, #98FB98, #DEB887); } -----*/ /*----- Soft Green to Light Brown -----*/
+/*----- #section4 { background: linear-gradient(to bottom, #DEB887, #66CDAA); } -----*/ /*----- Light Brown to Muted Teal -----*/
 /*-----  Mixins -----*/
+/* $heading-font: "Raleway", sans-serif; */
+@font-face {
+  font-family: "Sonic Comics";
+  src: url("../font/sonic-comics.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/*----- Common Styles -----*/
+/*----- Common section styles -----*/
+section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+section h2 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: #ffd700;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  position: relative;
+  padding-bottom: 1rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  background: linear-gradient(45deg, #2251b3, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(60px, 10vw, 80px);
+  height: 3px;
+  background: #ffd700;
+  border-radius: 2px;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ffd700 30%, #2251b3 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradientText 5s ease infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /*----- Header and Navigation -----*/
 .header {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(34, 81, 179, 0.95);
+  background: rgba(0, 162, 232, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
   z-index: 1000;
   padding: clamp(0.5rem, 2vw, 1.5rem) 0;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.6);
   transition: background-color 0.3s ease;
+  opacity: 0.6;
 }
 .header:hover {
-  background: rgba(34, 81, 179, 0.98);
+  background: rgba(0, 162, 232, 0.5);
 }
 
 .header-content {
@@ -29,9 +122,10 @@
 }
 
 .logo {
+  font-family: "Sonic Comics", sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
-  background: linear-gradient(45deg, #e0e0e0, #ffd700);
+  background: linear-gradient(45deg, #f0e68c, #ffd700);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -63,12 +157,11 @@
   gap: clamp(1rem, 3vw, 2rem);
 }
 .navbar ul li a {
-  color: #e0e0e0;
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: #f0e68c;
+  font-size: clamp(1.1rem, 1.8vw, 1rem);
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  /* border-radius: 4px; */
   transition: all 0.3s ease;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -120,7 +213,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 50%;
     height: 100vh;
     background: rgba(34, 81, 179, 0.98);
     backdrop-filter: blur(10px);
@@ -130,6 +223,7 @@
   }
   .navbar.active {
     right: 0;
+    opacity: 0.9;
   }
   .navbar ul {
     flex-direction: column;
@@ -165,53 +259,96 @@
     font-size: 1.3rem;
   }
 }
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background: rgba(0, 162, 232, 0.95);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+    padding: 4rem 0;
+  }
+  .navbar.active {
+    right: 0;
+    opacity: 0.98;
+  }
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar ul li a {
+    display: block;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #f0e68c;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+  }
+  .navbar ul li a:hover, .navbar ul li a.active {
+    color: #f6f0b9;
+    transform: translateY(-2px);
+  }
+}
 /*----- Welcome Section -----*/
 .welcome-section {
-  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 2rem 1rem;
+  width: 100%;
+  background: linear-gradient(to bottom, #7ad9ff, #a0e8af);
   position: relative;
 }
 
+/*----- Common section styles -----*/
 .welcome-content {
-  max-width: 800px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.5s;
-  background: rgba(26, 61, 140, 0.15);
-  padding: 2rem;
+  max-width: 1200px;
+  min-height: 40vh;
+  margin: clamp(40px, 10vh, 80px) auto 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(to bottom, #7ad9ff, #a0e8af);
   border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(34, 81, 179, 0.2);
-  box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.2);
+  user-select: none;
 }
-
-.welcome-section h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffd700, #ffb700);
+.welcome-content h1 {
+  font-family: "Sonic Comics", sans-serif;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  text-align: center;
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #ffd700 30%, #00a2e8 70%);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientText 5s ease infinite;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
-  position: relative;
-  z-index: 1;
+  background-size: 200% auto;
+  animation: gradientText 3s ease infinite;
+  text-shadow: 10px 13px 15px rgba(34, 81, 179, 0.6);
+  line-height: 1.2;
+}
+.welcome-content h1 section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
 .subtitle {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: #e0e0e0;
+  color: khaki;
   margin-bottom: 3rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.8s;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .scroll-indicator {
@@ -219,12 +356,13 @@
   opacity: 0;
   animation: fadeIn 1s ease forwards, bounce 2s infinite;
   animation-delay: 1.2s;
+  text-align: center;
 }
 .scroll-indicator span {
   display: block;
   font-size: 0.9rem;
-  color: rgba(224, 224, 224, 0.5);
-  margin-bottom: 0.5rem;
+  color: rgba(68, 68, 68, 0.8);
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -233,6 +371,17 @@
   font-size: 1.2rem;
 }
 
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -262,17 +411,6 @@
     transform: translateY(-5px);
   }
 }
-@keyframes gradientText {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @media (max-width: 768px) {
   .welcome-section {
     min-height: 60vh;
@@ -300,113 +438,28 @@
     font-size: 1rem;
   }
 }
-/*----- Main Content -----*/
-main {
-  max-width: 1200px;
-  margin: clamp(40px, 10vh, 80px) auto 0;
-  padding: 0 clamp(1rem, 3vw, 2rem);
-}
-
-/*----- Welcome Section -----*/
-.welcome-section {
+/*----- About Section -----*/
+.about-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 40vh;
-  padding: clamp(3rem, 8vw, 6rem) 1rem;
+  background: linear-gradient(to bottom, #a0e8af, #d2b48c);
+  width: 100%;
   position: relative;
-}
-.welcome-section h1 {
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(45deg, #ffd700 30%, #2251b3 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: gradientText 5s ease infinite;
-  text-shadow: 0 0 30px rgba(34, 81, 179, 0.2);
-  line-height: 1.2;
-}
-
-@keyframes gradientText {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-/*----- Common section styles -----*/
-section {
-  padding: clamp(2rem, 5vw, 4rem) 0;
-}
-section h2 {
-  text-align: center;
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  color: #ffd700;
-  margin-bottom: clamp(2rem, 5vw, 3rem);
-  position: relative;
-  padding-bottom: 1rem;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-  background: linear-gradient(45deg, #2251b3, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-}
-section h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(60px, 10vw, 80px);
-  height: 3px;
-  background: #ffd700;
-  border-radius: 2px;
-}
-
-/*----- About Section -----*/
-.about-section {
-  background: rgba(34, 81, 179, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 3rem 2rem;
-  margin: 2rem auto;
-  border: 1px solid rgba(34, 81, 179, 0.1);
-  box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
-  max-width: 1200px;
-}
-.about-section h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, #ffd700, #ffb700);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-}
-.about-section p {
-  color: #e0e0e0;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  user-select: none;
 }
 
 .about-card {
   background: linear-gradient(135deg, #2251b3 0%, #1a3d8c 100%);
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #a0e8af, #d2b48c);
   display: flex;
+  max-width: 1200px;
   gap: clamp(2rem, 5vw, 2rem);
   padding: clamp(1.5rem, 4vw, 3rem);
   align-items: flex-start;
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.2);
 }
 .about-card .profile-image {
   flex: 0 0 clamp(200px, 35%, 400px);
@@ -434,12 +487,13 @@ section h2::after {
 }
 .about-card .about-content h2 {
   margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  font-family: "Exo 2", serif;
 }
 .about-card .about-content p {
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: #e0e0e0;
   line-height: 1.6;
-  color: rgba(224, 224, 224, 0.9);
+  color: rgba(0, 162, 232, 0.9);
+  font-family: "Montserrat", sans-serif;
 }
 
 /*----- Responsive design for about section -----*/
@@ -458,9 +512,6 @@ section h2::after {
   .about-card .about-content {
     padding: 0;
   }
-  .about-card .about-content h2 {
-    margin-bottom: clamp(0.75rem, 2vw, 1rem);
-  }
 }
 @media (max-width: 480px) {
   .about-card {
@@ -474,20 +525,20 @@ section h2::after {
     line-height: 1.5;
   }
 }
+/* #skills {
+  background: linear-gradient(to bottom, #90ee90, #d2b48c);
+} */
 /*----- Skills Section -----*/
 .skills-section {
-  padding: 4rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 2rem auto;
-  max-width: 1200px;
+  background: linear-gradient(to bottom, #d2b48c, #6a99c9);
+  width: 100%;
+  user-select: none;
 }
 .skills-section h2 {
   text-align: center;
   margin-bottom: 3rem;
   font-size: 2.5rem;
-  background: linear-gradient(45deg, #ffd700, #ffb700);
+  background: linear-gradient(45deg, #ffd700, #ffe766);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -499,6 +550,8 @@ section h2::after {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   padding: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .skill-item {
@@ -583,6 +636,8 @@ section h2::after {
 .projects-section {
   position: relative;
   padding: 5rem 0;
+  background: linear-gradient(to bottom, #6a99c9, #558b2f);
+  user-select: none;
 }
 .projects-section::before {
   content: "";
@@ -658,9 +713,6 @@ section h2::after {
 }
 .projects-section .projects-filters .filter-btn.active {
   background: rgba(255, 215, 0, 0.15);
-  /* border-color: rgba(255, 215, 0, 0.5);
-  color: #ffd700;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); */
 }
 .projects-section .projects-grid {
   display: grid;
@@ -1076,6 +1128,8 @@ section h2::after {
 /*----- Blog Section -----*/
 .blog-section {
   padding: 4rem 0;
+  background: linear-gradient(to bottom, #558b2f, #b8860b);
+  user-select: none;
 }
 @media (max-width: 768px) {
   .blog-section {
@@ -1168,7 +1222,6 @@ section h2::after {
   backface-visibility: hidden;
   border-radius: 15px;
   background: rgba(34, 81, 179, 0.05);
-  /* backdrop-filter: blur(10px); */
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
   overflow: hidden;
@@ -1542,17 +1595,15 @@ section h2::after {
 
 /*----- Contact Section -----*/
 .contact-section {
-  padding: clamp(4rem, 10vw, 8rem) 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(4rem, 10vw, 8rem) 0;
   flex-direction: column;
   align-items: center;
-  background: rgba(34, 81, 179, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 2rem auto;
-  border: 1px solid rgba(34, 81, 179, 0.1);
-  box-shadow: 0 0 20px rgba(34, 81, 179, 0.1);
-  max-width: 1200px;
+  background: linear-gradient(to bottom, #b8860b, #6a99c9);
+  width: 100%;
+  user-select: none;
 }
 .contact-section h2 {
   text-align: center;
@@ -1738,6 +1789,7 @@ footer {
   position: relative;
   padding: clamp(2rem, 5vw, 3rem) 0;
   margin-top: auto;
+  user-select: none;
 }
 footer::before {
   content: "";
@@ -1797,12 +1849,12 @@ footer .copyright i {
   }
 }
 /*----- Accessibility -----*/
-/* @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
   }
-} */
+}
 /*----- Focus styles for keyboard navigation -----*/
 a:focus,
 button:focus,
@@ -1837,9 +1889,8 @@ textarea:focus {
 }
 
 body {
-  background: linear-gradient(135deg, #2251b3 0%, #265bc8 100%);
   background-attachment: fixed;
-  font-family: "Source Sans Pro", sans-serif;
+  /* font-family: "sonic-comics"; */
   line-height: 1.6;
   color: #e0e0e0;
   min-height: 100vh;
@@ -1852,7 +1903,13 @@ body {
   /*----- Disable selection where needed -----*/
   /*----- Better mobile experience -----*/
   -webkit-tap-highlight-color: transparent;
-  /*----- Dark mode support -----*/
+  /*----- Typography -----*/
+  /*----- Links and buttons -----*/
+  /*----- Container for consistent content width -----*/
+  /*----- Section spacing -----*/
+  /*----- Utility classes -----*/
+  /*----- Media queries for responsive design -----*/
+  /*----- Print styles -----*/
 }
 body::before {
   content: "";
@@ -1861,7 +1918,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(255, 231, 102, 0.03) 0%, transparent 40%);
+  background: radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.01) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(255, 231, 102, 0.01) 0%, transparent 40%);
   pointer-events: none;
   z-index: -1;
 }
@@ -1870,64 +1927,51 @@ body.no-select {
   -ms-user-select: none;
   user-select: none;
 }
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1e479e;
-  }
-}
-
-/*----- Typography -----*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Raleway", sans-serif;
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-family: "Exo 2", serif;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 0.5em;
 }
-
-h1 {
+body h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
-
-h2 {
+body h2 {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
-
-h3 {
+body h3 {
   font-size: clamp(1.2rem, 3vw, 2rem);
 }
-
-/*----- Links and buttons -----*/
-a,
-button {
+body p {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.6;
+}
+body a,
+body button {
   color: inherit;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.3s ease;
 }
-a:focus-visible,
-button:focus-visible {
+body a:focus-visible,
+body button:focus-visible {
   outline: 2px solid #ffd700;
   outline-offset: 4px;
 }
-
-/*----- Container for consistent content width -----*/
-.container {
+body .container {
   width: var(--content-width);
   margin: 0 auto;
   padding: 0 1rem;
 }
-
-/*----- Section spacing -----*/
-section {
+body section {
   padding: var(--section-spacing) 0;
 }
-
-/*----- Utility classes -----*/
-.visually-hidden {
+body .visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1937,150 +1981,20 @@ section {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-
-/* .text-center {
-  text-align: center;
-}
-
-.mb-1 {
-  margin-bottom: 1rem;
-}
-.mb-2 {
-  margin-bottom: 2rem;
-}
-.mb-3 {
-  margin-bottom: 3rem;
-}
-
-.mt-1 {
-  margin-top: 1rem;
-}
-.mt-2 {
-  margin-top: 2rem;
-}
-.mt-3 {
-  margin-top: 3rem;
-} */
-/*----- Media queries for responsive design -----*/
 @media (max-width: 768px) {
-  :root {
+  body :root {
     --section-spacing: clamp(2rem, 5vh, 4rem);
   }
-  body {
+  body body {
     font-size: 0.95rem;
   }
 }
-/*----- Print styles -----*/
 @media print {
-  body {
+  body body {
     background: none;
     color: black;
   }
-  .no-print {
+  body .no-print {
     display: none;
-  }
-}
-/*----- New styles for the skills section -----*/
-.skills-section {
-  padding: 4rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 2rem auto;
-  max-width: 1200px;
-}
-.skills-section h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, #ffd700, #ffe766);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 0.5rem;
-}
-
-.skill-item {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 1.8rem 1.2rem;
-  transition: all 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: center;
-  position: relative;
-}
-.skill-item:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.skill-item:hover i {
-  transform: scale(1.05);
-  color: #ffd700;
-}
-.skill-item:hover .skill-tags {
-  opacity: 1;
-  transform: translateY(0);
-}
-.skill-item i {
-  font-size: 2.2rem;
-  margin-bottom: 0.8rem;
-  transition: all 0.25s ease;
-  display: block;
-}
-.skill-item .skill-name {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  display: block;
-  color: rgba(255, 255, 255, 0.9);
-}
-.skill-item .skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(5px);
-  transition: all 0.25s ease;
-}
-.skill-item .skill-tags span {
-  padding: 0.25rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  background: rgba(255, 215, 0, 0.1);
-  color: #ffd700;
-  backdrop-filter: blur(5px);
-  letter-spacing: 0.2px;
-}
-
-@media (max-width: 768px) {
-  .skills-section {
-    padding: 2.5rem 1rem;
-  }
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  .skill-item {
-    padding: 1.5rem 1rem;
-  }
-  .skill-item i {
-    font-size: 2rem;
-    margin-bottom: 0.6rem;
-  }
-  .skill-item .skill-name {
-    font-size: 1rem;
-    margin-bottom: 0.6rem;
-  }
-  .skill-item .skill-tags span {
-    padding: 0.2rem 0.5rem;
-    font-size: 0.75rem;
   }
 }
