@@ -1,24 +1,3 @@
-/* document.addEventListener("DOMContentLoaded", funcion (){
-  const sections = document.querySelectorAll("section");
-  const body = document.body;
-
-  function changeBackgroundColor() {
-    let scrollPosition = window.scrollY;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionBottom = sectionTop + section.offsetHeight;
-      const sectionColor = window.getComputedStyle(section).backgroundColor;
-
-      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-        body.style.backgroundColor = sectionColor;
-      }
-    });
-  }
-
-  window.addEventListener("scroll", changeBackgroundColor);
-}); */
-
 /*----- Event listener for the logo -----*/
 
 const logoLink = document.querySelector(".logo");
@@ -91,7 +70,7 @@ const projectsData = [
     description: "Dive into my personal portfolio website.",
     longDescription:
       "A dynamic showcase of my skills built with HTML, SCSS, and JavaScript. Experience a nostalgic journey through a Sonic the Hedgehog-inspired theme, bringing a touch of retro gaming flair to my web development work.",
-    image: "./img/Minport.png",
+    image: "./img/projects/Minport.png",
     tech: ["HTML", "SCSS", "JavaScript"],
     githubLink: "#",
     liveLink: "#",
@@ -102,7 +81,7 @@ const projectsData = [
     description: "Explore the vast world of Anime.",
     longDescription:
       "With my Anime Search App. This application leverages the Jikan API to provide a seamless experience for discovering new and favorite anime titles, all within a sleek and contemporary user interface.",
-    image: "./img/Animeproject.jpg",
+    image: "./img/projects/Animeproject.jpg",
     tech: ["React", "API", "CSS"],
     githubLink: "#",
     liveLink: "#",
@@ -114,7 +93,7 @@ const projectsData = [
       "An interactive virtual pet game with animations and game mechanics.",
     longDescription:
       "Engage with a charming digital companion in my Virtual Pet Game. This project brings a virtual pet to life with captivating animations and engaging game mechanics, offering an interactive and entertaining experience.",
-    image: "./img/Virtual-pet-game.png",
+    image: "./img/projects/Virtual-pet-game.png",
     tech: ["JavaScript", "Canvas", "CSS"],
     githubLink: "#",
     liveLink: "#",
@@ -223,8 +202,9 @@ const loadMoreBlogsButton = document.getElementById("load-more-blogs");
 /*----- Array to hold your blog post data -----*/
 const blogPostsData = [
   {
+    id: 1,
     title: "The new Keyboard",
-    image: "./img/Keyboard.jpg",
+    image: "./img/Blogposts/Motherboard.jpg",
     frontText:
       "After a long time I have finally found the perfect keyboard for me.",
     backText: `Finally upgraded my keyboard after the last one gave up—loving the new Asus ROG 75%! It’s been great for coding,
@@ -233,11 +213,11 @@ const blogPostsData = [
               about the progress on our game project—soon moving into the
               backend, which I’m really looking forward to. Lots of fun
               challenges ahead!`,
-    link: "#",
   },
   {
+    id: 2,
     title: "✨ Another Step Forward: Weekend Hustle ✨",
-    image: "./img/TLT.jpg",
+    image: "./img/Blogposts/TLT.jpg",
     frontText:
       "The workweek is officially over, but the grind doesn’t stop here! Tomorrow,",
     backText: `I’ll be diving deeper into React and Figma, sharpening my
@@ -249,11 +229,11 @@ const blogPostsData = [
               turning knowledge into results and making dreams a reality!
               🚀 How are you using your weekend to grow? Let’s inspire
               each other!`,
-    link: "#",
   },
   {
+    id: 3,
     title: "Sunday vibes, Monday mindset!",
-    image: "./img/Monday.jpg",
+    image: "./img/Blogposts/Monday.jpg",
     frontText:
       "A new week begins tomorrow, and it’s the perfect time to refocus and recharge.",
     backText: `Let’s step into the week with purpose, positivity, and a
@@ -263,11 +243,11 @@ const blogPostsData = [
               wins, so let’s keep pushing forward!
               Here’s to a productive and fulfilling week ahead. Let’s make
               it count, people!`,
-    link: "#",
   },
   {
+    id: 4,
     title: "Exciting Progress on My React Project!",
-    image: "./img/Anime-vid.png",
+    image: "./img/Blogposts/Anime-vid.png",
     frontText:
       "Currently working on a React project, an anime search with an API.",
     backText: `Here's a quick peek into my progress so far (see video)!
@@ -284,11 +264,11 @@ const blogPostsData = [
                 class="video-link"
                 onclick="playVideo('videos/Anime.mp4'); return false;"
                 >Watch Demo Video</a>`,
-    link: "#",
   },
   {
+    id: 5,
     title: "🌟 Another week wrapped up! 🌟",
-    image: "./img/Minport.png",
+    image: "./img/Blogposts/Minport.png",
     frontText: "Today is Lucia, but the grind doesn’t stop! 🔥",
     backText: `School is going great, and my portfolio is starting to come together (at least, I hope so 🤞). Here’s a little sneak peek of what I’ve been working on:.
      💻 Anime Project: Building a search site powered by APIs, working hard to make it both functional and fun!
@@ -303,31 +283,30 @@ Let’s keep the energy up and the ideas flowing! 🚀
                 class="video-link"
                 onclick="playVideo('videos/Myportfolio.mp4'); return false;"
                 >Watch Demo Video</a>`,
-    link: "#",
   },
   {
+    id: 6,
     title: "Another Blog Post Example 2",
-    image: "./img/Motherboard.jpg",
+    image: "./img/Blogposts/Motherboard.jpg",
     frontText: "Just sharing some thoughts on a new topic.",
     backText:
       "Here are more details and insights about the topic I mentioned in the short preview.",
-    link: "#",
   },
   {
+    id: 7,
     title: "Another Blog Post Example 3",
-    image: "./img/Virtual-pet-game.png",
+    image: "./img/Blogposts/Virtual-pet-game.png",
     frontText: "Quick update on something interesting.",
     backText:
       "More information and context about the interesting update. Hope you find it useful!",
-    link: "#",
   },
   {
+    id: 8,
     title: "Another Blog Post Example 4",
-    image: "./img/Anime-project.webp",
+    image: "./img/Blogposts/Anime-project.webp",
     frontText: "Thinking about future projects and ideas.",
     backText:
       "Some brainstorming and thoughts on what I might work on next. Stay tuned!",
-    link: "#",
   },
 ];
 
@@ -346,11 +325,12 @@ function generateNewBlogPosts() {
 function createBlogCard(blogData) {
   const card = document.createElement("div");
   card.className = "blog-card";
+  card.setAttribute("data-post-id", blogData.id);
 
   const cardInner = document.createElement("div");
   cardInner.className = "card-inner";
 
-  // Truncate text if it's too long
+  /*----- Truncate text if it's too long -----*/
   const frontText =
     blogData.frontText.length > 100
       ? blogData.frontText.substring(0, 100) + "..."
@@ -376,7 +356,7 @@ function createBlogCard(blogData) {
       <div class="back-content">
         <h3>${blogData.title}</h3>
         <p>${backText}</p>
-        <a href="${blogData.link}" class="read-full-post">Read Full Post</a>
+        <a href="./blog/blog.html?post=${blogData.id}" class="read-full-post">Read Full Post</a>
       </div>
       <span class="read-more">Click to flip back</span>
     </div>
