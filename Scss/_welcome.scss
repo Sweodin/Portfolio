@@ -3,7 +3,7 @@
 .welcome-section {
   @include center-flex;
   width: 100%;
-  background: linear-gradient(to bottom, #7ad9ff, #a0e8af);
+  background: linear-gradient(to bottom, #00a2e8, #00b4a0);
   position: relative;
 }
 
@@ -14,9 +14,9 @@
   min-height: clamp(30vh, 40vh, 50vh);
   margin: clamp(40px, 10vh, 80px) auto 0;
   padding: clamp(1rem, 3vw, 2rem);
-  background: linear-gradient(to bottom, #7ad9ff, #a0e8af);
+  background: rgba(0, 180, 160, 0.8);
   border-radius: 15px;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
   user-select: none;
 
   h1 {
@@ -25,11 +25,15 @@
     text-align: center;
     margin: 0;
     padding: 2rem;
-    background: linear-gradient(45deg, $accent-color 30%, $sonic-blue 70%);
+    background: linear-gradient(
+      45deg,
+      $accent-color 30%,
+      $softergold-color 70%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
-    animation: gradientText 3s ease infinite;
+    animation: gradientText 4s ease infinite;
     text-shadow: 10px 13px 15px rgba(34, 81, 179, 0.6);
     line-height: 1.2;
 
@@ -41,8 +45,8 @@
 
 .subtitle {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: rgba($softergold-color, 1);
-  margin-bottom: 3rem;
+  color: rgba($accent-color, 0.8);
+  margin-top: 2rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
@@ -61,13 +65,13 @@
   span {
     display: block;
     font-size: 0.9rem;
-    color: rgba($offblack-color, 0.8);
+    color: rgba($text-color-highlight, 0.8);
     margin-bottom: 0.3rem;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
   i {
-    color: $accent-color;
+    color: $offblack-color;
     font-size: 1.2rem;
   }
 }
