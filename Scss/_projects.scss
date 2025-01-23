@@ -3,7 +3,7 @@
 .projects-section {
   position: relative;
   padding: 5rem 0;
-  background: linear-gradient(to bottom, #6a99c9, #558b2f);
+  background: linear-gradient(to bottom, #d2b48c, #daa520, #ffd700);
   user-select: none;
 
   &::before {
@@ -21,11 +21,19 @@
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    background: linear-gradient(45deg, #ffd700, #ffb700);
+    background: $darkcharcoal-color;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  .section-content {
+    background: linear-gradient(to bottom, #d2b48c, #daa520, #ffd700);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 15px;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
   }
 
   .projects-filters {
@@ -42,16 +50,16 @@
 
     .filter-btn {
       padding: 0.6rem 1.2rem;
-      color: #ffd700;
-      background: rgba(34, 81, 179, 0.15);
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      color: $text-color-highlight;
+      background: rgba(34, 81, 179, 0.4);
+      border: 1px solid $text-color-highlight;
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-size: 0.85rem;
       position: relative;
       overflow: hidden;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
 
       @media (max-width: 480px) {
         padding: 0.5rem 1rem;
@@ -78,10 +86,9 @@
       &:hover,
       &.active {
         background: rgba(34, 81, 179, 0.25);
-        border-color: rgba(255, 215, 0, 0.5);
+        border-color: $text-color-highlight;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(34, 81, 179, 0.2),
-          inset 0 0 10px rgba(255, 215, 0, 0.2);
+        box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
 
         &::before {
           transform: translateX(100%);
@@ -89,7 +96,7 @@
       }
 
       &.active {
-        background: rgba(255, 215, 0, 0.15);
+        background: rgba(34, 81, 179, 0.6);
       }
     }
   }
@@ -123,6 +130,8 @@
   max-width: 380px;
   margin: 0 auto;
   position: relative;
+  border-radius: 15px;
+  /*  border: 1px solid rgba(255, 215, 0, 0.4); */
 
   @media (max-width: 480px) {
     height: 380px;
@@ -144,8 +153,8 @@
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    background: rgba(34, 81, 179, 0.05);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(34, 81, 179, 0.2);
+
     overflow: hidden;
   }
 
@@ -166,16 +175,16 @@
       flex-direction: column;
 
       h3 {
-        color: $accent-color;
+        color: $darkcharcoal-color;
         margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
 
         @media (max-width: 480px) {
           font-size: 1.1rem;
         }
       }
       p {
-        color: #fff;
+        color: $text-color-highlight;
         margin-bottom: 1rem;
         font-size: 0.95rem;
         line-height: 1.4;
@@ -202,12 +211,13 @@
 
     .tech-tag {
       padding: 0.3rem 0.8rem;
-      background: rgba(34, 81, 179, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      background: rgba(34, 81, 179, 0.4);
+      border: 1px solid $text-color-highlight;
       border-radius: 4px;
-      color: #ffd700;
+      color: $text-color;
       font-size: 0.8rem;
       transition: all 0.3s ease;
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
 
       @media (max-width: 480px) {
         padding: 0.25rem 0.6rem;
@@ -222,6 +232,7 @@
     justify-content: center;
     margin-top: auto;
     margin-bottom: 1rem;
+    border-radius: 15px;
 
     @media (max-width: 480px) {
       gap: 0.75rem;
@@ -239,16 +250,16 @@
 
     a {
       padding: 0.6rem 1.2rem;
-      color: #ffd700;
-      background: rgba(34, 81, 179, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      color: $text-color;
+      background: $darkgray-color;
+      border: 1px solid $text-color-highlight;
       border-radius: 4px;
       transition: all 0.3s ease;
       text-decoration: none;
       font-size: 0.9rem;
 
       &:hover {
-        background: rgba(34, 81, 179, 0.2);
+        background: lighten($darkgray-color, 10%);
         transform: translateY(-2px);
       }
 
@@ -293,7 +304,7 @@
 
     h3 {
       margin-bottom: 0.5rem;
-      color: $accent-color;
+      color: $darkcharcoal-color;
 
       @media (max-width: 480px) {
         font-size: 1.1rem;
@@ -302,7 +313,7 @@
     }
 
     p {
-      color: #fff;
+      color: $text-color-highlight;
       margin-bottom: auto;
       flex-grow: 0;
 
@@ -315,20 +326,23 @@
 
   .flip-prompt,
   .read-more {
-    color: $accent-color;
+    color: $text-color-highlight;
     cursor: pointer;
     display: inline-block;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    background: rgba(0, 255, 157, 0.1);
-    border: 1px solid rgba(0, 255, 157, 0.3);
+    background: #00c497;
+    border: 1px solid $text-color-highlight;
     border-radius: 4px;
     margin-top: 0.5rem;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
 
     &:hover {
-      background: rgba($color: $accent-color, $alpha: 0.2);
-      color: lighten($color: $accent-color, $amount: 10%);
+      background: darken(#00c497, 10%);
+      color: $text-color-highlight;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
     }
 
     @media (max-width: 480px) {
@@ -344,16 +358,16 @@
   margin: 3rem auto 0;
   padding: 0.8rem 2rem;
   min-width: 200px;
-  color: $accent-color;
-  background: rgba(34, 81, 179, 0.8);
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: $text-color-highlight;
+  background: #6a99c9;
+  border: 1px solid $text-color-highlight;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1rem;
   position: relative;
   overflow: hidden;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
 
   &::before {
     content: "";
@@ -373,8 +387,8 @@
   }
 
   &:hover {
-    background: rgba(34, 81, 179, 0.9);
-    border-color: #ffd700;
+    background: darken(#6a99c9, 10%);
+    border-color: $text-color-highlight;
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.2),
       inset 0 0 10px rgba(255, 215, 0, 0.1);
@@ -391,7 +405,7 @@
     box-shadow: none;
   }
 }
-.flip-btn {
+/* .flip-btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   color: $accent-color;
@@ -439,7 +453,7 @@
     box-shadow: 0 0 10px rgba(0, 255, 157, 0.2),
       inset 0 0 5px rgba(0, 255, 157, 0.1);
   }
-}
+} */
 
 /*----- Slide Out Animation -----*/
 

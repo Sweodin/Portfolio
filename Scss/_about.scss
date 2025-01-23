@@ -2,7 +2,7 @@
 
 .about-section {
   @include center-flex;
-  background: linear-gradient(to bottom, #a0e8af, #d2b48c);
+  background: linear-gradient(to bottom, #00b4a0, #7ad9ff, #a0e8af);
   width: 100%;
   position: relative;
   user-select: none;
@@ -10,19 +10,20 @@
 
 .about-card {
   @include card-styles;
-  background: linear-gradient(to bottom, #a0e8af, #d2b48c);
+  background: rgba(173, 216, 230, 0.7);
+  /* background: linear-gradient(to bottom, #a0e8af, #d2b48c); */
   display: flex;
   max-width: 1200px;
   gap: clamp(2rem, 5vw, 2rem);
   padding: clamp(1.5rem, 4vw, 3rem);
   align-items: flex-start;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
 
   .profile-image {
     flex: 0 0 clamp(200px, 35%, 400px);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
     border: 2px solid rgba(0, 255, 157, 0.1);
     aspect-ratio: 3/4;
 
@@ -31,6 +32,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+
       transition: transform 0.3s ease;
     }
 
@@ -48,12 +50,16 @@
     h2 {
       margin-bottom: clamp(1rem, 3vw, 1.5rem);
       font-family: $label-font;
+      background: $offblack-color;
+      text-align: center;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
       font-size: clamp(0.9rem, 2vw, 1.1rem);
       line-height: 1.6;
-      color: rgba($sonic-blue, 0.9);
+      color: $text-color-highlight;
       font-family: $text-font;
     }
   }
