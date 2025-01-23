@@ -92,6 +92,42 @@ section h2::after {
     opacity: 1;
   }
 }
+/* Footer Styles */
+footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+footer .footer-info {
+  margin-bottom: 1rem;
+}
+footer .footer-info .footer-name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+footer .footer-info .footer-title {
+  color: #ffd700;
+  font-size: 1rem;
+  font-weight: 500;
+}
+footer .copyright {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+footer .copyright .fa-heart {
+  color: #ffd700;
+  margin: 0 0.3rem;
+}
+
 /*----- Header and Navigation -----*/
 .header {
   position: fixed;
