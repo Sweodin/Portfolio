@@ -40,7 +40,7 @@
 
 body {
   background-attachment: fixed;
-  /* font-family: "sonic-comics"; */
+
   line-height: 1.6;
   color: $text-color-highlight;
   min-height: 100vh;
@@ -59,17 +59,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-
-    /*  background: radial-gradient(
-        circle at 10% 20%,
-        rgba($accent-color, 0.01) 0%,
-        transparent 40%
-      ),
-      radial-gradient(
-        circle at 90% 80%,
-        rgba(lighten($accent-color, 20%), 0.01) 0%,
-        transparent 40%
-      ); */
     pointer-events: none;
     z-index: -1;
   }
@@ -151,6 +140,16 @@ body {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  .main-content {
+    position: relative;
+    overflow-x: hidden; // Prevent horizontal scrolling from waves
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
   }
 
   /*----- Media queries for responsive design -----*/

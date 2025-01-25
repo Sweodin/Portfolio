@@ -51,10 +51,7 @@
     <!----- Styles ----->
 
     <link rel="stylesheet" href="index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -80,7 +77,9 @@
       <div class="header-content">
         <a href="#" class="logo">Peter Gustafsson</a>
 
-        <i class="fa-solid fa-bars active" id="menu-icon"></i>
+        <div class="menu-icon" id="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
 
         <nav class="navbar">
           <ul>
@@ -96,19 +95,41 @@
 
     <!----- Main Content ----->
 
-    <main>
-      <section id="welcome" class="welcome-section">
+    <main class="main-content">
+      <section class="welcome-section" id="welcome">
+        <!-- Floating rings -->
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+
         <div class="welcome-content">
-          <h1>Welcome to My Portfolio</h1>
-          <p class="subtitle">Frontend Developer & UI/UX Enthusiast</p>
-          <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <i class="fas fa-chevron-down"></i>
+          <h1>Welcome to My Sonic Inspired Portfolio</h1>
+          <p class="subtitle">Frontend Developer & Creative Coder</p>
+          <div class="welcome-text">
+            <p>
+              Transforming ideas into interactive experiences with modern web
+              technologies.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-item">HTML5</span>
+              <span class="tech-item">CSS3</span>
+              <span class="tech-item">JavaScript</span>
+              <span class="tech-item">SCSS</span>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="about" class="about-section">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
         <div class="about-card">
           <div class="profile-image">
             <img src="./img/Peter.jpg" alt="Your Profile Picture" />
@@ -137,6 +158,12 @@
       <!----- Skills Section ----->
 
       <section id="skills" class="skills-section">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
         <div class="skills-container">
           <h2>Skills</h2>
           <div class="skills-grid">
@@ -229,6 +256,12 @@
       <!----- Projects Section ----->
 
       <section id="projects" class="projects-section">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
         <div class="section-content">
           <h2>Featured Projects</h2>
           <div class="projects-filters">
@@ -251,88 +284,174 @@
       <!----- Blog Section ----->
 
       <section id="blog" class="blog-section">
-        <div class="blog-container">
-          <h2>My Blog</h2>
-          <div class="blog-grid" id="blog-grid">
-            <!-- Blog cards will be inserted here by JavaScript -->
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="section-container">
+          <div class="blog-container">
+            <h2>My Blog</h2>
+            <div class="blog-grid" id="blog-grid">
+              <!-- Blog cards will be inserted here by JavaScript -->
+            </div>
+            <button id="load-more-blogs" class="load-more-btn">
+              Load More
+            </button>
           </div>
         </div>
-        <button id="load-more-blogs">Load More</button>
       </section>
 
       <!----- Contact Section ----->
 
       <section id="contact" class="contact-section">
-        <h2>Contact Me</h2>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
         <div class="contact-container">
-          <div class="contact-info">
-            <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <h3>Email</h3>
-              <a
-                href="mailto:petergustafsson910@gmail.com"
-                class="contact-link"
-              >
-                petergustafsson910@gmail.com
-              </a>
+          <h2>Contact Me</h2>
+          <div class="contact-content">
+            <div class="contact-left">
+              <div class="contact-info">
+                <div class="info-item">
+                  <i class="fas fa-envelope"></i>
+                  <div class="info-details">
+                    <h3>Email</h3>
+                    <p>
+                      <a
+                        href="mailto:peter.gustafsson910@gmail.com"
+                        class="email-link"
+                        >peter.gustafsson910@gmail.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-phone"></i>
+                  <div class="info-details">
+                    <h3>Phone</h3>
+                    <p>+46 73-xxx xx xx</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="info-details">
+                    <h3>Location</h3>
+                    <p>Bjuv, Sweden</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="social-links">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                  <a
+                    href="https://github.com/Sweodin"
+                    target="_blank"
+                    class="social-link"
+                    title="GitHub"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/peter-gustafsson-3206a8108"
+                    target="_blank"
+                    class="social-link"
+                    title="LinkedIn"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a
+                    href="https://twitter.com/@pg85developer"
+                    target="_blank"
+                    class="social-link"
+                    title="Twitter"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/peter_gus85/"
+                    target="_blank"
+                    class="social-link"
+                    title="Instagram"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a
+                    href="https://bsky.app/profile/sweodin.bsky.social"
+                    target="_blank"
+                    class="social-link"
+                    title="Bluesky"
+                  >
+                    <i class="fas fa-cloud"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="info-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <h3>Based in</h3>
-              <p>Bjuv, Skåne, Sweden</p>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-comment"></i>
-              <h3>Let's Connect!</h3>
-              <p>Feel free to reach out through any of these platforms:</p>
-            </div>
-            <div class="social-links">
-              <a
-                href="https://github.com/Sweodin"
-                target="_blank"
-                class="social-link"
-                title="GitHub"
+
+            <div class="contact-right">
+              <form
+                id="contact-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                class="contact-form"
               >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/peter-gustafsson-3206a8108"
-                target="_blank"
-                class="social-link"
-                title="LinkedIn"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a
-                href="https://twitter.com/@pg85developer"
-                target="_blank"
-                class="social-link"
-                title="Twitter"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/peter_gus85/"
-                target="_blank"
-                class="social-link"
-                title="Instagram"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a
-                href="https://bsky.app/profile/sweodin.bsky.social"
-                target="_blank"
-                class="social-link"
-                title="Bluesky"
-              >
-                <i class="fas fa-cloud"></i>
-              </a>
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value="aeb99592-fa52-4d58-91c9-afecddaafe92"
+                />
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    required
+                    class="form-input"
+                    rows="4"
+                    style="resize: none"
+                  ></textarea>
+                </div>
+
+                <input
+                  type="hidden"
+                  name="redirect"
+                  value="https://web3forms.com/success"
+                />
+
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div id="form-result" class="form-result"></div>
+              </form>
+              <div id="form-result"></div>
             </div>
           </div>
         </div>
       </section>
     </main>
-
     <!----- Footer ----->
     <footer>
       <div class="footer-content">
@@ -340,9 +459,16 @@
           <p class="footer-name">Peter Gustafsson</p>
           <p class="footer-title">Full Stack Developer</p>
         </div>
-        <p class="copyright">
-          Built with <i class="fas fa-heart"></i> in Sweden | &copy; 2024 All
-          rights reserved
+        <div class="footer-links">
+          <a href="#welcome">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p class="footer-copyright">
+          2024 Peter Gustafsson. All rights reserved.
         </p>
       </div>
     </footer>

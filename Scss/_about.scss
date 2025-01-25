@@ -1,102 +1,221 @@
 /*----- About Section -----*/
 
 .about-section {
-  @include center-flex;
-  background: linear-gradient(to bottom, #00b4a0, #7ad9ff, #a0e8af);
-  width: 100%;
+  margin-top: 0;
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #2ba9e0 0%, #1884d8 50%, #0261d1 100%);
   position: relative;
-  user-select: none;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05) 25%,
+        transparent 25%
+      ),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    animation: backgroundScroll 30s linear infinite;
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+  }
 }
 
 .about-card {
-  @include card-styles;
-  background: rgba(173, 216, 230, 0.7);
-  /* background: linear-gradient(to bottom, #a0e8af, #d2b48c); */
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
-  max-width: 1200px;
-  gap: clamp(2rem, 5vw, 2rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  gap: 3rem;
   align-items: flex-start;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 4px solid #ffd700;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
 
-  .profile-image {
-    flex: 0 0 clamp(200px, 35%, 400px);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-    border: 2px solid rgba(0, 255, 157, 0.1);
-    aspect-ratio: 3/4;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-
-      transition: transform 0.3s ease;
-    }
-
-    &:hover img {
-      transform: scale(1.05);
-    }
-  }
-
-  .about-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1rem, 3vw, 1.5rem);
-
-    h2 {
-      margin-bottom: clamp(1rem, 3vw, 1.5rem);
-      font-family: $label-font;
-      background: $offblack-color;
-      text-align: center;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    p {
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      line-height: 1.6;
-      color: $text-color-highlight;
-      font-family: $text-font;
-    }
+  /*----- Sonic ring decoration -----*/
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -29px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 4px solid #ffd700;
+    box-shadow: 0 0 20px #ffd700;
+    animation: ringGlow 2s ease-in-out infinite;
+    z-index: 2;
   }
 }
 
-/*----- Responsive design for about section -----*/
+.profile-image {
+  flex: 0 0 clamp(200px, 35%, 400px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 255, 157, 0.1);
+  aspect-ratio: 3/4;
+  position: relative;
+  z-index: 2;
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 0;
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    background: linear-gradient(45deg, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    text-align: left;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: #ffd700;
+      transform-origin: left;
+      transform: scaleX(1);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+  }
+}
+
+/*----- Animations -----*/
+@keyframes ringGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #ffd700;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px #ffd700;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes backgroundScroll {
+  0% {
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+  100% {
+    background-position: 40px 0, 40px 20px, 60px -20px, 20px 0px;
+  }
+}
+
+/*----- Responsive design -----*/
 @media (max-width: 768px) {
+  .about-section {
+    padding: 3rem 1rem;
+  }
+
   .about-card {
+    padding: 2rem;
+    gap: 2rem;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: clamp(1.25rem, 3vw, 2rem);
+  }
 
-    .profile-image {
-      flex: 0 0 auto;
-      width: clamp(180px, 60%, 300px);
-      margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+  .profile-image {
+    flex: 0 0 100%;
+    max-width: min(100%, 300px);
+    margin: 0 auto 2rem;
+    aspect-ratio: 1/1;
+  }
+
+  .about-content {
+    text-align: center;
+    padding: 0 1rem;
+
+    h2 {
+      display: inline-block;
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%) scaleX(1);
+      }
     }
 
-    .about-content {
-      padding: 0;
+    p {
+      text-align: left;
+      margin-bottom: 1rem;
     }
   }
 }
 
 @media (max-width: 480px) {
-  .about-card {
-    padding: clamp(1rem, 2.5vw, 1.5rem);
+  .about-section {
+    padding: 2rem 0.5rem;
+  }
 
-    .profile-image {
-      width: clamp(150px, 80%, 250px);
+  .about-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .profile-image {
+    max-width: 250px;
+  }
+
+  .about-content {
+    padding: 0 0.5rem;
+
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 2rem);
     }
 
-    .about-content p {
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      line-height: 1.5;
+    p {
+      font-size: clamp(0.9rem, 4vw, 1rem);
     }
   }
 }
