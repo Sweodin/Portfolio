@@ -31,35 +31,131 @@ document.querySelectorAll('a[href^="#"]:not(.logo)').forEach((anchor) => {
   });
 });
 
-/*----- Toggle menu for the navbar -----*/
-
+/*----- Menu Functionality -----*/
 const menuIcon = document.querySelector("#menu-icon");
 const navbar = document.querySelector(".navbar");
 
-menuIcon.addEventListener("click", () => {
-  navbar.classList.toggle("active");
-  menuIcon.classList.toggle("active");
-});
+// Toggle menu
+if (menuIcon && navbar) {
+  menuIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menuIcon.classList.toggle("active");
+    navbar.classList.toggle("active");
+  });
 
-/*----- Close menu when clicking outside -----*/
-document.addEventListener("click", (e) => {
-  if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+      menuIcon.classList.remove("active");
+      navbar.classList.remove("active");
+    }
+  });
+
+  // Close menu when clicking a nav link
+  navbar.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuIcon.classList.remove("active");
+      navbar.classList.remove("active");
+    });
+  });
+
+  // Close menu when scrolling
+  window.addEventListener("scroll", () => {
     menuIcon.classList.remove("active");
     navbar.classList.remove("active");
-  }
-});
+  });
+}
 
-/*----- Close menu when clicking a nav link -----*/
-navbar.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuIcon.classList.remove("active");
-    navbar.classList.remove("active");
+/*----- Add active class to current section in navbar -----*/
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").slice(1) === current) {
+      link.classList.add("active");
+    }
   });
 });
 
 /*----- Contact Form Handling -----*/
-if (document.querySelector(".contact-section")) {
-  // Contact section interactions can be added here if needed
+const contactForm = document.getElementById("contact-form");
+const formResult = document.getElementById("form-result");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Show loading state
+    const submitBtn = contactForm.querySelector(".submit-btn");
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(contactForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        mode: "cors",
+        credentials: "same-origin",
+        body: json
+      });
+
+      if (response.status === 429) {
+        formResult.classList.add("error");
+        formResult.innerHTML = "Too many attempts. Please try again in a few minutes.";
+        return;
+      }
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        formResult.classList.remove("error");
+        formResult.classList.add("success");
+        formResult.innerHTML = "Message sent successfully!";
+        contactForm.reset();
+      } else {
+        formResult.classList.add("error");
+        formResult.innerHTML = data.message || "Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      formResult.classList.add("error");
+      if (error.name === "TypeError" && error.message.includes("Failed to fetch")) {
+        formResult.innerHTML = "Network error. Please check your connection and try again.";
+      } else {
+        formResult.innerHTML = "Failed to send message. Please try again later.";
+      }
+    } finally {
+      // Restore button state
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        formResult.innerHTML = "";
+      }, 5000);
+    }
+  });
 }
 
 /*----- Project Card Generation -----*/
@@ -356,9 +452,11 @@ function createBlogCard(blogData) {
       <div class="back-content">
         <h3>${blogData.title}</h3>
         <p>${backText}</p>
-        <a href="./blog/blog.html?post=${blogData.id}" class="read-full-post">Read Full Post</a>
       </div>
-      <span class="read-more">Click to flip back</span>
+      <div class="button-container">
+        <a href="./blog/blog.html?post=${blogData.id}" class="read-full-post">Read Full Post</a>
+        <span class="read-more">Click to flip back</span>
+      </div>
     </div>
   `;
 
@@ -460,3 +558,55 @@ function playVideo(videoUrl) {
     }
   });
 }
+
+const form = document.getElementById("contact-form");
+const result = document.getElementById("form-result");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  result.innerHTML = "Sending message...";
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      mode: "cors",
+      credentials: "same-origin",
+      body: json
+    });
+
+    if (response.status === 429) {
+      result.classList.add("error");
+      result.innerHTML = "Too many attempts. Please try again in a few minutes.";
+      return;
+    }
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      result.classList.remove("error");
+      result.classList.add("success");
+      result.innerHTML = "Message sent successfully!";
+      form.reset();
+    } else {
+      result.classList.add("error");
+      result.innerHTML = data.message || "Something went wrong. Please try again.";
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    result.classList.add("error");
+    if (error.name === "TypeError" && error.message.includes("Failed to fetch")) {
+      result.innerHTML = "Network error. Please check your connection and try again.";
+    } else {
+      result.innerHTML = "Failed to send message. Please try again later.";
+    }
+  }
+});

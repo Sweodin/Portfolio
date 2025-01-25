@@ -1,18 +1,51 @@
 /*----- Common Styles -----*/
 
-/*----- Common section styles -----*/
-section {
-  padding: clamp(2rem, 5vw, 4rem) 0;
+// Common ring styles
+.ring {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #ffd700;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  animation: ringFloat 3s ease-out infinite;
 
-  h2 {
-    @include section-title;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-    text-align: center;
-    background: linear-gradient(45deg, #2251b3, #ffd700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  &:nth-child(1) {
+    top: 20%;
+    left: 8%;
+    animation-delay: 0.5s;
+  }
+
+  &:nth-child(2) {
+    top: 31%;
+    right: 20%;
+    animation-delay: 1s;
+  }
+
+  &:nth-child(3) {
+    top: 41%;
+    left: 23%;
+    animation-delay: 1.5s;
+  }
+
+  &:nth-child(4) {
+    top: 47%;
+    right: 30%;
+    animation-delay: 2s;
+  }
+
+  &:nth-child(5) {
+    top: 55%;
+    left: 38%;
+    animation-delay: 2.5s;
+  }
+
+  &:nth-child(6) {
+    top: 63%;
+    right: 40%;
+    animation-delay: 3s;
   }
 }
 
@@ -58,44 +91,34 @@ section {
   }
 }
 
-/* Footer Styles */
-footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  padding: 2rem 0;
-  text-align: center;
-  margin-top: auto;
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
+/*----- Ring Float Animations -----*/
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+@keyframes ringFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-
-  .footer-info {
-    margin-bottom: 1rem;
-
-    .footer-name {
-      color: #ffffff;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-title {
-      color: #ffd700;
-      font-size: 1rem;
-      font-weight: 500;
-    }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
   }
+}
 
-  .copyright {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+/* @keyframes backgroundScroll {
+  0% {
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  }
+  100% {
+    background-position: -60px -60px, -60px -30px, -30px -90px, -90px -60px;
+  }
+} */
 
-    .fa-heart {
-      color: #ffd700;
-      margin: 0 0.3rem;
-    }
+@keyframes backgroundScroll {
+  0% {
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+  }
+  100% {
+    background-position: 0 100vh, 0 calc(100vh + 20px), 20px calc(100vh - 20px),
+      -20px 100vh;
   }
 }
