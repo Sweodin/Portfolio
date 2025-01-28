@@ -134,11 +134,11 @@
   cursor: pointer;
 
   @media (max-width: 768px) {
-    height: 360px;
+    /*  height: 360px; */
   }
 
   @media (max-width: 480px) {
-    height: 340px;
+    /*  height: 340px; */
   }
 
   .card-inner {
@@ -235,6 +235,7 @@
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Add this line */
 
     .back-content {
       flex: 1;
@@ -290,7 +291,7 @@
     .project-links {
       display: flex;
       gap: 1rem;
-      margin-bottom: 1rem;
+      /* margin-bottom: 1rem; */
       justify-content: center;
 
       a {
