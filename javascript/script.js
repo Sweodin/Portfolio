@@ -113,16 +113,17 @@ if (contactForm) {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
         },
         mode: "cors",
         credentials: "same-origin",
-        body: json
+        body: json,
       });
 
       if (response.status === 429) {
         formResult.classList.add("error");
-        formResult.innerHTML = "Too many attempts. Please try again in a few minutes.";
+        formResult.innerHTML =
+          "Too many attempts. Please try again in a few minutes.";
         return;
       }
 
@@ -135,15 +136,21 @@ if (contactForm) {
         contactForm.reset();
       } else {
         formResult.classList.add("error");
-        formResult.innerHTML = data.message || "Something went wrong. Please try again.";
+        formResult.innerHTML =
+          data.message || "Something went wrong. Please try again.";
       }
     } catch (error) {
       console.error("Error:", error);
       formResult.classList.add("error");
-      if (error.name === "TypeError" && error.message.includes("Failed to fetch")) {
-        formResult.innerHTML = "Network error. Please check your connection and try again.";
+      if (
+        error.name === "TypeError" &&
+        error.message.includes("Failed to fetch")
+      ) {
+        formResult.innerHTML =
+          "Network error. Please check your connection and try again.";
       } else {
-        formResult.innerHTML = "Failed to send message. Please try again later.";
+        formResult.innerHTML =
+          "Failed to send message. Please try again later.";
       }
     } finally {
       // Restore button state
@@ -166,7 +173,7 @@ const projectsData = [
     description: "Dive into my personal portfolio website.",
     longDescription:
       "A dynamic showcase of my skills built with HTML, SCSS, and JavaScript. Experience a nostalgic journey through a Sonic the Hedgehog-inspired theme, bringing a touch of retro gaming flair to my web development work.",
-    image: "./img/projects/Minport.png",
+    image: "./img/Projects/Minport.png",
     tech: ["HTML", "SCSS", "JavaScript"],
     githubLink: "#",
     liveLink: "#",
@@ -177,7 +184,7 @@ const projectsData = [
     description: "Explore the vast world of Anime.",
     longDescription:
       "With my Anime Search App. This application leverages the Jikan API to provide a seamless experience for discovering new and favorite anime titles, all within a sleek and contemporary user interface.",
-    image: "./img/projects/Animeproject.jpg",
+    image: "./img/Projects/Animeproject.jpg",
     tech: ["React", "API", "CSS"],
     githubLink: "#",
     liveLink: "#",
@@ -189,7 +196,7 @@ const projectsData = [
       "An interactive virtual pet game with animations and game mechanics.",
     longDescription:
       "Engage with a charming digital companion in my Virtual Pet Game. This project brings a virtual pet to life with captivating animations and engaging game mechanics, offering an interactive and entertaining experience.",
-    image: "./img/projects/Virtual-pet-game.png",
+    image: "./img/Projects/Virtual-pet-game.png",
     tech: ["JavaScript", "Canvas", "CSS"],
     githubLink: "#",
     liveLink: "#",
@@ -576,16 +583,17 @@ form.addEventListener("submit", async function (e) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
       },
       mode: "cors",
       credentials: "same-origin",
-      body: json
+      body: json,
     });
 
     if (response.status === 429) {
       result.classList.add("error");
-      result.innerHTML = "Too many attempts. Please try again in a few minutes.";
+      result.innerHTML =
+        "Too many attempts. Please try again in a few minutes.";
       return;
     }
 
@@ -598,13 +606,18 @@ form.addEventListener("submit", async function (e) {
       form.reset();
     } else {
       result.classList.add("error");
-      result.innerHTML = data.message || "Something went wrong. Please try again.";
+      result.innerHTML =
+        data.message || "Something went wrong. Please try again.";
     }
   } catch (error) {
     console.error("Error:", error);
     result.classList.add("error");
-    if (error.name === "TypeError" && error.message.includes("Failed to fetch")) {
-      result.innerHTML = "Network error. Please check your connection and try again.";
+    if (
+      error.name === "TypeError" &&
+      error.message.includes("Failed to fetch")
+    ) {
+      result.innerHTML =
+        "Network error. Please check your connection and try again.";
     } else {
       result.innerHTML = "Failed to send message. Please try again later.";
     }
