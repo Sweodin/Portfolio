@@ -682,7 +682,8 @@ $darkcharcoal-color: #555555; */
     gap: 1.5rem;
   }
   .profile-image {
-    max-width: 250px;
+    max-width: 80%;
+    max-width: min(80%, 200px);
   }
   .about-content {
     padding: 0 0.5rem;
@@ -1050,12 +1051,12 @@ $darkcharcoal-color: #555555; */
 }
 @media (max-width: 768px) {
   .project-card {
-    height: 360px;
+    /*  height: 360px; */
   }
 }
 @media (max-width: 480px) {
   .project-card {
-    height: 340px;
+    /*  height: 340px; */
   }
 }
 .project-card .card-inner {
@@ -1143,6 +1144,7 @@ $darkcharcoal-color: #555555; */
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Add this line */
 }
 .project-card .card-back .back-content {
   flex: 1;
@@ -1192,7 +1194,7 @@ $darkcharcoal-color: #555555; */
 .project-card .card-back .project-links {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   justify-content: center;
 }
 .project-card .card-back .project-links a {
