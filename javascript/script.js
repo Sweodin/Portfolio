@@ -198,7 +198,7 @@ const projectsData = [
       "Engage with a charming digital companion in my Virtual Pet Game. This project brings a virtual pet to life with captivating animations and engaging game mechanics, offering an interactive and entertaining experience.",
     image: "./img/Projects/Virtual-pet-game.png",
     tech: ["JavaScript", "Canvas", "CSS"],
-    githubLink: "#",
+    githubLink: "https://github.com/Sweodin/Pet-game",
     liveLink: "#",
     category: "frontend",
   },
