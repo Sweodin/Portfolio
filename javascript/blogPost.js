@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Turning Challenges into Opportunities: My Journey into Web Development",
       date: "September 19, 2024",
       author: "Peter Gustafsson",
-      image: "../img/Blogposts/Motherboard.jpg",
+      image: "../img/Blogposts/Moving-forward.jpg",
       content: `
         <p>Starting something new is never easy, but sometimes life pushes you in just the right direction.
          For me, it all began when I moved back to Helsingborg with my family, determined to give us a fresh start and build a brighter future.
@@ -53,14 +53,53 @@ document.addEventListener("DOMContentLoaded", function () {
       `,
     },
     2: {
+      title: "The new Keyboard",
+      date: "October 24, 2024",
+      author: "Peter Gustafsson",
+      image: "../img/Blogposts/Keyboard.jpg",
+      content: `
+      <h2>Out with the Old, In with the New!</h2>
+
+        <p>Finally laid my old keyboard to rest!  After years of faithful service (and a few too many sticky keys!), it was time for an upgrade.
+          I'm thrilled to introduce my new companion in code: the Asus ROG 75%!
+      </p>
+
+      <h2>First Impressions: ROG 75% Keyboard Bliss</h2>
+
+      <p>
+        What a difference a keyboard makes!  The ROG 75% is a dream to type on.
+        It's made a noticeable difference in my typing speed and comfort, which is crucial when you're spending hours writing code.
+          Plus, let's be honest, the customizable RGB lighting is pretty awesome and adds a bit of fun to my setup!
+      </p>
+
+      <h2>Coding Progress Update: Frontend Focus</h2>
+
+      <p>
+        On the coding front, things are really clicking.
+        I've been diving deeper into frontend technologies, really getting comfortable with HTML, Sass, and React.
+        I recently tackled a challenge working with these technologies.
+        It's incredibly satisfying to see ideas come to life on the screen, and these tools are making the process more efficient and enjoyable.
+      </p>
+
+      <h2>Looking Ahead: Web Development and Beyond</h2>
+
+      <p>
+      But that's all part of the learning process, right?  
+      I'm excited to share more updates as the game project progresses and as I continue my journey into the world of web development! Stay tuned!
+      </p>
+      `,
+    },
+    3: {
       title: "The Art of Responsive Design",
-      date: "January 20, 2024",
+      date: "November 15, 2024",
       author: "Peter Gustafsson",
       image: "../img/Blogposts/TLT.jpg",
       content: `
-        <p>In today's digital landscape, responsive design isn't just a nice-to-have—it's essential. With users accessing websites from various devices, we need to ensure our designs adapt seamlessly to different screen sizes.</p>
+        <p>In today's digital landscape, responsive design isn't just a nice-to-have—it's essential. 
+        With users accessing websites from various devices, we need to ensure our designs adapt seamlessly to different screen sizes.</p>
 
         <h2>Key Principles of Responsive Design</h2>
+
         <ul>
           <li>Fluid Grids</li>
           <li>Flexible Images</li>
@@ -68,7 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <li>Mobile-First Approach</li>
         </ul>
 
-        <p>One of the most important aspects of responsive design is understanding breakpoints. Here's a common approach I use:</p>
+        <p>One of the most important aspects of responsive design is understanding breakpoints. 
+         Here's a common approach I use:</p>
 
         <code>
         /* Mobile First */
@@ -92,8 +132,98 @@ document.addEventListener("DOMContentLoaded", function () {
         </code>
 
         <h2>Testing Across Devices</h2>
-        <p>A responsive design is only as good as its testing process. I always ensure to test my designs across multiple devices and browsers to guarantee a consistent experience.</p>
+        <p>A responsive design is only as good as its testing process.
+        I always ensure to test my designs across multiple devices and browsers to guarantee a consistent experience.</p>
       `,
+    },
+    4: {
+      title: "Sunday Vibes, Monday Mindset:",
+      date: "December 8, 2024",
+      author: "Peter Gustafsson",
+      image: "../img/Blogposts/Monday.jpg",
+      content: `
+      <h2>Gear Up for a Productive Week!</h2>
+
+      <p>Sunday evening... that sweet spot between weekend relaxation and the start of a new work week. ... Monday mindset!</p>
+
+      <h2>Reflect and Recharge: Fuel Your Productivity Engine</h2>
+
+  <p>Before diving into planning, take a few moments to simply recharge. ... fueling up your "productivity engine."</p>
+
+  <h2>Set Intentions, Not Just To-Dos: Find Your Purpose</h2>
+
+  <p>Instead of just making a long list of tasks, try setting intentions for the week. ... beyond just ticking off boxes.</p>
+
+  <h2>Prioritize and Plan (Smartly): Focus on Your "Rocks"</h2>
+
+  <p>Now, let's get practical. Look at your upcoming week and identify the 2-3 most important tasks or projects. ... leads to burnout.</p>
+
+  <h2>Embrace Positivity and Purpose: Fuel Your Motivation</h2>
+
+  <p>Approach the week with a positive attitude and a sense of purpose. ... overall progress.</p>
+
+  <h2>Small Steps, Big Wins: The Power of Consistency</h2>
+
+  <p>Don't underestimate the power of small, consistent actions. ... build momentum.</p>
+
+  <h2>Let's Make it Count!</h2>
+
+  <p>So, as you transition from Sunday vibes to Monday mindset, remember to recharge, set intentions, prioritize, embrace positivity, and focus on consistent progress. ... Let's make it count, people!</p>
+ `,
+    },
+    5: {
+      title: "Week in Review:",
+      date: "December 13, 2024",
+      author: "Peter Gustafsson",
+      image: "../img/Blogposts/Minport.png",
+      content: `
+
+      <h2>Portfolio Progress, Anime APIs, and Backend Adventures!</h2>
+
+      <p>Another week of learning and coding is in the books! ... fingers crossed it's all coming together as planned! 🤞</p>
+
+  <h2>School's Going Great: Deep Dive into Web Dev</h2>
+  <p>This week in school has been particularly rewarding.
+   ... enjoying fun things like animations and projects.</p>
+
+  <h2>Portfolio Sneak Peek: Building My Digital Showcase</h2>
+  <p>Speaking of the portfolio, progress is definitely being made! ... share the finished product with you all soon!</p>
+
+  <h2>Anime Project: API-Powered Search Fun!</h2>
+  <p>One of the exciting projects I've been immersed in is my Anime search site. ... enhance the user experience.</p>
+
+  <h2>Event Tickets Backend: Node.js, TypeScript, and Database Magic</h2>
+  <p>On the backend side, I've been tackling the Event Tickets project. ... see this project come to fruition.</p>
+
+  <h2>Keeping the Momentum Going!</h2>
+  <p>The energy is high, and the ideas are flowing! ... development journeys! 🚀</p>
+  
+
+  <p><a
+                href="../videos/Myportfolio.mp4"
+                class="video-link"
+                onclick="playVideo('videos/Myportfolio.mp4'); return false;"
+                >Watch Demo Video</a>
+</p>
+  
+
+`,
+    },
+    6: {
+      title: "Exciting Progress on My React Project!",
+      date: "December 17, 2024",
+      author: "Peter Gustafsson",
+      image: "../img/Blogposts/Monday.jpg",
+      content: `
+`,
+    },
+    7: {
+      title: "Sunday Vibes, Monday Mindset:",
+      date: "December 8, 2024",
+      author: "Peter Gustafsson",
+      image: "../img/Blogposts/Monday.jpg",
+      content: `
+`,
     },
   };
 

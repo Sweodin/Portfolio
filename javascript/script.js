@@ -175,8 +175,8 @@ const projectsData = [
       "A dynamic showcase of my skills built with HTML, SCSS, and JavaScript. Experience a nostalgic journey through a Sonic the Hedgehog-inspired theme, bringing a touch of retro gaming flair to my web development work.",
     image: "./img/Projects/Minport.png",
     tech: ["HTML", "SCSS", "JavaScript"],
-    githubLink: "#",
-    liveLink: "#",
+    githubLink: "https://github.com/Sweodin/Portfolio",
+    liveLink: "https://sweodin.github.io/Portfolio/",
     category: "frontend",
   },
   {
@@ -186,8 +186,8 @@ const projectsData = [
       "With my Anime Search App. This application leverages the Jikan API to provide a seamless experience for discovering new and favorite anime titles, all within a sleek and contemporary user interface.",
     image: "./img/Projects/Animeproject.jpg",
     tech: ["React", "API", "CSS"],
-    githubLink: "#",
-    liveLink: "#",
+    githubLink: "https://github.com/Sweodin/Anime-Api",
+    liveLink: "https://imaginative-lamington-46988f.netlify.app/",
     category: "web",
   },
   {
@@ -306,8 +306,17 @@ const loadMoreBlogsButton = document.getElementById("load-more-blogs");
 const blogPostsData = [
   {
     id: 1,
-    title: "The new Keyboard",
-    image: "./img/Blogposts/Motherboard.jpg",
+    title: "✨ Turning Challenges into Opportunities ✨",
+    image: "./img/Blogposts/Moving-forward.jpg",
+    frontText: "My Journey into Web Development,",
+    backText: `Starting something new is never easy, but sometimes life pushes you in just the right direction.
+       For me, it all began when I moved back to Helsingborg with my family, determined to give us a fresh start and build a brighter future.
+       This wasn't just about a new home — it was about a new beginning for me, my career, and our family.`,
+  },
+  {
+    id: 2,
+    title: "✨ The new Keyboard ✨",
+    image: "./img/Blogposts/Keyboard.jpg",
     frontText:
       "After a long time I have finally found the perfect keyboard for me.",
     backText: `Finally upgraded my keyboard after the last one gave up—loving the new Asus ROG 75%! It’s been great for coding,
@@ -318,7 +327,7 @@ const blogPostsData = [
               challenges ahead!`,
   },
   {
-    id: 2,
+    id: 3,
     title: "✨ Another Step Forward: Weekend Hustle ✨",
     image: "./img/Blogposts/TLT.jpg",
     frontText:
@@ -334,8 +343,8 @@ const blogPostsData = [
               each other!`,
   },
   {
-    id: 3,
-    title: "Sunday vibes, Monday mindset!",
+    id: 4,
+    title: "✨Sunday vibes, Monday mindset!✨",
     image: "./img/Blogposts/Monday.jpg",
     frontText:
       "A new week begins tomorrow, and it’s the perfect time to refocus and recharge.",
@@ -346,27 +355,6 @@ const blogPostsData = [
               wins, so let’s keep pushing forward!
               Here’s to a productive and fulfilling week ahead. Let’s make
               it count, people!`,
-  },
-  {
-    id: 4,
-    title: "Exciting Progress on My React Project!",
-    image: "./img/Blogposts/Anime-vid.png",
-    frontText:
-      "Currently working on a React project, an anime search with an API.",
-    backText: `Here's a quick peek into my progress so far (see video)!
-              This project has been a great learning experience in: API
-              Integration React Development Combining creativity and
-              functionality.
-              Still a work in progress, but I’m proud of how far I’ve
-              come! Today feels like a good day, reflecting on this
-              journey.
-              Feel free to share your thoughts or tips—always open to
-              learning!s
-              <a
-                href="#"
-                class="video-link"
-                onclick="playVideo('videos/Anime.mp4'); return false;"
-                >Watch Demo Video</a>`,
   },
   {
     id: 5,
@@ -389,14 +377,47 @@ Let’s keep the energy up and the ideas flowing! 🚀
   },
   {
     id: 6,
-    title: "Another Blog Post Example 2",
-    image: "./img/Blogposts/Motherboard.jpg",
-    frontText: "Just sharing some thoughts on a new topic.",
-    backText:
-      "Here are more details and insights about the topic I mentioned in the short preview.",
+    title: "✨Exciting Progress on My React Project!✨",
+    image: "./img/Blogposts/Anime-vid.png",
+    frontText:
+      "Currently working on a React project, an anime search with an API.",
+    backText: `Here's a quick peek into my progress so far (see video)!
+              This project has been a great learning experience in: API
+              Integration React Development Combining creativity and
+              functionality.
+              Still a work in progress, but I’m proud of how far I’ve
+              come! Today feels like a good day, reflecting on this
+              journey.
+              Feel free to share your thoughts or tips—always open to
+              learning!s
+              <a
+                href="#"
+                class="video-link"
+                onclick="playVideo('videos/Anime.mp4'); return false;"
+                >Watch Demo Video</a>`,
   },
   {
     id: 7,
+    title: "🌟 Another week wrapped up! 🌟",
+    image: "./img/Blogposts/Minport.png",
+    frontText: "Today is Lucia, but the grind doesn’t stop! 🔥",
+    backText: `School is going great, and my portfolio is starting to come together (at least, I hope so 🤞). Here’s a little sneak peek of what I’ve been working on:.
+     💻 Anime Project: Building a search site powered by APIs, working hard to make it both functional and fun!
+     🎫 Event Tickets with QR Codes:
+Tackling backend magic with Node.js, TypeScript, and a database.
+The flow is strong, and who knows? Maybe I’ll keep going tonight! For now, I’m just enjoying the process and learning something new every day.
+Wishing you all a fantastic weekend ahead! 🎉
+Let’s keep the energy up and the ideas flowing! 🚀
+
+<a
+                href="#"
+                class="video-link"
+                onclick="playVideo('videos/Myportfolio.mp4'); return false;"
+                >Watch Demo Video</a>`,
+  },
+
+  {
+    id: 8,
     title: "Another Blog Post Example 3",
     image: "./img/Blogposts/Virtual-pet-game.png",
     frontText: "Quick update on something interesting.",
@@ -404,7 +425,7 @@ Let’s keep the energy up and the ideas flowing! 🚀
       "More information and context about the interesting update. Hope you find it useful!",
   },
   {
-    id: 8,
+    id: 9,
     title: "Another Blog Post Example 4",
     image: "./img/Blogposts/Anime-project.webp",
     frontText: "Thinking about future projects and ideas.",
