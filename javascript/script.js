@@ -199,7 +199,7 @@ const projectsData = [
     image: "./img/Projects/Virtual-pet-game.png",
     tech: ["JavaScript", "Canvas", "CSS"],
     githubLink: "https://github.com/Sweodin/Pet-game",
-    liveLink: "#",
+    liveLink: "https://sweodin.github.io/Pet-game/",
     category: "frontend",
   },
 ];
