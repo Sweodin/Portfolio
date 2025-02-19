@@ -15,7 +15,8 @@
   min-height: 100vh;
   background: linear-gradient(180deg, #0261d1 0%, #1884d8 50%, #2ba9e0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
   padding-bottom: 2rem;
 
   &::before {
