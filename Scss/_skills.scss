@@ -9,7 +9,7 @@
   margin-top: -2px;
   &::before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -28,6 +28,10 @@
     opacity: 0.3;
     z-index: 1;
     pointer-events: none;
+
+    @media (max-width: 768px) {
+      animation: none; /* Disable animation on mobile */
+    }
   }
 }
 

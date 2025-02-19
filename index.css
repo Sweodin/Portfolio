@@ -334,7 +334,7 @@ $darkcharcoal-color: #555555; */
 }
 .welcome-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -346,6 +346,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .welcome-section::before {
+    animation: none; /* Disable animation on mobile */
+  }
 }
 
 /*----- welcome-content -----*/
@@ -516,7 +521,7 @@ $darkcharcoal-color: #555555; */
 }
 .about-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -528,6 +533,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .about-section::before {
+    animation: none; /* Disable animation on mobile */
+  }
 }
 
 .about-card {
@@ -708,7 +718,7 @@ $darkcharcoal-color: #555555; */
 }
 .skills-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -720,6 +730,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .skills-section::before {
+    animation: none; /* Disable animation on mobile */
+  }
 }
 
 .skills-container {
@@ -965,7 +980,7 @@ $darkcharcoal-color: #555555; */
 }
 .projects-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -977,6 +992,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .projects-section::before {
+    animation: none; /*----- Disable animation on smaller screens -----*/
+  }
 }
 
 .projects-filters {
@@ -1490,7 +1510,7 @@ $darkcharcoal-color: #555555; */
 }
 .blog-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -1502,6 +1522,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .blog-section::before {
+    animation: none; /* Disable animation on mobile */
+  }
 }
 
 .section-container {
@@ -2137,7 +2162,7 @@ $darkcharcoal-color: #555555; */
 }
 .contact-section::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -2149,6 +2174,11 @@ $darkcharcoal-color: #555555; */
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .contact-section::before {
+    animation: none; /* Disable animation on mobile */
+  }
 }
 
 .contact-container {
