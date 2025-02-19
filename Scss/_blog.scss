@@ -4,8 +4,9 @@
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #0261d1 0%, #1884d8 50%, #2ba9e0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 
   &::before {
     content: "";
@@ -49,6 +50,17 @@
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 4px solid #ffd700;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  -webkit-backdrop-filter: blur(10px);
+
+  @supports not (backdrop-filter: blur(10px)) {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 
   @media (max-width: 480px) {
     padding: 1rem;
@@ -120,6 +132,17 @@
   backdrop-filter: blur(5px);
   font-size: 1rem;
   min-width: 200px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  -webkit-backdrop-filter: blur(5px);
+
+  @supports not (backdrop-filter: blur(5px)) {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 
   &:hover {
     background: rgba(255, 215, 0, 0.2);
@@ -168,6 +191,17 @@
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.05)
+      );
+      -webkit-backdrop-filter: blur(10px);
+
+      @supports not (backdrop-filter: blur(10px)) {
+        /* Fallback for browsers that don't support backdrop-filter */
+        background: rgba(30, 41, 59, 0.95);
+      }
 
       @media (max-width: 480px) {
         padding: 1rem;

@@ -328,7 +328,8 @@ $darkcharcoal-color: #555555; */
   min-height: 100vh;
   background: linear-gradient(180deg, #0261d1 0%, #1884d8 50%, #2ba9e0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
   padding-bottom: 2rem;
 }
 .welcome-section::before {
@@ -509,8 +510,9 @@ $darkcharcoal-color: #555555; */
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #2ba9e0 0%, #1884d8 50%, #0261d1 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 }
 .about-section::before {
   content: "";
@@ -700,8 +702,9 @@ $darkcharcoal-color: #555555; */
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #0261d1 0%, #1884d8 50%, #2ba9e0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 }
 .skills-section::before {
   content: "";
@@ -729,6 +732,14 @@ $darkcharcoal-color: #555555; */
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 4px solid #ffd700;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .skills-container {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 .skills-container h2 {
   text-align: center;
@@ -823,6 +834,14 @@ $darkcharcoal-color: #555555; */
   text-align: center;
   position: relative;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .skill-item {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 .skill-item::before {
   content: "";
@@ -890,6 +909,14 @@ $darkcharcoal-color: #555555; */
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(5px);
+}
+@supports not (backdrop-filter: blur(5px)) {
+  .skill-item .skill-tags span {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 .skill-item .skill-tags span:hover {
   background: rgba(255, 215, 0, 0.3);
@@ -932,8 +959,9 @@ $darkcharcoal-color: #555555; */
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #2ba9e0 0%, #1884d8 50%, #0261d1 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 }
 .projects-section::before {
   content: "";
@@ -970,6 +998,14 @@ $darkcharcoal-color: #555555; */
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(5px);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(5px);
+}
+@supports not (backdrop-filter: blur(5px)) {
+  .projects-filters .filter-btn {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 .projects-filters .filter-btn:hover, .projects-filters .filter-btn.active {
   transform: translateY(-2px);
@@ -991,6 +1027,8 @@ $darkcharcoal-color: #555555; */
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 4px solid #ffd700;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
 }
 .section-content h2 {
   text-align: center;
@@ -1078,10 +1116,19 @@ $darkcharcoal-color: #555555; */
   border: 2px solid rgba(255, 215, 0, 0.3);
   overflow: hidden;
   transition: border-color 0.3s;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
 }
-.project-card .card-front:hover,
-.project-card .card-back:hover {
-  border-color: #ffd700;
+@supports not (backdrop-filter: blur(10px)) {
+  .project-card .card-front,
+  .project-card .card-back {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
+  .project-card .card-front:hover,
+  .project-card .card-back:hover {
+    border-color: #ffd700;
+  }
 }
 .project-card .card-front {
   padding: 1.2rem;
@@ -1437,8 +1484,9 @@ $darkcharcoal-color: #555555; */
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #0261d1 0%, #1884d8 50%, #2ba9e0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 }
 .blog-section::before {
   content: "";
@@ -1474,6 +1522,14 @@ $darkcharcoal-color: #555555; */
   backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 4px solid #ffd700;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .blog-container {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 @media (max-width: 480px) {
   .blog-container {
@@ -1546,6 +1602,14 @@ $darkcharcoal-color: #555555; */
   backdrop-filter: blur(5px);
   font-size: 1rem;
   min-width: 200px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(5px);
+}
+@supports not (backdrop-filter: blur(5px)) {
+  #load-more-blogs {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 #load-more-blogs:hover {
   background: rgba(255, 215, 0, 0.2);
@@ -1590,6 +1654,15 @@ $darkcharcoal-color: #555555; */
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  -webkit-backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .blog-card .card-inner .card-front,
+  .blog-card .card-inner .card-back {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(30, 41, 59, 0.95);
+  }
 }
 @media (max-width: 480px) {
   .blog-card .card-inner .card-front,
@@ -2058,8 +2131,9 @@ $darkcharcoal-color: #555555; */
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #2ba9e0 0%, #1884d8 50%, #0261d1 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
+  margin-top: -2px;
 }
 .contact-section::before {
   content: "";
