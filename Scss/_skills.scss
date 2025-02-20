@@ -41,20 +41,34 @@
   padding: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 4px solid #ffd700;
+  
+  /* Base style for all browsers */
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0.05)
   );
-  -webkit-backdrop-filter: blur(10px);
 
-  @supports not (backdrop-filter: blur(10px)) {
-    /* Fallback for browsers that don't support backdrop-filter */
-    background: rgba(30, 41, 59, 0.95);
+  /* Modern browsers with backdrop-filter support */
+  @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Safari-specific fix */
+  @media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+      background-color: rgba(30, 41, 59, 0.6);
+    }
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    background-color: rgba(30, 41, 59, 0.95);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   h2 {
@@ -152,62 +166,45 @@
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  position: relative;
   border-radius: 15px;
   padding: 2rem 1.5rem;
   transition: all 0.3s ease-in-out;
   border: 2px solid rgba(255, 215, 0, 0.2);
   text-align: center;
-  position: relative;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* Base style for all browsers */
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0.05)
   );
-  -webkit-backdrop-filter: blur(10px);
 
-  @supports not (backdrop-filter: blur(10px)) {
-    /* Fallback for browsers that don't support backdrop-filter */
-    background: rgba(30, 41, 59, 0.95);
+  /* Modern browsers with backdrop-filter support */
+  @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 15px;
-    background: linear-gradient(
-      45deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  /* Safari-specific fix */
+  @media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+      background-color: rgba(30, 41, 59, 0.6);
+    }
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    background-color: rgba(30, 41, 59, 0.95);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   &:hover {
     transform: translateY(-5px);
     border-color: rgba(255, 215, 0, 0.4);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-
-    &::before {
-      opacity: 1;
-    }
-
-    i {
-      transform: scale(1.1);
-      color: #ffd700;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    }
-
-    .skill-tags {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   i {
@@ -243,29 +240,38 @@
     z-index: 1;
 
     span {
-      background: rgba(255, 215, 0, 0.2);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      color: #ffffff;
-      backdrop-filter: blur(5px);
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      margin: 0.2rem;
       border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #ffffff;
       transition: all 0.3s ease;
+
+      /* Base style for all browsers */
       background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.15),
         rgba(255, 255, 255, 0.05)
       );
-      -webkit-backdrop-filter: blur(5px);
 
-      @supports not (backdrop-filter: blur(5px)) {
-        /* Fallback for browsers that don't support backdrop-filter */
-        background: rgba(30, 41, 59, 0.95);
+      /* Modern browsers with backdrop-filter support */
+      @supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px))) {
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+      }
+
+      /* Safari-specific fix */
+      @media not all and (min-resolution:.001dpcm) { 
+        @supports (-webkit-appearance:none) {
+          background-color: rgba(30, 41, 59, 0.6);
+        }
       }
 
       &:hover {
         background: rgba(255, 215, 0, 0.3);
-        transform: translateY(-2px);
+        border-color: #ffd700;
       }
     }
   }
