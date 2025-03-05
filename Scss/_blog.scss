@@ -66,6 +66,17 @@
     background: rgba(30, 41, 59, 0.95);
   }
 
+  /* Safari-specific fix */
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      background-color: rgba(30, 41, 59, 0.6);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
   @media (max-width: 480px) {
     padding: 1rem;
     border-width: 2px;
@@ -139,15 +150,21 @@
   );
 
   /* Modern browsers with backdrop-filter support */
-  @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  @supports (
+    (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))
+  ) {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
 
   /* Safari-specific fix */
-  @media not all and (min-resolution:.001dpcm) { 
-    @supports (-webkit-appearance:none) {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
       background-color: rgba(30, 41, 59, 0.6);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
   }
 
@@ -182,15 +199,21 @@
   );
 
   /* Modern browsers with backdrop-filter support */
-  @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  @supports (
+    (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))
+  ) {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
 
   /* Safari-specific fix */
-  @media not all and (min-resolution:.001dpcm) { 
-    @supports (-webkit-appearance:none) {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
       background-color: rgba(30, 41, 59, 0.6);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
   }
 
@@ -249,7 +272,11 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 
   .card-front,
   .card-back {
@@ -257,8 +284,10 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 215, 0, 0.3);
     border-radius: 15px;
     padding: 1.5rem;
@@ -269,7 +298,15 @@
       rgba(255, 255, 255, 0.15),
       rgba(255, 255, 255, 0.05)
     );
-    -webkit-backdrop-filter: blur(10px);
+
+    /* Safari-specific fix */
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        background-color: rgba(30, 41, 59, 0.6);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+    }
 
     @supports not (backdrop-filter: blur(10px)) {
       /* Fallback for browsers that don't support backdrop-filter */
