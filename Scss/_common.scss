@@ -1,6 +1,40 @@
 /*----- Common Styles -----*/
 
-// Common ring styles
+/*----- Safari-specific fixes -----*/
+
+/* Fix for backdrop-filter and 3D transforms in Safari */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .skill-item,
+    .blog-card,
+    .project-card,
+    .filter-btn,
+    .skills-container,
+    .blog-container,
+    .section-content,
+    .card-front,
+    .card-back,
+    .blog-content {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .card-inner {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    /* Force hardware acceleration for smoother animations */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}
+
+/*----- Common ring styles -----*/
 .ring {
   position: absolute;
   width: 30px;
